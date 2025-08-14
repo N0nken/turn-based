@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cshr2j6cgmwge"]
+
+[ext_resource type="Script" uid="uid://d3xo1gyuyisis" path="res://Scenes/Turn Based Fight/tb_fight.gd" id="1_bmoql"]
+
+[node name="TBFight" type="Node"]
+script = ExtResource("1_bmoql")
+
+[node name="Battlers" type="Node" parent="."]

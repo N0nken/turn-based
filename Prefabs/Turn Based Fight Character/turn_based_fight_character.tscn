@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddk02jhc1oty3"]
-
-[ext_resource type="Script" uid="uid://cis8ijuxqfd3f" path="res://Prefabs/Turn Based Fight Character/turn_based_fight_character.gd" id="1_56sl3"]
-[ext_resource type="PackedScene" uid="uid://334umnuss2nk" path="res://Prefabs/Components/health_component.tscn" id="2_y8o6g"]
-
-[node name="turn_based_fight_character" type="Node"]
-script = ExtResource("1_56sl3")
-
-[node name="HealthComponent" parent="." instance=ExtResource("2_y8o6g")]

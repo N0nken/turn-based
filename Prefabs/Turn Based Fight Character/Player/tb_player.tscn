@@ -1,0 +1,105 @@
+[gd_scene load_steps=4 format=3 uid="uid://h8nyj1e74l0b"]
+
+[ext_resource type="Script" uid="uid://coodnq47k2fhm" path="res://Prefabs/Turn Based Fight Character/Player/tb_player.gd" id="1_258aq"]
+[ext_resource type="Script" uid="uid://di505ddkd5gn" path="res://Prefabs/Components/Scripts/health_component.gd" id="2_v02u2"]
+[ext_resource type="PackedScene" uid="uid://gjodyn4mighi" path="res://Prefabs/Turn Based Fight Character/Player/player_planned_actions_list_item.tscn" id="3_v02u2"]
+
+[node name="TBPlayer" type="Node2D" node_paths=PackedStringArray("health_component") groups=["TB_Battlers"]]
+script = ExtResource("1_258aq")
+health_component = NodePath("HealthComponent")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_v02u2")
+max_health = 10
+metadata/_custom_type_script = "uid://di505ddkd5gn"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 1, 1)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PlannedMoves" type="Control" parent="HUD"]
+layout_mode = 3
+anchor_top = 0.722
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="HUD/PlannedMoves"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/PlannedMoves"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HUD/PlannedMoves/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/PlannedMoves/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AvailableMoveset" type="Control" parent="HUD"]
+layout_mode = 3
+anchor_left = 0.687
+anchor_right = 1.0
+anchor_bottom = 0.722
+offset_left = 0.159988
+offset_bottom = 0.0399933
+
+[node name="Panel" type="Panel" parent="HUD/AvailableMoveset"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/AvailableMoveset"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="HUD/AvailableMoveset/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="PlayerPlannedActionsListItem" parent="HUD/AvailableMoveset/MarginContainer/GridContainer" instance=ExtResource("3_v02u2")]
+layout_mode = 2
+
+[node name="PlayerPlannedActionsListItem2" parent="HUD/AvailableMoveset/MarginContainer/GridContainer" instance=ExtResource("3_v02u2")]
+layout_mode = 2
+
+[node name="PlayerPlannedActionsListItem3" parent="HUD/AvailableMoveset/MarginContainer/GridContainer" instance=ExtResource("3_v02u2")]
+layout_mode = 2
+
+[node name="PlayerPlannedActionsListItem4" parent="HUD/AvailableMoveset/MarginContainer/GridContainer" instance=ExtResource("3_v02u2")]
+layout_mode = 2

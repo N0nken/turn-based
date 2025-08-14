@@ -1,0 +1,2 @@
+class_name TB_TrainingDummy
+extends TB_Battler
