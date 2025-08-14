@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://h8nyj1e74l0b"]
+
+[ext_resource type="Script" uid="uid://coodnq47k2fhm" path="res://Prefabs/Turn Based Fight Battlers/Player/tb_player.gd" id="1_258aq"]
+[ext_resource type="Script" uid="uid://di505ddkd5gn" path="res://Prefabs/Components/Scripts/health_component.gd" id="2_v02u2"]
+
+[node name="TBPlayer" type="Node2D" node_paths=PackedStringArray("health_component") groups=["TB_Battlers"]]
+script = ExtResource("1_258aq")
+health_component = NodePath("HealthComponent")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_v02u2")
+max_health = 10
+metadata/_custom_type_script = "uid://di505ddkd5gn"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 1, 1)

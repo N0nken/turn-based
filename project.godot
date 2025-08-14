@@ -24,3 +24,7 @@ window/stretch/scale_mode="integer"
 [global_group]
 
 TB_Battlers="Nodes inheriting the TurnBasedCharacters class"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

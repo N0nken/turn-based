@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ci48xpmfsdlhk"]
 
-[ext_resource type="Script" uid="uid://jek1csrb24hn" path="res://Prefabs/Turn Based Fight Character/Enemies/Training Dummy/training_dummy.gd" id="1_gp6py"]
+[ext_resource type="Script" uid="uid://jek1csrb24hn" path="res://Prefabs/Turn Based Fight Battlers/Enemies/Training Dummy/training_dummy.gd" id="1_gp6py"]
 [ext_resource type="PackedScene" uid="uid://334umnuss2nk" path="res://Prefabs/Components/health_component.tscn" id="2_nsljw"]
 
 [node name="TrainingDummy" type="Node2D" node_paths=PackedStringArray("health_component") groups=["TB_Battlers"]]
@@ -9,3 +9,8 @@ health_component = NodePath("HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_nsljw")]
 max_health = 9999
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)
