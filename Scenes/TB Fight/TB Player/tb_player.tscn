@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://h8nyj1e74l0b"]
+
+[ext_resource type="Script" uid="uid://coodnq47k2fhm" path="res://Scenes/TB Fight/TB Player/tb_player.gd" id="1_258aq"]
+[ext_resource type="Script" uid="uid://ho8awdgl5gne" path="res://System/TB Action Library/Scripts/tb_action.gd" id="2_0l53j"]
+[ext_resource type="Resource" uid="uid://d0m0e5jdfnww6" path="res://System/TB Action Library/Resources/Moves/flee.tres" id="3_pt0f6"]
+[ext_resource type="Resource" uid="uid://cjk2gf7l6dx6r" path="res://System/TB Action Library/Resources/Moves/basic_attack.tres" id="4_erqv3"]
+
+[node name="TBPlayer" type="Node2D" groups=["TB_Battlers"]]
+script = ExtResource("1_258aq")
+turn_plan_capacity = 10
+move_set = Array[ExtResource("2_0l53j")]([ExtResource("3_pt0f6"), ExtResource("4_erqv3")])
+max_health = 10
+battler_name = "Player"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 1, 1)
+
+[node name="LatestActionTimer" type="Timer" parent="."]
+one_shot = true

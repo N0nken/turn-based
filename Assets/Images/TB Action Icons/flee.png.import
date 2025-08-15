@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckkl5netvo8e1"
-path="res://.godot/imported/16x16_texture_not_found.png-32d0fc7b11b1dee23ba805a8e462bfe8.ctex"
+uid="uid://lymg310j1arq"
+path="res://.godot/imported/flee.png-b233a0066e193afccc7eb3505428204a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/16x16_texture_not_found.png"
-dest_files=["res://.godot/imported/16x16_texture_not_found.png-32d0fc7b11b1dee23ba805a8e462bfe8.ctex"]
+source_file="res://Assets/Images/TB Action Icons/flee.png"
+dest_files=["res://.godot/imported/flee.png-b233a0066e193afccc7eb3505428204a.ctex"]
 
 [params]
 

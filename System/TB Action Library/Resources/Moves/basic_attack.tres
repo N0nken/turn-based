@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TB_Basic_Attack" load_steps=2 format=3 uid="uid://cjk2gf7l6dx6r"]
+
+[ext_resource type="Script" uid="uid://b5aj5o3a10npt" path="res://System/TB Action Library/Scripts/Moves/tb_basic_attack.gd" id="1_rrajv"]
+
+[resource]
+script = ExtResource("1_rrajv")
+cost = 5
+speed = 5
+action_name = "Basic Attack"
+power = 5
+target_self = false
+metadata/_custom_type_script = "uid://b5aj5o3a10npt"

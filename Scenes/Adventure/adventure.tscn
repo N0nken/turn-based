@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://hwbr5urj2deb"]
+
+[node name="Adventure" type="Node"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 16.0
+text = "hej"

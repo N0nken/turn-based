@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://p076elcnrmrn"]
+[gd_scene load_steps=4 format=3 uid="uid://p076elcnrmrn"]
 
-[ext_resource type="Texture2D" uid="uid://ckkl5netvo8e1" path="res://Assets/Images/16x16_texture_not_found.png" id="1_ns14d"]
+[ext_resource type="Script" uid="uid://xyu7y3ho5ybd" path="res://Scenes/TB Fight/TB Fight UI/Scripts/tb_fight_move_icon.gd" id="1_isw10"]
+[ext_resource type="Texture2D" uid="uid://ckkl5netvo8e1" path="res://Assets/Images/TB Action Icons/16x16_texture_not_found.png" id="2_17drh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5ecr"]
 bg_color = Color(0, 0, 0, 0)
@@ -10,12 +11,13 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
 
-[node name="TBFightPlannedMoveListItem" type="Panel"]
+[node name="TBFightMoveIcon" type="Panel"]
 texture_filter = 1
 custom_minimum_size = Vector2(20, 20)
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i5ecr")
+script = ExtResource("1_isw10")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 show_behind_parent = true
@@ -23,10 +25,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -44.0
-offset_top = -44.0
-offset_right = 44.0
-offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -37,5 +35,5 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/CenterContainer"]
 show_behind_parent = true
 layout_mode = 2
-texture = ExtResource("1_ns14d")
+texture = ExtResource("2_17drh")
 stretch_mode = 6
