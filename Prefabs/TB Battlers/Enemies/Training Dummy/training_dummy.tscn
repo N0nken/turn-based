@@ -1,9 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://ci48xpmfsdlhk"]
 
-[ext_resource type="Script" uid="uid://jek1csrb24hn" path="res://Prefabs/Turn Based Fight Battlers/Enemies/Training Dummy/training_dummy.gd" id="1_gp6py"]
+[ext_resource type="Script" uid="uid://jek1csrb24hn" path="res://Prefabs/TB Battlers/Enemies/Training Dummy/training_dummy.gd" id="1_gp6py"]
 
 [node name="TrainingDummy" type="Node2D" groups=["TB_Battlers"]]
 script = ExtResource("1_gp6py")
+max_health = 20
 battler_name = "Training Dummy"
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -12,3 +13,5 @@ offset_bottom = 40.0
 color = Color(1, 0, 0, 1)
 
 [node name="LatestActionTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

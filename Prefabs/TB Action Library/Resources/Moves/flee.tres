@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TB_Flee" load_steps=3 format=3 uid="uid://d0m0e5jdfnww6"]
 
 [ext_resource type="Texture2D" uid="uid://lymg310j1arq" path="res://Assets/Images/TB Action Icons/flee.png" id="1_ekuyk"]
-[ext_resource type="Script" uid="uid://bb0e4hl2v2bm3" path="res://System/TB Action Library/Scripts/Moves/tb_flee.gd" id="2_rthb7"]
+[ext_resource type="Script" uid="uid://bb0e4hl2v2bm3" path="res://Prefabs/TB Action Library/Scripts/Moves/tb_flee.gd" id="2_rthb7"]
 
 [resource]
 script = ExtResource("2_rthb7")
