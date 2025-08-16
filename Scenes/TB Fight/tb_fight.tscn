@@ -1,15 +1,55 @@
-[gd_scene load_steps=21 format=3 uid="uid://cshr2j6cgmwge"]
+[gd_scene load_steps=28 format=3 uid="uid://cshr2j6cgmwge"]
 
 [ext_resource type="Script" uid="uid://d3xo1gyuyisis" path="res://Scenes/TB Fight/tb_fight.gd" id="1_of3kh"]
 [ext_resource type="PackedScene" uid="uid://h8nyj1e74l0b" path="res://Prefabs/TB Battlers/TB Player/tb_player.tscn" id="2_3wec6"]
-[ext_resource type="PackedScene" uid="uid://ci48xpmfsdlhk" path="res://Prefabs/TB Battlers/Enemies/Training Dummy/training_dummy.tscn" id="3_iac33"]
+[ext_resource type="Script" uid="uid://ho8awdgl5gne" path="res://Prefabs/TB Action Library/Scripts/tb_action.gd" id="3_7gxsw"]
+[ext_resource type="PackedScene" uid="uid://br37vntb3dyh0" path="res://Prefabs/TB Battlers/Enemies/Weak Goblin/tb_weak_goblin.tscn" id="3_bjhfu"]
 [ext_resource type="Script" uid="uid://dgnknjvmkxi6l" path="res://Scenes/TB Fight/TB Fight UI/Scripts/tb_ui.gd" id="4_3ur25"]
-[ext_resource type="Script" uid="uid://ho8awdgl5gne" path="res://Prefabs/TB Action Library/Scripts/tb_action.gd" id="4_j0k82"]
 [ext_resource type="PackedScene" uid="uid://drmpyiwokjhyr" path="res://Scenes/TB Fight/TB Fight UI/tb_ui_battler_hp.tscn" id="5_3ur25"]
-[ext_resource type="Resource" uid="uid://cjk2gf7l6dx6r" path="res://Prefabs/TB Action Library/Resources/Moves/basic_attack.tres" id="5_mftn5"]
+[ext_resource type="Texture2D" uid="uid://divrs8ljuilqa" path="res://Assets/Images/TB Action Icons/quick_attack.png" id="5_52f3r"]
+[ext_resource type="Texture2D" uid="uid://dnihvopt37wcy" path="res://Assets/Images/TB Action Icons/basic_attack.png" id="5_e40qv"]
+[ext_resource type="Script" uid="uid://b5aj5o3a10npt" path="res://Prefabs/TB Action Library/Scripts/Moves/tb_basic_attack.gd" id="5_mftn5"]
 [ext_resource type="Script" uid="uid://cjxq8aivek6xo" path="res://Scenes/TB Fight/TB Fight UI/Scripts/accept_plan.gd" id="5_of3kh"]
 [ext_resource type="Script" uid="uid://urs2q34c06m2" path="res://Scenes/TB Fight/TB Fight UI/Scripts/tab_bar.gd" id="5_ws8c2"]
 [ext_resource type="FontFile" uid="uid://c2h2ioj5qcxdf" path="res://Assets/Fonts/Bescii-Mono.ttf" id="7_7gxsw"]
+[ext_resource type="Texture2D" uid="uid://lymg310j1arq" path="res://Assets/Images/TB Action Icons/flee.png" id="8_bjhfu"]
+[ext_resource type="Script" uid="uid://bb0e4hl2v2bm3" path="res://Prefabs/TB Action Library/Scripts/Moves/tb_flee.gd" id="9_ihosb"]
+
+[sub_resource type="Resource" id="Resource_bjhfu"]
+resource_local_to_scene = true
+script = ExtResource("5_mftn5")
+cost = 2
+speed = 999
+action_name = "Quick Attack"
+power = 2
+target_self = false
+icon = ExtResource("5_52f3r")
+life_time = 0.5
+metadata/_custom_type_script = "uid://b5aj5o3a10npt"
+
+[sub_resource type="Resource" id="Resource_ihosb"]
+resource_local_to_scene = true
+script = ExtResource("5_mftn5")
+cost = 5
+speed = 5
+action_name = "Basic Attack"
+power = 5
+target_self = false
+icon = ExtResource("5_e40qv")
+life_time = 0.5
+metadata/_custom_type_script = "uid://b5aj5o3a10npt"
+
+[sub_resource type="Resource" id="Resource_o4g54"]
+resource_local_to_scene = true
+script = ExtResource("9_ihosb")
+cost = 0
+speed = 9999
+action_name = "Flee"
+power = 0
+target_self = false
+icon = ExtResource("8_bjhfu")
+life_time = 0.5
+metadata/_custom_type_script = "uid://bb0e4hl2v2bm3"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iac33"]
 bg_color = Color(0, 0, 0, 1)
@@ -80,11 +120,11 @@ one_shot = true
 [node name="Battlers" type="Node" parent="."]
 
 [node name="TBPlayer" parent="Battlers" instance=ExtResource("2_3wec6")]
-position = Vector2(2, 108)
+position = Vector2(117, 107)
 
-[node name="TrainingDummy" parent="Battlers" instance=ExtResource("3_iac33")]
-position = Vector2(118, 20)
-move_set = Array[ExtResource("4_j0k82")]([ExtResource("5_mftn5")])
+[node name="TBWeakGoblin" parent="Battlers" instance=ExtResource("3_bjhfu")]
+position = Vector2(22, 18)
+move_set = Array[ExtResource("3_7gxsw")]([SubResource("Resource_bjhfu"), SubResource("Resource_ihosb"), SubResource("Resource_o4g54")])
 
 [node name="UI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true

@@ -14,16 +14,16 @@ signal died
 
 const max_planned_turns := 5
 
-@export var turn_plan_capacity := 0
+@export var battler_name := ""
+@export var max_health := 0
 @export var strength := 1
 @export var speed := 1
+@export var defense := 1
+@export var turn_plan_capacity := 0
 @export var move_set : Array[TB_Action] = []
-@export var max_health := 0
-@export var battler_name := ""
 
 var used_turn_plan_capacity := 0
 var planned_turns : Array[TB_Action] = []
-var planned_turns_count := 0
 
 var alive : bool = true
 var active : bool = false
@@ -36,6 +36,8 @@ func _ready() -> void:
 		action.parent_battler = self
 		action.tb_fight_root = get_tree().root.get_node("TBFight")
 	latest_action_timer.timeout.connect(_action_ended)
+	damaged.connect(_on_damaged)
+	get_node("HitEffectTimer").timeout.connect(_on_hit_effect_end)
 
 
 func damage(dmg : int) -> void:
@@ -47,19 +49,15 @@ func damage(dmg : int) -> void:
 	elif dmg < 0:
 		healed.emit(dmg)
 	if health <= 0:
-		print(self, " died")
 		died.emit()
-	
-	print(health, " ", dmg)
 
 
 func plan_action(action : TB_Action) -> bool:
-	if (planned_turns_count == max_planned_turns
+	if (planned_turns.size() == max_planned_turns
 	or used_turn_plan_capacity + action.cost > turn_plan_capacity):
 		return false
 	planned_turns.append(action)
 	used_turn_plan_capacity += action.cost
-	planned_turns_count += 1
 	return true
 
 
@@ -78,4 +76,12 @@ func execute_next_action() -> void:
 
 func _action_ended() -> void:
 	action_ended.emit()
-	
+
+
+func _on_damaged(_dmg : int) -> void:
+	get_node("HitEffectTimer").start()
+	self.material.set_shader_parameter("enabled", true)
+
+
+func _on_hit_effect_end() -> void:
+	self.material.set_shader_parameter("enabled", false)

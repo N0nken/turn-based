@@ -1,0 +1,72 @@
+[gd_scene load_steps=14 format=3 uid="uid://br37vntb3dyh0"]
+
+[ext_resource type="Script" uid="uid://b2a7udlxgpxkg" path="res://Prefabs/TB Battlers/Enemies/Weak Goblin/tb_weak_goblin.gd" id="1_du0gp"]
+[ext_resource type="Script" uid="uid://ho8awdgl5gne" path="res://Prefabs/TB Action Library/Scripts/tb_action.gd" id="2_vau60"]
+[ext_resource type="Texture2D" uid="uid://dnihvopt37wcy" path="res://Assets/Images/TB Action Icons/basic_attack.png" id="3_0lwt2"]
+[ext_resource type="Texture2D" uid="uid://divrs8ljuilqa" path="res://Assets/Images/TB Action Icons/quick_attack.png" id="3_y8tr0"]
+[ext_resource type="Script" uid="uid://b5aj5o3a10npt" path="res://Prefabs/TB Action Library/Scripts/Moves/tb_basic_attack.gd" id="4_ta5cg"]
+[ext_resource type="Texture2D" uid="uid://lymg310j1arq" path="res://Assets/Images/TB Action Icons/flee.png" id="6_vbk73"]
+[ext_resource type="Script" uid="uid://bb0e4hl2v2bm3" path="res://Prefabs/TB Action Library/Scripts/Moves/tb_flee.gd" id="7_6hd7s"]
+[ext_resource type="Texture2D" uid="uid://sxkcuckp4neh" path="res://Assets/Images/TB Sprites/weak_goblin.png" id="8_6hd7s"]
+[ext_resource type="Shader" uid="uid://b7rujrfrknx7g" path="res://Shaders/hit_effect.gdshader" id="8_htmul"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_htmul"]
+shader = ExtResource("8_htmul")
+shader_parameter/enabled = false
+
+[sub_resource type="Resource" id="Resource_bjhfu"]
+resource_local_to_scene = true
+script = ExtResource("4_ta5cg")
+cost = 2
+speed = 999
+action_name = "Quick Attack"
+power = 2
+target_self = false
+icon = ExtResource("3_y8tr0")
+life_time = 0.5
+metadata/_custom_type_script = "uid://b5aj5o3a10npt"
+
+[sub_resource type="Resource" id="Resource_ihosb"]
+resource_local_to_scene = true
+script = ExtResource("4_ta5cg")
+cost = 5
+speed = 5
+action_name = "Basic Attack"
+power = 5
+target_self = false
+icon = ExtResource("3_0lwt2")
+life_time = 0.5
+metadata/_custom_type_script = "uid://b5aj5o3a10npt"
+
+[sub_resource type="Resource" id="Resource_o4g54"]
+resource_local_to_scene = true
+script = ExtResource("7_6hd7s")
+cost = 0
+speed = 9999
+action_name = "Flee"
+power = 0
+target_self = false
+icon = ExtResource("6_vbk73")
+life_time = 0.5
+metadata/_custom_type_script = "uid://bb0e4hl2v2bm3"
+
+[node name="TBWeakGoblin" type="Node2D" groups=["TB_Battlers"]]
+texture_filter = 1
+material = SubResource("ShaderMaterial_htmul")
+script = ExtResource("1_du0gp")
+battler_name = "Weak Goblin"
+max_health = 10
+speed = 5
+turn_plan_capacity = 10
+move_set = Array[ExtResource("2_vau60")]([SubResource("Resource_bjhfu"), SubResource("Resource_ihosb"), SubResource("Resource_o4g54")])
+
+[node name="LatestActionTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("8_6hd7s")
+
+[node name="HitEffectTimer" type="Timer" parent="."]
+wait_time = 0.1

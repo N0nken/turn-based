@@ -11,7 +11,7 @@ var packed_move_list_item := preload("res://Scenes/TB Fight/TB Fight UI/tb_fight
 var packed_action_icon := preload("res://Scenes/TB Fight/TB Fight UI/tb_fight_move_icon.tscn")
 
 @onready var player : TB_Player = get_tree().root.get_node("TBFight/Battlers/TBPlayer")
-var enemy : TB_AiBattler = null 
+var enemy : TB_AiBattler = null # defined in _ready()
 
 func _ready() -> void:
 	for node in get_tree().root.get_node("TBFight/Battlers").get_children():
@@ -27,6 +27,7 @@ func _ready() -> void:
 	tb_battler_hp_2.init_self()
 	player.action_started.connect(_on_action_started)
 	enemy.action_started.connect(_on_action_started)
+	enemy.finished_planning.connect(_on_enemy_finished_planning)
 
 
 func load_player_move_set() -> void:
@@ -44,13 +45,21 @@ func load_player_backpack() -> void:
 func _on_action_selected(action : TB_Action) -> void:
 	if !player.plan_action(action):
 		return
+	_load_action_icon(action, get_node("Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer"))
+
+
+func _on_enemy_finished_planning() -> void:
+	for action in enemy.planned_turns:
+		_load_action_icon(action, get_node("Control/PlannedMoves/Enemy/MarginContainer/ScrollContainer/HBoxContainer"))
+
+
+func _load_action_icon(action : TB_Action, parent_container : HBoxContainer) -> void:
 	var new_planned_action = packed_action_icon.instantiate()
 	new_planned_action.set_icon(action.icon)
-	get_node("Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer").add_child(new_planned_action)
+	parent_container.add_child(new_planned_action)
 
 
 func _on_action_started(_action : TB_Action, battler : TB_Battler):
-	print(_action.action_name, " was used by ", battler)
 	var parent_container : HBoxContainer = null
 	if battler == player:
 		parent_container = get_node("Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer")

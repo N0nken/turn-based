@@ -48,7 +48,7 @@ var phase := Phases.PLANNING
 @onready var end_screen_timer : Timer = get_node("EndScreenTimer")
 
 func _ready() -> void:
-	for battler in get_tree().get_nodes_in_group("TB_Battlers"):
+	for battler in get_node("Battlers").get_children():
 		if battler is TB_Player:
 			player_battler = battler
 		elif battler is TB_AiBattler:
@@ -57,13 +57,14 @@ func _ready() -> void:
 		battler.action_ended.connect(_on_action_ended)
 		battler.planned_turns_finished.connect(_on_battler_planned_turns_finished.bind(battler))
 		battler.died.connect(_on_battler_died)
+	enemy_battler.plan_turns()
 
 
 func _on_battler_finished_planning() -> void:
 	# Safeguard against multiple plan confirmations
 	if phase != Phases.PLANNING:
 		return
-	if not (player_battler.active or enemy_battler.active):
+	if (not player_battler.active) or (not enemy_battler.active):
 		return
 	phase = Phases.EXECUTING
 	_execute_next_action()
@@ -109,13 +110,11 @@ func _end_round() -> void:
 		return
 	phase = Phases.PLANNING
 	player_battler.used_turn_plan_capacity = 0
-	player_battler.planned_turns_count = 0
 	enemy_battler.used_turn_plan_capacity = 0
-	enemy_battler.planned_turns_count = 0
+	enemy_battler.plan_turns()
 
 
 func _end_fight() -> void:
-	print("ended fight")
 	phase = Phases.ENDING
 	var exit_state := ExitStates.PLAYER_WON
 	if player_battler.health <= 0:

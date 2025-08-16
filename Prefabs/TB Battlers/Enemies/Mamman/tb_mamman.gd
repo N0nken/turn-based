@@ -1,0 +1,2 @@
+class_name TB_Mamman
+extends TB_AiBattler

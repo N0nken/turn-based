@@ -14,6 +14,12 @@ config/name="turn-based"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+JSONe="*res://System/Singletons/json_e.gd"
+Player="*res://System/Singletons/player.gd"
+Filepaths="*res://System/Singletons/filepaths.gd"
+
 [display]
 
 window/size/viewport_width=320
