@@ -2,10 +2,22 @@ class_name TB_AiBattler
 extends TB_Battler
 
 @export var level := 1
+@export var stat_bias : Dictionary[String,int] = {
+	"health" : 0,
+	"strength" : 0,
+	"speed" : 0,
+	"defense" : 0,
+	"turn_plan_capacity" : 0,
+}
 
 func _ready() -> void:
 	super()
-
+	max_health += stat_bias["health"] * level 
+	health = max_health
+	strength += stat_bias["strength"] * level
+	speed += stat_bias["speed"] * level
+	defense += stat_bias["defense"] * level
+	turn_plan_capacity += stat_bias["turn_plan_capacity"] * level
 
 func plan_turns(smart : bool = false) -> void:
 	if smart:
@@ -27,7 +39,7 @@ func _plan_dumb_helper() -> void:
 		if next_turn.target_self:
 			next_turn.target = self
 		else:
-			next_turn.target = get_tree().root.get_node("TBFight").player_battler
+			next_turn.target = get_parent().get_parent().player_battler
 		
 		if used_turn_plan_capacity + next_turn.cost <= turn_plan_capacity:
 			planned_turns.append(next_turn)

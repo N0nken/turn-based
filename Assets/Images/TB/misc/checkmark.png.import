@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckkl5netvo8e1"
-path="res://.godot/imported/16x16_texture_not_found.png-fba89c60814ff1d7a638a58bf048f1ee.ctex"
+uid="uid://ci5c72rji0lcj"
+path="res://.godot/imported/checkmark.png-bbd21cf1d91a1c3ced65d7940cf7fb40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/TB Action Icons/16x16_texture_not_found.png"
-dest_files=["res://.godot/imported/16x16_texture_not_found.png-fba89c60814ff1d7a638a58bf048f1ee.ctex"]
+source_file="res://Assets/Images/TB/misc/checkmark.png"
+dest_files=["res://.godot/imported/checkmark.png-bbd21cf1d91a1c3ced65d7940cf7fb40.ctex"]
 
 [params]
 

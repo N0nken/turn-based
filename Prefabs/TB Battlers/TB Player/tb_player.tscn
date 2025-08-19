@@ -14,15 +14,15 @@ battler_name = "Player"
 max_health = 10
 turn_plan_capacity = 10
 
-[node name="ColorRect" type="ColorRect" parent="."]
-use_parent_material = true
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0, 0, 1, 1)
+[node name="HitEffectTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [node name="LatestActionTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
-[node name="HitEffectTimer" type="Timer" parent="."]
-wait_time = 0.1
+[node name="ColorRect" type="ColorRect" parent="."]
+use_parent_material = true
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 1, 1)

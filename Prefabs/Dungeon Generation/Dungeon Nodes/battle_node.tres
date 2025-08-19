@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DungeonNodeTemplate" load_steps=3 format=3 uid="uid://utyqhjdeqxmu"]
+
+[ext_resource type="Texture2D" uid="uid://bx8g5mydb27sp" path="res://Assets/Images/TB/misc/16x16_skull.png" id="1_nsu8u"]
+[ext_resource type="Script" uid="uid://4a4fwnusdhhi" path="res://Prefabs/Dungeon Generation/dungeon_node_template.gd" id="2_goekq"]
+
+[resource]
+script = ExtResource("2_goekq")
+name = "Battle"
+icon = ExtResource("1_nsu8u")
+target_activity_name = "tb_fight"
+metadata/_custom_type_script = "uid://4a4fwnusdhhi"

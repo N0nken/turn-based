@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnihvopt37wcy"
-path="res://.godot/imported/basic_attack.png-b105646a7c68b5bd87653868e782774e.ctex"
+uid="uid://ccna04omuucp8"
+path="res://.godot/imported/lock.png-9ba009da0799782a170330a7aadae7f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/TB Action Icons/basic_attack.png"
-dest_files=["res://.godot/imported/basic_attack.png-b105646a7c68b5bd87653868e782774e.ctex"]
+source_file="res://Assets/Images/TB/misc/lock.png"
+dest_files=["res://.godot/imported/lock.png-9ba009da0799782a170330a7aadae7f4.ctex"]
 
 [params]
 

@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://cc8d2hi5vlou7"]
+
+[ext_resource type="Script" uid="uid://bt2sv52ry1bus" path="res://Scenes/Dungeon/Scripts/dungeon.gd" id="1_0pvy1"]
+[ext_resource type="Script" uid="uid://cca1m5hu4ype7" path="res://Scenes/Dungeon/Scripts/dungeon_tree.gd" id="2_31xx8"]
+[ext_resource type="Resource" uid="uid://ds7yu0m6t3fdx" path="res://Prefabs/Dungeon Generation/Dungeon Templates/deep_low_rank_golbin.tres" id="2_r63rt"]
+[ext_resource type="PackedScene" uid="uid://b3kra3ablwpel" path="res://Prefabs/Dungeon Generation/Instanciables/dungeon_node.tscn" id="3_h3fct"]
+[ext_resource type="Script" uid="uid://6ympl5dgugq3" path="res://Scenes/Dungeon/Scripts/dungeon_activity_manager.gd" id="3_yuksf"]
+[ext_resource type="Texture2D" uid="uid://c0conprn03r4g" path="res://Assets/Images/TB/misc/16x16_cross.png" id="5_r63rt"]
+[ext_resource type="Script" uid="uid://2xsghu020h2i" path="res://Scenes/Dungeon/camera_2d.gd" id="6_j5cnj"]
+
+[node name="Dungeon" type="Node"]
+script = ExtResource("1_0pvy1")
+dungeon_template = ExtResource("2_r63rt")
+
+[node name="DungeonTree" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("2_31xx8")
+layer_position_diffs = Vector2(100, 100)
+layer_position_offset_min = Vector2(-20, -20)
+layer_position_offset_max = Vector2(20, 20)
+
+[node name="Camera2D" type="Camera2D" parent="DungeonTree"]
+texture_filter = 1
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("6_j5cnj")
+camera_speed = 200
+
+[node name="DungeonNodes" type="Control" parent="DungeonTree"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Layer0" type="Control" parent="DungeonTree/DungeonNodes"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SpawnNode" parent="DungeonTree/DungeonNodes/Layer0" node_paths=PackedStringArray("target_camera") instance=ExtResource("3_h3fct")]
+layout_mode = 1
+offset_right = -8.0
+offset_bottom = -8.0
+target_camera = NodePath("../../../Camera2D")
+
+[node name="Lines" type="Node2D" parent="DungeonTree"]
+show_behind_parent = true
+
+[node name="LoadingScreen" type="CanvasLayer" parent="DungeonTree"]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="DungeonTree/LoadingScreen"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("5_r63rt")
+
+[node name="DungeonActivityManager" type="Node2D" parent="."]
+texture_filter = 1
+script = ExtResource("3_yuksf")
+
+[node name="Container" type="Node" parent="DungeonActivityManager"]
+
+[connection signal="activity_ended" from="DungeonActivityManager" to="DungeonTree" method="_on_dungeon_activity_manager_activity_ended"]
+[connection signal="activity_started" from="DungeonActivityManager" to="DungeonTree" method="_on_dungeon_activity_manager_activity_started"]

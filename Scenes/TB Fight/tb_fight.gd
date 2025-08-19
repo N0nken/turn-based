@@ -1,30 +1,8 @@
 class_name TB_Fight
-extends Node
-
-# FIGHT STRUCTURE
-# load battlers
-# player plans their actions
-# player says "im ready"
-# ai opponent plans their actions
-# execute fasest action
-# repeat ^^ until both plans are empty or one battler dies
-# if either battler dies end the match
-# else:
-# repeat from stage 2
-
-
-# FIGHT HUD
-# show enemy planned moves
-# show player planned moves
-# show player options (moveset, flee option, item use)
-# moveset
-#	4 moves
-#	description for each move (popup on hover?)
-# backpack
-#	infinite list
-#	popup description on hover
+extends CanvasLayer
 
 signal fight_ended
+signal activity_ended
 
 enum Phases {
 	PLANNING,
@@ -34,7 +12,7 @@ enum Phases {
 enum ExitStates {
 	PLAYER_WON,
 	PLAYER_FLED,
-	PLAYER_LOST
+	PLAYER_LOST,
 }
 
 var active_battlers : Array[TB_Battler] = []
@@ -116,6 +94,7 @@ func _end_round() -> void:
 
 func _end_fight() -> void:
 	phase = Phases.ENDING
+	RuntimePlayer.health = player_battler.health
 	var exit_state := ExitStates.PLAYER_WON
 	if player_battler.health <= 0:
 		exit_state = ExitStates.PLAYER_LOST
@@ -123,7 +102,9 @@ func _end_fight() -> void:
 		exit_state = ExitStates.PLAYER_FLED
 	fight_ended.emit(exit_state)
 	end_screen_timer.start()
-
+	if exit_state == ExitStates.PLAYER_WON:
+		RuntimePlayer.gain_gold(enemy_battler.gold_drop)
 
 func _on_end_screen_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Adventure/adventure.tscn")
+	activity_ended.emit()
+	self.queue_free()

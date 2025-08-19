@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DungeonTemplate" load_steps=5 format=3 uid="uid://dvrdsxpy0ikyy"]
+
+[ext_resource type="Script" uid="uid://4a4fwnusdhhi" path="res://Prefabs/Dungeon Generation/dungeon_node_template.gd" id="1_br47b"]
+[ext_resource type="Resource" uid="uid://utyqhjdeqxmu" path="res://Prefabs/Dungeon Generation/Dungeon Nodes/battle_node.tres" id="2_7cj4k"]
+[ext_resource type="Resource" uid="uid://dwpx3u31ixjm8" path="res://Prefabs/Dungeon Generation/Enemy Factions/low_rank_goblins.tres" id="3_3v3am"]
+[ext_resource type="Script" uid="uid://bw3g8p3xptyeb" path="res://Prefabs/Dungeon Generation/dungeon_template.gd" id="4_8yq1u"]
+
+[resource]
+script = ExtResource("4_8yq1u")
+faction = ExtResource("3_3v3am")
+max_tree_width = 3
+tree_depth = Dictionary[String, int]({
+"max": 6,
+"min": 4
+})
+branch_count = Dictionary[String, int]({
+"max": 4,
+"min": 1
+})
+dungeon_nodes = Array[ExtResource("1_br47b")]([ExtResource("2_7cj4k")])
+metadata/_custom_type_script = "uid://bw3g8p3xptyeb"

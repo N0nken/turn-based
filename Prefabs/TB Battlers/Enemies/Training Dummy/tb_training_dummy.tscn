@@ -7,11 +7,14 @@ script = ExtResource("1_4t10d")
 battler_name = "Training Dummy"
 max_health = 9999
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(1, 0, 0, 1)
+[node name="HitEffectTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [node name="LatestActionTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)

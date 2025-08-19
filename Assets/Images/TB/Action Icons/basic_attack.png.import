@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lymg310j1arq"
-path="res://.godot/imported/flee.png-b233a0066e193afccc7eb3505428204a.ctex"
+uid="uid://dnihvopt37wcy"
+path="res://.godot/imported/basic_attack.png-253437a6fae5e1f8db93e68beac8b6ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/TB Action Icons/flee.png"
-dest_files=["res://.godot/imported/flee.png-b233a0066e193afccc7eb3505428204a.ctex"]
+source_file="res://Assets/Images/TB/Action Icons/basic_attack.png"
+dest_files=["res://.godot/imported/basic_attack.png-253437a6fae5e1f8db93e68beac8b6ac.ctex"]
 
 [params]
 

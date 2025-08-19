@@ -7,6 +7,7 @@ func read_file(filepath):
 	var content = file.get_as_text()
 	return content
 
+
 func read_json(filepath):
 	var stringContent = read_file(filepath)
 	var error = json.parse(stringContent)

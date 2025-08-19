@@ -1,5 +1,6 @@
 extends Control
 
-func _on_gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_left"):
-		get_tree().root.get_node("TBFight/Battlers/TBPlayer").finish_planning()
+@export var head_node : TB_Fight = null
+
+func _on_pressed() -> void:
+	head_node.get_node("Battlers/TBPlayer").finish_planning()

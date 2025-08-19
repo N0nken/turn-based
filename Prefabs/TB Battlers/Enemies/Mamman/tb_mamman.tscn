@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://72hpe6yy5j1a" path="res://Prefabs/TB Battlers/Enemies/Mamman/tb_mamman.gd" id="1_17wfl"]
 [ext_resource type="Script" uid="uid://ho8awdgl5gne" path="res://Prefabs/TB Action Library/Scripts/tb_action.gd" id="2_7ugcn"]
-[ext_resource type="Texture2D" uid="uid://do2claycxnbco" path="res://Assets/Images/TB Sprites/mamman.png" id="3_6p1yx"]
-[ext_resource type="Texture2D" uid="uid://dnihvopt37wcy" path="res://Assets/Images/TB Action Icons/basic_attack.png" id="3_tgm52"]
+[ext_resource type="Texture2D" uid="uid://do2claycxnbco" path="res://Assets/Images/TB/Battler Sprites/mamman.png" id="3_6p1yx"]
+[ext_resource type="Texture2D" uid="uid://dnihvopt37wcy" path="res://Assets/Images/TB/Action Icons/basic_attack.png" id="3_tgm52"]
 [ext_resource type="Script" uid="uid://b5aj5o3a10npt" path="res://Prefabs/TB Action Library/Scripts/Moves/tb_basic_attack.gd" id="4_6b0in"]
-[ext_resource type="Texture2D" uid="uid://lymg310j1arq" path="res://Assets/Images/TB Action Icons/flee.png" id="5_amfkx"]
+[ext_resource type="Texture2D" uid="uid://lymg310j1arq" path="res://Assets/Images/TB/Action Icons/flee.png" id="5_amfkx"]
 [ext_resource type="Script" uid="uid://bb0e4hl2v2bm3" path="res://Prefabs/TB Action Library/Scripts/Moves/tb_flee.gd" id="6_8v6ou"]
-[ext_resource type="Texture2D" uid="uid://divrs8ljuilqa" path="res://Assets/Images/TB Action Icons/quick_attack.png" id="7_n2gc6"]
+[ext_resource type="Texture2D" uid="uid://divrs8ljuilqa" path="res://Assets/Images/TB/Action Icons/quick_attack.png" id="7_n2gc6"]
 
 [sub_resource type="Resource" id="Resource_bjhfu"]
 resource_local_to_scene = true
@@ -53,6 +53,9 @@ max_health = 10
 defense = 10
 turn_plan_capacity = 10
 move_set = Array[ExtResource("2_7ugcn")]([SubResource("Resource_bjhfu"), SubResource("Resource_ihosb"), SubResource("Resource_o4g54")])
+
+[node name="HitEffectTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [node name="LatestActionTimer" type="Timer" parent="."]
 wait_time = 0.5

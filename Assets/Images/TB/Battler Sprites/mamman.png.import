@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sxkcuckp4neh"
-path="res://.godot/imported/weak_goblin.png-eb34ecd939bf41cb2a42f1c02fdc8ea8.ctex"
+uid="uid://do2claycxnbco"
+path="res://.godot/imported/mamman.png-9e5f0df34135cc953b3557298130ea51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/TB Sprites/weak_goblin.png"
-dest_files=["res://.godot/imported/weak_goblin.png-eb34ecd939bf41cb2a42f1c02fdc8ea8.ctex"]
+source_file="res://Assets/Images/TB/Battler Sprites/mamman.png"
+dest_files=["res://.godot/imported/mamman.png-9e5f0df34135cc953b3557298130ea51.ctex"]
 
 [params]
 

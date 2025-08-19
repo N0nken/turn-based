@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cshr2j6cgmwge"]
+[gd_scene load_steps=30 format=3 uid="uid://cshr2j6cgmwge"]
 
 [ext_resource type="Script" uid="uid://d3xo1gyuyisis" path="res://Scenes/TB Fight/tb_fight.gd" id="1_of3kh"]
 [ext_resource type="PackedScene" uid="uid://h8nyj1e74l0b" path="res://Prefabs/TB Battlers/TB Player/tb_player.tscn" id="2_3wec6"]
@@ -6,16 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://br37vntb3dyh0" path="res://Prefabs/TB Battlers/Enemies/Weak Goblin/tb_weak_goblin.tscn" id="3_bjhfu"]
 [ext_resource type="Script" uid="uid://dgnknjvmkxi6l" path="res://Scenes/TB Fight/TB Fight UI/Scripts/tb_ui.gd" id="4_3ur25"]
 [ext_resource type="PackedScene" uid="uid://drmpyiwokjhyr" path="res://Scenes/TB Fight/TB Fight UI/tb_ui_battler_hp.tscn" id="5_3ur25"]
-[ext_resource type="Texture2D" uid="uid://divrs8ljuilqa" path="res://Assets/Images/TB Action Icons/quick_attack.png" id="5_52f3r"]
-[ext_resource type="Texture2D" uid="uid://dnihvopt37wcy" path="res://Assets/Images/TB Action Icons/basic_attack.png" id="5_e40qv"]
+[ext_resource type="Texture2D" uid="uid://divrs8ljuilqa" path="res://Assets/Images/TB/Action Icons/quick_attack.png" id="5_52f3r"]
+[ext_resource type="Texture2D" uid="uid://dnihvopt37wcy" path="res://Assets/Images/TB/Action Icons/basic_attack.png" id="5_e40qv"]
 [ext_resource type="Script" uid="uid://b5aj5o3a10npt" path="res://Prefabs/TB Action Library/Scripts/Moves/tb_basic_attack.gd" id="5_mftn5"]
 [ext_resource type="Script" uid="uid://cjxq8aivek6xo" path="res://Scenes/TB Fight/TB Fight UI/Scripts/accept_plan.gd" id="5_of3kh"]
 [ext_resource type="Script" uid="uid://urs2q34c06m2" path="res://Scenes/TB Fight/TB Fight UI/Scripts/tab_bar.gd" id="5_ws8c2"]
 [ext_resource type="FontFile" uid="uid://c2h2ioj5qcxdf" path="res://Assets/Fonts/Bescii-Mono.ttf" id="7_7gxsw"]
-[ext_resource type="Texture2D" uid="uid://lymg310j1arq" path="res://Assets/Images/TB Action Icons/flee.png" id="8_bjhfu"]
+[ext_resource type="Texture2D" uid="uid://lymg310j1arq" path="res://Assets/Images/TB/Action Icons/flee.png" id="8_bjhfu"]
 [ext_resource type="Script" uid="uid://bb0e4hl2v2bm3" path="res://Prefabs/TB Action Library/Scripts/Moves/tb_flee.gd" id="9_ihosb"]
+[ext_resource type="Texture2D" uid="uid://bx8g5mydb27sp" path="res://Assets/Images/TB/misc/16x16_skull.png" id="13_o4g54"]
 
-[sub_resource type="Resource" id="Resource_bjhfu"]
+[sub_resource type="Resource" id="Resource_ihosb"]
 resource_local_to_scene = true
 script = ExtResource("5_mftn5")
 cost = 2
@@ -27,7 +28,7 @@ icon = ExtResource("5_52f3r")
 life_time = 0.5
 metadata/_custom_type_script = "uid://b5aj5o3a10npt"
 
-[sub_resource type="Resource" id="Resource_ihosb"]
+[sub_resource type="Resource" id="Resource_o4g54"]
 resource_local_to_scene = true
 script = ExtResource("5_mftn5")
 cost = 5
@@ -39,7 +40,7 @@ icon = ExtResource("5_e40qv")
 life_time = 0.5
 metadata/_custom_type_script = "uid://b5aj5o3a10npt"
 
-[sub_resource type="Resource" id="Resource_o4g54"]
+[sub_resource type="Resource" id="Resource_5rjq3"]
 resource_local_to_scene = true
 script = ExtResource("9_ihosb")
 cost = 0
@@ -51,7 +52,7 @@ icon = ExtResource("8_bjhfu")
 life_time = 0.5
 metadata/_custom_type_script = "uid://bb0e4hl2v2bm3"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iac33"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd7f8"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 2
 border_width_top = 2
@@ -59,7 +60,15 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd7f8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjhfu"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iac33"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 2
 border_width_top = 2
@@ -110,8 +119,16 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
 
-[node name="TBFight" type="Node"]
+[node name="TBFight" type="CanvasLayer"]
 script = ExtResource("1_of3kh")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="EndScreenTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -124,10 +141,11 @@ position = Vector2(117, 107)
 
 [node name="TBWeakGoblin" parent="Battlers" instance=ExtResource("3_bjhfu")]
 position = Vector2(22, 18)
-move_set = Array[ExtResource("3_7gxsw")]([SubResource("Resource_bjhfu"), SubResource("Resource_ihosb"), SubResource("Resource_o4g54")])
+move_set = Array[ExtResource("3_7gxsw")]([SubResource("Resource_ihosb"), SubResource("Resource_o4g54"), SubResource("Resource_5rjq3")])
+gold_drop = 10
 
 [node name="UI" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
+layer = 2
 script = ExtResource("4_3ur25")
 
 [node name="Control" type="Control" parent="UI"]
@@ -148,57 +166,9 @@ offset_top = 0.0599823
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player" type="Control" parent="UI/Control/PlannedMoves"]
-layout_mode = 1
-anchor_right = 0.5
-anchor_bottom = 1.0
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="UI/Control/PlannedMoves/Player"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_iac33")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/Control/PlannedMoves/Player"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/Control/PlannedMoves/Player/MarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 6
-
-[node name="Control" type="Control" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(30, 20)
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-offset_right = 20.0
-offset_bottom = 20.0
-color = Color(0, 0, 1, 1)
-script = ExtResource("5_of3kh")
-
 [node name="Enemy" type="Control" parent="UI/Control/PlannedMoves"]
 layout_mode = 1
-anchor_left = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -236,12 +206,125 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(30, 20)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI/Control/PlannedMoves/Enemy/MarginContainer/ScrollContainer/HBoxContainer/Control"]
-custom_minimum_size = Vector2(20, 20)
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/PlannedMoves/Enemy/MarginContainer/ScrollContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/PlannedMoves/Enemy/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer"]
 layout_mode = 2
-offset_right = 20.0
-offset_bottom = 20.0
-color = Color(1, 0, 0, 1)
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/PlannedMoves/Enemy/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Dead" type="TextureRect" parent="UI/Control/PlannedMoves/Enemy/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("13_o4g54")
+
+[node name="ColorRect" type="ColorRect" parent="UI/Control/PlannedMoves/Enemy/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer/MarginContainer/Dead"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.568627)
+
+[node name="Panel" type="Panel" parent="UI/Control/PlannedMoves/Enemy/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bjhfu")
+
+[node name="Player" type="Control" parent="UI/Control/PlannedMoves"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UI/Control/PlannedMoves/Player"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iac33")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/PlannedMoves/Player"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Control/PlannedMoves/Player/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+
+[node name="Control" type="Control" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 10
+
+[node name="Confirm" type="Button" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer" node_paths=PackedStringArray("head_node")]
+layout_mode = 2
+script = ExtResource("5_of3kh")
+head_node = NodePath("../../../../../../../../../..")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Dead" type="TextureRect" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("13_o4g54")
+
+[node name="ColorRect" type="ColorRect" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer/MarginContainer/Dead"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.568627)
 
 [node name="BattleViewport" type="Control" parent="UI/Control"]
 layout_mode = 1
@@ -363,9 +446,9 @@ offset_bottom = -1.99998
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
+theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_bottom = 5
 
 [node name="Moves" type="Control" parent="UI/Control/PlayerOptions/Tabs"]
 layout_mode = 2
@@ -459,6 +542,6 @@ text = "Battle Won!"
 
 [connection signal="fight_ended" from="." to="UI" method="_on_fight_ended"]
 [connection signal="timeout" from="EndScreenTimer" to="." method="_on_end_screen_timer_timeout"]
-[connection signal="gui_input" from="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control/ColorRect" to="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control/ColorRect" method="_on_gui_input"]
+[connection signal="pressed" from="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer/Confirm" to="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer/Confirm" method="_on_pressed"]
 [connection signal="pressed" from="UI/Control/PlayerOptions/TabBar/MarginContainer/HBoxContainer/Moves" to="UI/Control/PlayerOptions/TabBar" method="_on_moves_pressed"]
 [connection signal="pressed" from="UI/Control/PlayerOptions/TabBar/MarginContainer/HBoxContainer/Items" to="UI/Control/PlayerOptions/TabBar" method="_on_items_pressed"]

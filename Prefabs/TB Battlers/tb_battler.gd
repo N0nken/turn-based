@@ -21,6 +21,8 @@ const max_planned_turns := 5
 @export var defense := 1
 @export var turn_plan_capacity := 0
 @export var move_set : Array[TB_Action] = []
+@export var icon : Texture2D = null
+@export var gold_drop := 0
 
 var used_turn_plan_capacity := 0
 var planned_turns : Array[TB_Action] = []
@@ -34,7 +36,7 @@ var active : bool = false
 func _ready() -> void:
 	for action in move_set:
 		action.parent_battler = self
-		action.tb_fight_root = get_tree().root.get_node("TBFight")
+		action.tb_fight_root = get_parent().get_parent()
 	latest_action_timer.timeout.connect(_action_ended)
 	damaged.connect(_on_damaged)
 	get_node("HitEffectTimer").timeout.connect(_on_hit_effect_end)

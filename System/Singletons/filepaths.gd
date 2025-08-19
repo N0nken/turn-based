@@ -1,11 +1,26 @@
 extends Node
 
-const ATTACK_LIBRARY := {
+const ATTACKS : Dictionary[String, String] = {
 	"flee" : "uid://43ehxfjvm01g",
 	"basic_attack" : "uid://b66fyi0u1xscw",
 	"quick_attack" : "uid://dmn2jv7qpcmu5",
 }
-const ITEM_LIBRARY_BASE := "res://Prefabs/TB Action Library/Resources/Items/"
-const ITEM_LIBRARY := {
+const ITEMS : Dictionary[String, String] = {
 	
 }
+const ENEMIES : Dictionary[String, String] = {
+	"weak_goblin" : "uid://br37vntb3dyh0",
+}
+const DUNGEON_ACTIVITES : Dictionary[String, String] = {
+	"tb_fight" : "uid://cshr2j6cgmwge",
+}
+const DUNGEON_NODES : Dictionary[String, String] = {
+	"early_exit" : "",
+	"battle" : "",
+}
+const DUNGEON_TREE_PREFABS : Dictionary[String, String] = {
+	"dungeon_node" : "uid://b3kra3ablwpel",
+	"connection" : "uid://bs8cyjlysm8o1"
+}
+const RUNTIME_PLAYER_RESOURCE := "uid://beq41c3cvwjve"
+const TEXTURE_NOT_FOUND := "uid://ckkl5netvo8e1"
