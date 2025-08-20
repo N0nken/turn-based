@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3kra3ablwpel"]
+[gd_scene load_steps=15 format=3 uid="uid://b3kra3ablwpel"]
 
 [ext_resource type="Script" uid="uid://nky03dkd21yd" path="res://Prefabs/Dungeon Generation/Instanciables/dungeon_node.gd" id="1_enw8x"]
-[ext_resource type="Texture2D" uid="uid://bjewjnotiiqxb" path="res://Assets/Images/TB/misc/square.png" id="2_fe3cm"]
-[ext_resource type="Texture2D" uid="uid://ccna04omuucp8" path="res://Assets/Images/TB/misc/lock.png" id="3_fe3cm"]
-[ext_resource type="Texture2D" uid="uid://ci5c72rji0lcj" path="res://Assets/Images/TB/misc/checkmark.png" id="4_o7pnp"]
+[ext_resource type="Texture2D" uid="uid://ccna04omuucp8" path="res://Assets/Images/Icons/misc/lock.png" id="3_fe3cm"]
+[ext_resource type="Texture2D" uid="uid://biqm226iyhlnf" path="res://Assets/Images/Icons/misc/checkmark.png" id="4_o7pnp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ty36s"]
 
@@ -29,28 +28,25 @@
 
 [node name="DungeonNode" type="Control"]
 texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -288.0
-offset_bottom = -148.0
+offset_right = -300.0
+offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(16, 16)
 script = ExtResource("1_enw8x")
 
-[node name="IconContainer" type="TextureRect" parent="."]
+[node name="IconContainer" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 0.785398
-pivot_offset = Vector2(16, 16)
-texture = ExtResource("2_fe3cm")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 1
@@ -105,10 +101,10 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h2mf3")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ey74o")
 
 [node name="ConnectionTop" type="Node2D" parent="."]
-position = Vector2(16, -6)
+position = Vector2(10, 1)
 
 [node name="ConnectionBottom" type="Node2D" parent="."]
-position = Vector2(16, 37)
+position = Vector2(10, 19)
 
 [connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
 [connection signal="focus_exited" from="Button" to="." method="_on_button_focus_exited"]

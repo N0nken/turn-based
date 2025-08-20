@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci5c72rji0lcj"
-path="res://.godot/imported/checkmark.png-bbd21cf1d91a1c3ced65d7940cf7fb40.ctex"
+uid="uid://bg52x504c50fy"
+path="res://.godot/imported/tent_64x48.png-1cbee219e74a1d10804c59181ddc1b17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/TB/misc/checkmark.png"
-dest_files=["res://.godot/imported/checkmark.png-bbd21cf1d91a1c3ced65d7940cf7fb40.ctex"]
+source_file="res://Assets/Images/Camp Props/tent_64x48.png"
+dest_files=["res://.godot/imported/tent_64x48.png-1cbee219e74a1d10804c59181ddc1b17.ctex"]
 
 [params]
 

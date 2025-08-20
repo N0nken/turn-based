@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://p076elcnrmrn"]
 
 [ext_resource type="Script" uid="uid://xyu7y3ho5ybd" path="res://Scenes/TB Fight/TB Fight UI/Scripts/tb_fight_move_icon.gd" id="1_isw10"]
-[ext_resource type="Texture2D" uid="uid://ckkl5netvo8e1" path="res://Assets/Images/TB/misc/16x16_texture_not_found.png" id="2_17drh"]
+[ext_resource type="Texture2D" uid="uid://ckkl5netvo8e1" path="res://Assets/Images/Icons/misc/16x16_texture_not_found.png" id="2_17drh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5ecr"]
 bg_color = Color(0, 0, 0, 0)

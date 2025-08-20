@@ -20,9 +20,10 @@ func _on_activity_selected(activity_name : String, parent : DungeonNode) -> void
 	print(activity_name, " selected")
 	_start_activity(activity_name, parent)
 	latest_node = parent
+	get_node("Container").get_child(0).camera.make_current()
 	activity_started.emit()
 
 
 func _on_activity_ended() -> void:
-	latest_node.cleared = true
+	latest_node.clear()
 	activity_ended.emit(latest_node)

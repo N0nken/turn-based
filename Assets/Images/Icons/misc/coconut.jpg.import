@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjewjnotiiqxb"
-path="res://.godot/imported/square.png-73ca83e76fc335535e8ce176e3cae491.ctex"
+uid="uid://kf13nfj10e37"
+path="res://.godot/imported/coconut.jpg-565144935da850fc480000103a45a8db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/TB/misc/square.png"
-dest_files=["res://.godot/imported/square.png-73ca83e76fc335535e8ce176e3cae491.ctex"]
+source_file="res://Assets/Images/Icons/misc/coconut.jpg"
+dest_files=["res://.godot/imported/coconut.jpg-565144935da850fc480000103a45a8db.ctex"]
 
 [params]
 

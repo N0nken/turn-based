@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg5iaqsixmkke"]
+
+[ext_resource type="Script" uid="uid://pwy5gevlwbmc" path="res://Prefabs/Entities/Player/player_entity.gd" id="1_2daph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2daph"]
+size = Vector2(16, 32)
+
+[node name="PlayerEntity" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_2daph")
+sprint_multiplier = 2.0
+base_speed = 100.0
+acceleration = 100.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 8.0
+offset_bottom = 16.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2daph")
+
+[node name="InteractLabelPosition" type="Node2D" parent="."]
+position = Vector2(0, -32)

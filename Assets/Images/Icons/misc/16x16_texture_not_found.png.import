@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0conprn03r4g"
-path="res://.godot/imported/16x16_cross.png-149b4e27d0adb15dfbaa2fe9079db6b5.ctex"
+uid="uid://ckkl5netvo8e1"
+path="res://.godot/imported/16x16_texture_not_found.png-9b91f9aa3651912d2e7e9aec34a7ecf9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/TB/misc/16x16_cross.png"
-dest_files=["res://.godot/imported/16x16_cross.png-149b4e27d0adb15dfbaa2fe9079db6b5.ctex"]
+source_file="res://Assets/Images/Icons/misc/16x16_texture_not_found.png"
+dest_files=["res://.godot/imported/16x16_texture_not_found.png-9b91f9aa3651912d2e7e9aec34a7ecf9.ctex"]
 
 [params]
 

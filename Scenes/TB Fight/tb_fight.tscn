@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cshr2j6cgmwge"]
+[gd_scene load_steps=32 format=3 uid="uid://cshr2j6cgmwge"]
 
 [ext_resource type="Script" uid="uid://d3xo1gyuyisis" path="res://Scenes/TB Fight/tb_fight.gd" id="1_of3kh"]
 [ext_resource type="PackedScene" uid="uid://h8nyj1e74l0b" path="res://Prefabs/TB Battlers/TB Player/tb_player.tscn" id="2_3wec6"]
@@ -14,9 +14,11 @@
 [ext_resource type="FontFile" uid="uid://c2h2ioj5qcxdf" path="res://Assets/Fonts/Bescii-Mono.ttf" id="7_7gxsw"]
 [ext_resource type="Texture2D" uid="uid://lymg310j1arq" path="res://Assets/Images/TB/Action Icons/flee.png" id="8_bjhfu"]
 [ext_resource type="Script" uid="uid://bb0e4hl2v2bm3" path="res://Prefabs/TB Action Library/Scripts/Moves/tb_flee.gd" id="9_ihosb"]
-[ext_resource type="Texture2D" uid="uid://bx8g5mydb27sp" path="res://Assets/Images/TB/misc/16x16_skull.png" id="13_o4g54"]
+[ext_resource type="Texture2D" uid="uid://biqm226iyhlnf" path="res://Assets/Images/Icons/misc/checkmark.png" id="13_5rjq3"]
+[ext_resource type="Texture2D" uid="uid://bx8g5mydb27sp" path="res://Assets/Images/Icons/misc/16x16_skull.png" id="13_o4g54"]
+[ext_resource type="Script" uid="uid://dpk20sucpv46k" path="res://Scenes/TB Fight/tb_audio_stream_player.gd" id="17_5rjq3"]
 
-[sub_resource type="Resource" id="Resource_ihosb"]
+[sub_resource type="Resource" id="Resource_5rjq3"]
 resource_local_to_scene = true
 script = ExtResource("5_mftn5")
 cost = 2
@@ -28,7 +30,7 @@ icon = ExtResource("5_52f3r")
 life_time = 0.5
 metadata/_custom_type_script = "uid://b5aj5o3a10npt"
 
-[sub_resource type="Resource" id="Resource_o4g54"]
+[sub_resource type="Resource" id="Resource_i2moc"]
 resource_local_to_scene = true
 script = ExtResource("5_mftn5")
 cost = 5
@@ -40,7 +42,7 @@ icon = ExtResource("5_e40qv")
 life_time = 0.5
 metadata/_custom_type_script = "uid://b5aj5o3a10npt"
 
-[sub_resource type="Resource" id="Resource_5rjq3"]
+[sub_resource type="Resource" id="Resource_gbim5"]
 resource_local_to_scene = true
 script = ExtResource("9_ihosb")
 cost = 0
@@ -119,8 +121,12 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
 
-[node name="TBFight" type="CanvasLayer"]
+[node name="TBFight" type="Node" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_of3kh")
+camera = NodePath("Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -141,11 +147,12 @@ position = Vector2(117, 107)
 
 [node name="TBWeakGoblin" parent="Battlers" instance=ExtResource("3_bjhfu")]
 position = Vector2(22, 18)
-move_set = Array[ExtResource("3_7gxsw")]([SubResource("Resource_ihosb"), SubResource("Resource_o4g54"), SubResource("Resource_5rjq3")])
+move_set = Array[ExtResource("3_7gxsw")]([SubResource("Resource_5rjq3"), SubResource("Resource_i2moc"), SubResource("Resource_gbim5")])
 gold_drop = 10
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
+follow_viewport_enabled = true
 script = ExtResource("4_3ur25")
 
 [node name="Control" type="Control" parent="UI"]
@@ -310,6 +317,7 @@ theme_override_constants/margin_bottom = 2
 [node name="TextureRect" type="TextureRect" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
+texture = ExtResource("13_5rjq3")
 
 [node name="Dead" type="TextureRect" parent="UI/Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer/Control/MarginContainer/MarginContainer"]
 visible = false
@@ -539,6 +547,9 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Battle Won!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("17_5rjq3")
 
 [connection signal="fight_ended" from="." to="UI" method="_on_fight_ended"]
 [connection signal="timeout" from="EndScreenTimer" to="." method="_on_end_screen_timer_timeout"]

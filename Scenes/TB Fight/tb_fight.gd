@@ -1,8 +1,7 @@
 class_name TB_Fight
-extends CanvasLayer
+extends DungeonActivity
 
 signal fight_ended
-signal activity_ended
 
 enum Phases {
 	PLANNING,
@@ -94,7 +93,7 @@ func _end_round() -> void:
 
 func _end_fight() -> void:
 	phase = Phases.ENDING
-	RuntimePlayer.health = player_battler.health
+	Commons.player.health = player_battler.health
 	var exit_state := ExitStates.PLAYER_WON
 	if player_battler.health <= 0:
 		exit_state = ExitStates.PLAYER_LOST
@@ -103,7 +102,7 @@ func _end_fight() -> void:
 	fight_ended.emit(exit_state)
 	end_screen_timer.start()
 	if exit_state == ExitStates.PLAYER_WON:
-		RuntimePlayer.gain_gold(enemy_battler.gold_drop)
+		Commons.player.gold += enemy_battler.gold_drop
 
 func _on_end_screen_timer_timeout() -> void:
 	activity_ended.emit()

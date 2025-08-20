@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c81hn8fwoolin"]
+
+[ext_resource type="Script" uid="uid://ceoc7gvfn5fm6" path="res://Prefabs/Interactables/interaction_manager.gd" id="1_7bmdr"]
+
+[node name="InteractionManager" type="Node"]
+script = ExtResource("1_7bmdr")

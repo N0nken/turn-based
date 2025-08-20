@@ -18,6 +18,7 @@ func _ready() -> void:
 	update_icon()
 	self.deactivate()
 
+
 func _on_button_pressed() -> void:
 	activity_selected.emit(node_template.target_activity_name, self)
 
@@ -41,7 +42,7 @@ func _on_button_focus_entered() -> void:
 func activate() -> void:
 	get_node("Button").disabled = false
 	get_node("Icon").self_modulate = Color("FFFFFF")
-	get_node("IconContainer").self_modulate = Color("FF0000")
+	get_node("IconContainer").self_modulate = Color("00FF00")
 	for connection in parent_connections:
 		if connection.parent.cleared:
 			connection.self_modulate = Color("FFFFFF")

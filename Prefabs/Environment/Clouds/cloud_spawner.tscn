@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bt2mxcqh280r6"]
+
+[node name="CloudSpawner" type="Node2D"]

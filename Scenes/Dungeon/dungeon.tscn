@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://ds7yu0m6t3fdx" path="res://Prefabs/Dungeon Generation/Dungeon Templates/deep_low_rank_golbin.tres" id="2_r63rt"]
 [ext_resource type="PackedScene" uid="uid://b3kra3ablwpel" path="res://Prefabs/Dungeon Generation/Instanciables/dungeon_node.tscn" id="3_h3fct"]
 [ext_resource type="Script" uid="uid://6ympl5dgugq3" path="res://Scenes/Dungeon/Scripts/dungeon_activity_manager.gd" id="3_yuksf"]
-[ext_resource type="Texture2D" uid="uid://c0conprn03r4g" path="res://Assets/Images/TB/misc/16x16_cross.png" id="5_r63rt"]
+[ext_resource type="Texture2D" uid="uid://c0conprn03r4g" path="res://Assets/Images/Icons/misc/16x16_cross.png" id="5_r63rt"]
 [ext_resource type="Script" uid="uid://2xsghu020h2i" path="res://Scenes/Dungeon/camera_2d.gd" id="6_j5cnj"]
 
 [node name="Dungeon" type="Node"]
@@ -15,15 +15,15 @@ dungeon_template = ExtResource("2_r63rt")
 [node name="DungeonTree" type="Node2D" parent="."]
 texture_filter = 1
 script = ExtResource("2_31xx8")
-layer_position_diffs = Vector2(100, 100)
-layer_position_offset_min = Vector2(-20, -20)
-layer_position_offset_max = Vector2(20, 20)
+layer_position_diffs = Vector2(50, 50)
+layer_position_offset_min = Vector2(-10, -10)
+layer_position_offset_max = Vector2(10, 10)
 
 [node name="Camera2D" type="Camera2D" parent="DungeonTree"]
+top_level = true
 texture_filter = 1
-zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
-position_smoothing_speed = 10.0
+position_smoothing_speed = 25.0
 script = ExtResource("6_j5cnj")
 camera_speed = 200
 

@@ -28,7 +28,7 @@ func _ready() -> void:
 	player.action_started.connect(_on_action_started)
 	enemy.action_started.connect(_on_action_started)
 	enemy.finished_planning.connect(_on_enemy_finished_planning)
-	_set_battler_icon(player)
+	#_set_battler_icon(player)
 	_set_battler_icon(enemy)
 
 func load_player_move_set() -> void:

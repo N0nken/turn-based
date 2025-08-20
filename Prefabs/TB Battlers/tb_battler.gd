@@ -23,6 +23,8 @@ const max_planned_turns := 5
 @export var move_set : Array[TB_Action] = []
 @export var icon : Texture2D = null
 @export var gold_drop := 0
+@export var hurt_sound_effect : AudioStream = null
+@export var death_sound_effect : AudioStream = null
 
 var used_turn_plan_capacity := 0
 var planned_turns : Array[TB_Action] = []

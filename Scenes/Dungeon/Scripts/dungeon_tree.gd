@@ -6,6 +6,7 @@ enum GenerationPhases {
 	CREATING_NODES,
 	ADOPTING_NODES,
 	TRANSLATING_NODES,
+	APPLYING_TEMPLATES,
 	DRAWING_FAMILY_CONNECTIONS,
 	CORRECTING_FOCUS_NEIGHBORS,
 }
@@ -34,6 +35,9 @@ func _process(_delta : float) -> void:
 				current_generation_phase = GenerationPhases.TRANSLATING_NODES
 			GenerationPhases.TRANSLATING_NODES:
 				_translate_nodes(active_template)
+				current_generation_phase = GenerationPhases.APPLYING_TEMPLATES
+			GenerationPhases.APPLYING_TEMPLATES:
+				_apply_node_templates(active_template)
 				current_generation_phase = GenerationPhases.DRAWING_FAMILY_CONNECTIONS
 			GenerationPhases.DRAWING_FAMILY_CONNECTIONS:
 				_draw_family_connections()
@@ -143,7 +147,7 @@ func _translate_nodes(template : DungeonTemplate) -> void:
 		var layer_head_child_count := layer_head.get_child_count()
 		for n in range(layer_head_child_count):
 			var node : DungeonNode = layer_head.get_child(n)
-			node.position.x = x_min + layer_position_diffs.x * n #+ randf_range(layer_position_offset_min.x, layer_position_offset_max.x)
+			node.position.x = x_min + layer_position_diffs.x * n + randf_range(layer_position_offset_min.x, layer_position_offset_max.x)
 			node.position.y = randf_range(layer_position_offset_min.y, layer_position_offset_max.y)
 			if i < dungeon_head.get_child_count()-1:
 				var next_layer_child_count := dungeon_head.get_child(i+1).get_child_count()
@@ -152,17 +156,14 @@ func _translate_nodes(template : DungeonTemplate) -> void:
 						node.branches.append(dungeon_head.get_child(i+1).get_children()[randi_range(0, next_layer_child_count/2 - 1)])
 					else:
 						node.branches.append(dungeon_head.get_child(i+1).get_children()[randi_range(next_layer_child_count/2, next_layer_child_count-1)])
+
+
+func _apply_node_templates(template : DungeonTemplate) -> void:
+	for layer in get_node("DungeonNodes").get_children():
+		for node in layer.get_children():
 			var selected_template = template.dungeon_nodes.pick_random()
-			if node.branches.size() == 0:
-				#if node.depth != total_depth:
-					#node.node_template = load(Filepaths.DUNGEON_NODES["early_exit"])
-				#	node.node_template = null
-				#else:
-					# node is boss_node
-				pass
-			else:
-				if selected_template.name == "exit":
-					node.branches = []
+			if selected_template.name == "exit":
+				node.branches = []
 			node.node_template = selected_template
 			node.update_icon()
 
@@ -227,10 +228,11 @@ func _on_dungeon_activity_manager_activity_started() -> void:
 
 func _on_dungeon_activity_manager_activity_ended(node : DungeonNode) -> void:
 	self.visible = true
-	node.branches[0].get_node("Button").grab_focus()
 	get_node("Camera2D").make_current()
 	node.clear()
 	node.activate_children()
 	for locked_node in get_node("DungeonNodes").get_child(node.depth).get_children():
 		if not locked_node.cleared:
 			locked_node.lock()
+	if node.branches.size() > 0:
+		node.branches[0].get_node("Button").grab_focus()

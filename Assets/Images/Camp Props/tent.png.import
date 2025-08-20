@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckkl5netvo8e1"
-path="res://.godot/imported/16x16_texture_not_found.png-53776c4b9b7bdd2394de60fb0ae6b923.ctex"
+uid="uid://fb3ie132x74b"
+path="res://.godot/imported/tent.png-5bdffd687f9a8640235f36554edf083d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/TB/misc/16x16_texture_not_found.png"
-dest_files=["res://.godot/imported/16x16_texture_not_found.png-53776c4b9b7bdd2394de60fb0ae6b923.ctex"]
+source_file="res://Assets/Images/Camp Props/tent.png"
+dest_files=["res://.godot/imported/tent.png-5bdffd687f9a8640235f36554edf083d.ctex"]
 
 [params]
 
