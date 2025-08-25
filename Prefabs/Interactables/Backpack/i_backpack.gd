@@ -1,0 +1,2 @@
+class_name I_Backpack
+extends Interactable

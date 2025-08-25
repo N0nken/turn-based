@@ -3,21 +3,36 @@ extends Node2D
 
 signal interacted
 
-@export var hitbox : InteractableHitbox = null
-
-var player_in_range := false
-var player_hitbox : InteractableHitbox = null
-var distance_to_player := 0.0
+@export var interaction_name := ""
+@export var interaction_manager : InteractionManager = null
+@export var hitbox : InteractableArea = null
+@export var sprite : Sprite2D = null
+@export var highlight_on_player_nearby := false
+@export var label_position : Node2D = null
 
 func _ready() -> void:
-	hitbox.hitbox_detected.connect(_on_hitbox_detected)
+	hitbox.player_entered.connect(_on_player_entered)
+	hitbox.player_exited.connect(_on_player_exited)
+	self.interacted.connect(_on_player_interacted)
 
 
-func _physics_process(delta: float) -> void:
-	if player_in_range:
-		distance_to_player = self.global_position.distance_to(player_hitbox.global_position)
+func _on_player_entered() -> void:
+	interaction_manager.register_interactable(self)
 
 
-func _on_hitbox_detected(hitbox : InteractableHitbox) -> void:
-	player_in_range = true
-	player_hitbox = hitbox
+func _on_player_exited() -> void:
+	interaction_manager.deregister_interactable(self)
+
+
+func activate_highlight() -> void:
+	if sprite and highlight_on_player_nearby:
+		sprite.material.set_shader_parameter("enabled", true)
+
+
+func deactivate_highlight() -> void:
+	if sprite and highlight_on_player_nearby:
+		sprite.material.set_shader_parameter("enabled", false)
+
+
+func _on_player_interacted() -> void:
+	print("Interacted with ", self.name)

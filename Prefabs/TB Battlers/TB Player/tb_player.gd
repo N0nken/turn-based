@@ -6,7 +6,7 @@ extends TB_Battler
 
 func _ready() -> void:
 	self.max_health = Commons.player.max_health
-	self.health = max_health
+	self.health = Commons.player.health
 	self.strength = Commons.player.strength
 	self.speed = Commons.player.speed
 	self.turn_plan_capacity = Commons.player.turn_plan_capacity

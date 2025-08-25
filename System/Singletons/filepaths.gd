@@ -25,3 +25,5 @@ const DUNGEON_TREE_PREFABS : Dictionary[String, String] = {
 const RUNTIME_PLAYER_RESOURCE := "uid://beq41c3cvwjve"
 const TEXTURE_NOT_FOUND := "uid://ckkl5netvo8e1"
 const TOTALLY_SUPER_IMPORTANT_COCONUT_PNG_DO_NOT_REMOVE := "uid://kf13nfj10e37"
+const PACKED_CLOUD := "uid://cxx6piymain34"
+const SS_INPUT_ICONS := "uid://dqqhuqgdi7hwh" # change to actual img. currently godot icon

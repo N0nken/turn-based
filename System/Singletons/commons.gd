@@ -13,3 +13,10 @@ class Player:
 	@export var gold := 0
 
 var player := Player.new()
+
+func _ready() -> void:
+	player.health = player.max_health
+
+
+func texture2d_get_region(texture : Texture2D, region : Rect2i) -> Image:
+	return texture.get_image().get_region(region)

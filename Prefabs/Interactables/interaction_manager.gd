@@ -2,52 +2,65 @@ class_name InteractionManager
 extends Node
 
 @export var player : PlayerEntity = null
-@export var interaction_label := Label.new()
+@export var interaction_label_collection : Control = null
 
-var active_areas : Array[InteractableArea] = []
+var active_interactables : Array[Interactable] = []
+var selected_interactable : Interactable = null
+var ss_input_icons := preload(Filepaths.SS_INPUT_ICONS)
 
-func register_area(area : InteractableArea) -> void:
-	if area in active_areas:
+@onready var unified_label_position: Node2D = $UnifiedLabelPosition
+
+
+func register_interactable(interactable : Interactable) -> void:
+	if interactable in active_interactables:
 		return
-	active_areas.append(area)
-	if active_areas.size() == 1:
-		area.activate_highlight()
+	active_interactables.append(interactable)
+	if active_interactables.size() == 1:
+		selected_interactable = interactable
+		interactable.activate_highlight()
 
 
-func deregister_area(area : InteractableArea) -> void:
-	var index := active_areas.find(area)
+func deregister_interactable(interactable : Interactable) -> void:
+	var index := active_interactables.find(interactable)
 	if index == -1:
 		return
-	active_areas.remove_at(index)
-	if active_areas.size() == 1:
-		active_areas[0].activate_highlight()
+	active_interactables.remove_at(index)
+	if active_interactables.size() == 1:
+		active_interactables[0].activate_highlight()
+		selected_interactable = active_interactables[0]
+	interactable.deactivate_highlight()
 
 
 func _process(_delta: float) -> void:
-	if active_areas.size() > 0:
-		var target_area : InteractableArea = active_areas[0]
-		interaction_label.text = "[E] " + target_area.interaction_name
-		interaction_label.global_position = target_area.get_node("InteractLabelPosition").global_position - Vector2(interaction_label.size.x / 2, 0)
-		interaction_label.show()
+	if active_interactables.size() > 0:
+		var target_interactable : Interactable = active_interactables[0]
+		var x := 0
+		var y := 0
+		var region := Rect2(x,y,8,8)
+		interaction_label_collection.get_node("HBoxContainer/TextureRect").texture = ImageTexture.create_from_image(Commons.texture2d_get_region(ss_input_icons, region))
+		interaction_label_collection.get_node("HBoxContainer/Label").text = target_interactable.interaction_name
+		interaction_label_collection.global_position = target_interactable.label_position.global_position - Vector2(interaction_label_collection.size.x / 2, interaction_label_collection.size.y / 2)
+		interaction_label_collection.show()
 	else:
-		interaction_label.hide()
+		interaction_label_collection.hide()
 
 
 func _physics_process(_delta: float) -> void:
-	if active_areas.size() > 1:
-		var previous_first_area := active_areas[0]
-		active_areas.sort_custom(sort_by_distance_to_player)
-		if active_areas[0] != previous_first_area:
-			active_areas[0].activate_highlight()
+	if active_interactables.size() > 1:
+		var previous_first_area := active_interactables[0]
+		active_interactables.sort_custom(sort_by_distance_to_player)
+		if active_interactables[0] != previous_first_area:
+			active_interactables[0].activate_highlight()
+			selected_interactable = active_interactables[0]
 			previous_first_area.deactivate_highlight()
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
-		pass
+	if event.is_action_pressed("interact") and selected_interactable:
+		selected_interactable.interacted.emit()
 
 
-func sort_by_distance_to_player(area1 : InteractableArea, area2 : InteractableArea) -> bool:
-	var dist1 := area1.global_position.distance_to(player.global_position)
-	var dist2 := area2.global_position.distance_to(player.global_position)
+func sort_by_distance_to_player(interactable1 : Interactable, interactable2 : Interactable) -> bool:
+	var dist1 := interactable1.global_position.distance_to(player.global_position)
+	var dist2 := interactable2.global_position.distance_to(player.global_position)
 	return dist1 < dist2

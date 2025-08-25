@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7jfxo7v6jyja"
-path="res://.godot/imported/camp_background.png-5eee0769c58a4a054ca71354dc551dd0.ctex"
+uid="uid://q8ufuqg7o02k"
+path="res://.godot/imported/camp_foreground_v2.png-8bcc1dbc47d946dcf5684352531a593a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Camp Props/camp_background.png"
-dest_files=["res://.godot/imported/camp_background.png-5eee0769c58a4a054ca71354dc551dd0.ctex"]
+source_file="res://Assets/Images/Camp Environment/camp_foreground_v2.png"
+dest_files=["res://.godot/imported/camp_foreground_v2.png-8bcc1dbc47d946dcf5684352531a593a.ctex"]
 
 [params]
 

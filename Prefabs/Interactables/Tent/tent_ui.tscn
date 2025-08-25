@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://byx5c1c0bquj2"]
+
+[ext_resource type="Script" uid="uid://dqr0pgjm4qat4" path="res://Prefabs/Interactables/Tent/tent_ui.gd" id="1_g55hc"]
+[ext_resource type="Shader" uid="uid://dif7bjvktfkd4" path="res://Prefabs/Interactables/Tent/map.gdshader" id="2_1lmj1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1lmj1"]
+noise_type = 3
+frequency = 0.03
+fractal_type = 0
+domain_warp_enabled = true
+domain_warp_frequency = 0.1
+domain_warp_fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1lmj1"]
+width = 100
+height = 100
+noise = SubResource("FastNoiseLite_1lmj1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5eas0"]
+shader = ExtResource("2_1lmj1")
+shader_parameter/noise = SubResource("NoiseTexture2D_1lmj1")
+
+[node name="TentUI" type="Control" node_paths=PackedStringArray("shader_map")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g55hc")
+shader_map = NodePath("ShaderMapTexture")
+
+[node name="MapTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 40.0
+offset_right = 210.0
+offset_bottom = 140.0
+
+[node name="ShaderMapTexture" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_5eas0")
+layout_mode = 0
+offset_left = 110.0
+offset_top = 40.0
+offset_right = 210.0
+offset_bottom = 140.0

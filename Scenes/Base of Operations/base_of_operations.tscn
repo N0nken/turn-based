@@ -1,43 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://d22vvddke1oac"]
+[gd_scene load_steps=10 format=3 uid="uid://d22vvddke1oac"]
 
 [ext_resource type="Script" uid="uid://d08ystfp63au2" path="res://Scenes/Base of Operations/base_of_operations.gd" id="1_4yk6k"]
-[ext_resource type="PackedScene" uid="uid://d17gy1m2xhe2w" path="res://Prefabs/Interactables/interactable_area.tscn" id="1_inaum"]
 [ext_resource type="PackedScene" uid="uid://c81hn8fwoolin" path="res://Prefabs/Interactables/interaction_manager.tscn" id="1_uu8ey"]
-[ext_resource type="Texture2D" uid="uid://byandst7484kt" path="res://Assets/Images/Camp Props/camp_background_v2.png" id="2_5180l"]
-[ext_resource type="Shader" uid="uid://edakgs5jxdll" path="res://Shaders/outline.gdshader" id="2_hsid5"]
+[ext_resource type="Texture2D" uid="uid://byandst7484kt" path="res://Assets/Images/Camp Environment/camp_background_v2.png" id="2_5180l"]
 [ext_resource type="PackedScene" uid="uid://cg5iaqsixmkke" path="res://Prefabs/Entities/Player/player_entity.tscn" id="2_mnk04"]
-[ext_resource type="Texture2D" uid="uid://l5mp43ky8j68" path="res://Assets/Images/Camp Props/tent_96x48.png" id="3_hsid5"]
-[ext_resource type="Texture2D" uid="uid://bm6jxevl2cqdm" path="res://Assets/Images/Camp Props/backpack_16x16.png" id="5_m5kkq"]
-[ext_resource type="Texture2D" uid="uid://7wloo32skpex" path="res://Assets/Images/Camp Props/camp_foreground.png" id="7_y8go5"]
+[ext_resource type="PackedScene" uid="uid://bmxd01u1nbyto" path="res://Prefabs/Interactables/Tent/i_tent.tscn" id="3_y8go5"]
+[ext_resource type="PackedScene" uid="uid://d4noluwhft7ab" path="res://Prefabs/Interactables/Backpack/i_backpack.tscn" id="7_owqv4"]
+[ext_resource type="Texture2D" uid="uid://q8ufuqg7o02k" path="res://Assets/Images/Camp Environment/camp_foreground_v2.png" id="8_5180l"]
+[ext_resource type="PackedScene" uid="uid://cuqe06ndiit1l" path="res://Prefabs/Interactables/Shop/i_shop.tscn" id="10_ornhg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mnk04"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5kkq"]
-shader = ExtResource("2_hsid5")
-shader_parameter/enabled = false
-shader_parameter/outline_color = Vector4(0, 1, 0, 1)
-shader_parameter/inner = false
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_inaum"]
-size = Vector2(100, 75)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y8go5"]
-shader = ExtResource("2_hsid5")
-shader_parameter/enabled = false
-shader_parameter/outline_color = Vector4(0, 1, 0, 1)
-shader_parameter/inner = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hsid5"]
-shader = ExtResource("2_hsid5")
-shader_parameter/enabled = true
-shader_parameter/outline_color = Vector4(1, 1, 0, 1)
-shader_parameter/inner = false
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnk04"]
-size = Vector2(40, 40)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yk6k"]
-size = Vector2(40, 40)
 
 [node name="BaseOfOperations" type="Node2D"]
 texture_filter = 1
@@ -81,92 +53,26 @@ z_index = -1
 position = Vector2(160, 90)
 texture = ExtResource("2_5180l")
 
-[node name="Midground2" type="Node2D" parent="."]
+[node name="Midground" type="Node2D" parent="."]
 position = Vector2(0, 20)
 
-[node name="Tent" type="Node2D" parent="Midground2"]
-texture_filter = 1
-position = Vector2(272, 118)
+[node name="Tent" parent="Midground" node_paths=PackedStringArray("interaction_manager", "label_position") instance=ExtResource("3_y8go5")]
+position = Vector2(244, 118)
+interaction_manager = NodePath("../../UI/Control/InteractionManager")
+label_position = NodePath("../../UI/Control/InteractionManager/UnifiedLabelPosition")
 
-[node name="Sprite2D" type="Sprite2D" parent="Midground2/Tent"]
-material = SubResource("ShaderMaterial_m5kkq")
-texture = ExtResource("3_hsid5")
+[node name="Backpack" parent="Midground" node_paths=PackedStringArray("interaction_manager", "label_position") instance=ExtResource("7_owqv4")]
+position = Vector2(226, 133)
+interaction_manager = NodePath("../../UI/Control/InteractionManager")
+label_position = NodePath("../../UI/Control/InteractionManager/UnifiedLabelPosition")
 
-[node name="ColorRect" type="ColorRect" parent="Midground2/Tent"]
-visible = false
-offset_left = -50.0
-offset_top = -37.5
-offset_right = 50.0
-offset_bottom = 37.5
-color = Color(0, 1, 0, 1)
-metadata/_edit_use_anchors_ = true
+[node name="Shop" parent="Midground" node_paths=PackedStringArray("interaction_manager", "label_position") instance=ExtResource("10_ornhg")]
+position = Vector2(22, 123)
+interaction_manager = NodePath("../../UI/Control/InteractionManager")
+label_position = NodePath("../../UI/Control/InteractionManager/UnifiedLabelPosition")
 
-[node name="InteractableArea" parent="Midground2/Tent" node_paths=PackedStringArray("interaction_manager", "sprite") instance=ExtResource("1_inaum")]
-interaction_manager = NodePath("../../../UI2/InteractionManager")
-interaction_name = "Go to bed"
-sprite = NodePath("../Sprite2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Midground2/Tent/InteractableArea"]
-shape = SubResource("RectangleShape2D_inaum")
-
-[node name="InteractLabelPosition" type="Node2D" parent="Midground2/Tent/InteractableArea"]
-position = Vector2(-109, 24)
-
-[node name="Backpack" type="Node2D" parent="Midground2"]
-texture_filter = 1
-position = Vector2(231, 115)
-
-[node name="Sprite2D" type="Sprite2D" parent="Midground2/Backpack"]
-material = SubResource("ShaderMaterial_y8go5")
-position = Vector2(20, 20)
-texture = ExtResource("5_m5kkq")
-
-[node name="ColorRect" type="ColorRect" parent="Midground2/Backpack"]
-visible = false
-material = SubResource("ShaderMaterial_hsid5")
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0, 0, 1, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="InteractableArea" parent="Midground2/Backpack" node_paths=PackedStringArray("interaction_manager", "sprite") instance=ExtResource("1_inaum")]
-interaction_manager = NodePath("../../../UI2/InteractionManager")
-interaction_name = "Backpack"
-sprite = NodePath("../Sprite2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Midground2/Backpack/InteractableArea"]
-position = Vector2(20, 20)
-shape = SubResource("RectangleShape2D_mnk04")
-
-[node name="InteractLabelPosition" type="Node2D" parent="Midground2/Backpack/InteractableArea"]
-position = Vector2(-68, 27)
-
-[node name="Shop" type="Node2D" parent="Midground2"]
-texture_filter = 1
-position = Vector2(0, 102)
-
-[node name="Sprite2D" type="Sprite2D" parent="Midground2/Shop"]
-
-[node name="ColorRect" type="ColorRect" parent="Midground2/Shop"]
-offset_right = 40.0
-offset_bottom = 40.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-color = Color(1, 0, 0, 1)
-
-[node name="InteractableArea" parent="Midground2/Shop" node_paths=PackedStringArray("interaction_manager") instance=ExtResource("1_inaum")]
-interaction_manager = NodePath("../../../UI2/InteractionManager")
-interaction_name = "Shop"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Midground2/Shop/InteractableArea"]
-position = Vector2(20, 20)
-shape = SubResource("RectangleShape2D_4yk6k")
-
-[node name="InteractLabelPosition" type="Node2D" parent="Midground2/Shop/InteractableArea"]
-position = Vector2(163, 40)
-
-[node name="PlayerEntity" parent="Midground2" instance=ExtResource("2_mnk04")]
-position = Vector2(184, 126)
+[node name="PlayerEntity" parent="Midground" instance=ExtResource("2_mnk04")]
+position = Vector2(185, 141)
 sprint_multiplier = 1.5
 base_speed = 50.0
 acceleration = 10.0
@@ -174,10 +80,12 @@ acceleration = 10.0
 [node name="Foreground" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Foreground"]
-position = Vector2(160, 156)
-texture = ExtResource("7_y8go5")
+position = Vector2(160, 90)
+texture = ExtResource("8_5180l")
 
-[node name="UI2" type="Control" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -185,11 +93,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InteractionManager" parent="UI2" node_paths=PackedStringArray("player", "interaction_label") instance=ExtResource("1_uu8ey")]
-player = NodePath("../../Midground2/PlayerEntity")
-interaction_label = NodePath("../Control/InteractionLabel")
+[node name="InteractionManager" parent="UI/Control" node_paths=PackedStringArray("player", "interaction_label_collection") instance=ExtResource("1_uu8ey")]
+player = NodePath("../../../Midground/PlayerEntity")
+interaction_label_collection = NodePath("../InteractionLabelCollection")
 
-[node name="Control" type="Control" parent="UI2"]
+[node name="UnifiedLabelPosition" type="Node2D" parent="UI/Control/InteractionManager"]
+position = Vector2(160, 167)
+
+[node name="InteractionLabelCollection" type="Control" parent="UI/Control"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -201,20 +112,26 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="InteractionLabel" type="Label" parent="UI2/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/InteractionLabelCollection"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -90.0
-offset_right = -120.0
-offset_bottom = -74.0
+offset_left = -2.5
+offset_top = -4.0
+offset_right = 2.5
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Control/InteractionLabelCollection/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="UI/Control/InteractionLabelCollection/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 8
-horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
