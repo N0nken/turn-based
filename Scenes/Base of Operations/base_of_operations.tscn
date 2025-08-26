@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d22vvddke1oac"]
+[gd_scene load_steps=11 format=3 uid="uid://d22vvddke1oac"]
 
 [ext_resource type="Script" uid="uid://d08ystfp63au2" path="res://Scenes/Base of Operations/base_of_operations.gd" id="1_4yk6k"]
 [ext_resource type="PackedScene" uid="uid://c81hn8fwoolin" path="res://Prefabs/Interactables/interaction_manager.tscn" id="1_uu8ey"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bmxd01u1nbyto" path="res://Prefabs/Interactables/Tent/i_tent.tscn" id="3_y8go5"]
 [ext_resource type="PackedScene" uid="uid://d4noluwhft7ab" path="res://Prefabs/Interactables/Backpack/i_backpack.tscn" id="7_owqv4"]
 [ext_resource type="Texture2D" uid="uid://q8ufuqg7o02k" path="res://Assets/Images/Camp Environment/camp_foreground_v2.png" id="8_5180l"]
+[ext_resource type="PackedScene" uid="uid://byx5c1c0bquj2" path="res://Prefabs/Interactables/Tent/tent_map.tscn" id="9_5180l"]
 [ext_resource type="PackedScene" uid="uid://cuqe06ndiit1l" path="res://Prefabs/Interactables/Shop/i_shop.tscn" id="10_ornhg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mnk04"]
@@ -56,8 +57,9 @@ texture = ExtResource("2_5180l")
 [node name="Midground" type="Node2D" parent="."]
 position = Vector2(0, 20)
 
-[node name="Tent" parent="Midground" node_paths=PackedStringArray("interaction_manager", "label_position") instance=ExtResource("3_y8go5")]
+[node name="Tent" parent="Midground" node_paths=PackedStringArray("ui", "interaction_manager", "label_position") instance=ExtResource("3_y8go5")]
 position = Vector2(244, 118)
+ui = NodePath("../../UI/Control/TentUI")
 interaction_manager = NodePath("../../UI/Control/InteractionManager")
 label_position = NodePath("../../UI/Control/InteractionManager/UnifiedLabelPosition")
 
@@ -135,3 +137,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 8
 vertical_alignment = 1
+
+[node name="TentUI" parent="UI/Control" instance=ExtResource("9_5180l")]
+visible = false
+layout_mode = 1

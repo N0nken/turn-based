@@ -1,0 +1,52 @@
+[gd_scene load_steps=13 format=3 uid="uid://18kpyukf61f4"]
+
+[ext_resource type="Script" uid="uid://ct23hdmjy02eo" path="res://Prefabs/Interactables/Tent/tent_map_dungeon.gd" id="1_1u5nn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2j71m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1u5nn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hpqod"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s5qw5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l5lx7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pdh43"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2f6is"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1vf0s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frpje"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2jc08"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iys3o"]
+
+[node name="TentMapDungeon" type="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2j71m")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1u5nn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hpqod")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_s5qw5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_l5lx7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_pdh43")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2f6is")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_1vf0s")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_frpje")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_2jc08")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iys3o")
+script = ExtResource("1_1u5nn")

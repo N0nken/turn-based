@@ -1,21 +1,26 @@
 shader_type canvas_item;
 
-uniform sampler2D noise;
+uniform sampler2D height_map;
+uniform sampler2D detail_height_map;
+uniform sampler2D gradient;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
-	vec4 noise_color = texture(noise, UV);
-	float avg_color = (noise_color.r + noise_color.g + noise_color.b) / 3.0;
-	if (avg_color < 0.3) {
-		COLOR.rgb = vec3(0.0, 0.0, 1.0);
-	} else if (avg_color < 0.6) {
-		COLOR.rgb = vec3(0.0, 1.0, 0.0);
-	} else if (avg_color < 0.9) {
-		COLOR.rgb = vec3(0.1, 0.1, 0.1);
-	}
+	vec4 height_color = texture(height_map, UV);
+	float height = (height_color.r + height_color.g + height_color.b) / 3.0;
+	COLOR = height_color;
+	//COLOR.rgb = texture(color_curve, vec2(height, UV.y)).rgb;
+	//vec4 detail_height_color = texture(detail_height_map, UV);
+	//float brightness_factor = height / COLOR.b;
+	//if (COLOR.r >= COLOR.g && COLOR.r >= COLOR.b) {
+		//brightness_factor = height / COLOR.r;
+	//} else if (COLOR.g >= COLOR.r && COLOR.g >= COLOR.b) {
+		//brightness_factor = height / COLOR.g;
+	//}
+	//COLOR.rgb *= brightness_factor;
 }
 
 //void light() {
