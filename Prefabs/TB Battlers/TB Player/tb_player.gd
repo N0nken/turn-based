@@ -5,13 +5,13 @@ extends TB_Battler
 
 
 func _ready() -> void:
-	self.max_health = Commons.player.max_health
-	self.health = Commons.player.health
-	self.strength = Commons.player.strength
-	self.speed = Commons.player.speed
-	self.turn_plan_capacity = Commons.player.turn_plan_capacity
-	self.battler_name = Commons.player.battler_name
-	for move_code in Commons.player.move_set:
+	self.max_health = LoadedRun.player.max_health
+	self.health = LoadedRun.player.health
+	self.strength = LoadedRun.player.strength
+	self.speed = LoadedRun.player.speed
+	self.turn_plan_capacity = LoadedRun.player.turn_plan_capacity
+	self.battler_name = LoadedRun.player.battler_name
+	for move_code in LoadedRun.player.move_set:
 		self.move_set.append(load(Filepaths.ATTACKS[move_code]))
 	super()
 

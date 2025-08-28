@@ -1,6 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://18kpyukf61f4"]
+[gd_scene load_steps=18 format=3 uid="uid://18kpyukf61f4"]
 
-[ext_resource type="Script" uid="uid://ct23hdmjy02eo" path="res://Prefabs/Interactables/Tent/tent_map_dungeon.gd" id="1_1u5nn"]
+[ext_resource type="Shader" uid="uid://edakgs5jxdll" path="res://Shaders/outline.gdshader" id="1_2tm1e"]
+[ext_resource type="Texture2D" uid="uid://b3fasyrwt7fw1" path="res://Assets/Images/Icons/misc/map_dungeon.png" id="2_dea3y"]
+[ext_resource type="Script" uid="uid://ct23hdmjy02eo" path="res://Scenes/Map/map_dungeon.gd" id="3_t0k6f"]
+[ext_resource type="Texture2D" uid="uid://ccna04omuucp8" path="res://Assets/Images/Icons/misc/lock.png" id="4_ydrn1"]
+[ext_resource type="Texture2D" uid="uid://biqm226iyhlnf" path="res://Assets/Images/Icons/misc/checkmark.png" id="5_djgm1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5lx7"]
+resource_local_to_scene = true
+shader = ExtResource("1_2tm1e")
+shader_parameter/enabled = false
+shader_parameter/outline_color = Vector4(1, 1, 1, 1)
+shader_parameter/inner = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2j71m"]
 
@@ -24,7 +35,8 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iys3o"]
 
-[node name="TentMapDungeon" type="Button"]
+[node name="MapDungeon" type="Button"]
+material = SubResource("ShaderMaterial_l5lx7")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -49,4 +61,25 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_1vf0s")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_frpje")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_2jc08")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_iys3o")
-script = ExtResource("1_1u5nn")
+icon = ExtResource("2_dea3y")
+script = ExtResource("3_t0k6f")
+
+[node name="Locked" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("4_ydrn1")
+
+[node name="Cleared" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("5_djgm1")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

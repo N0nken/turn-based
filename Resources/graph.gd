@@ -6,9 +6,9 @@ extends Resource
 
 func sample(values : Array[float]) -> float:
 	var expression := Expression.new()
-	expression.parse(function)
-	var result = expression.execute(values)
+	expression.parse(function, variables)
+	var result : float = expression.execute(values)
 	if expression.has_execute_failed():
 		print("expression execution failed: ", expression)
 		print(expression.get_error_text())
-	return 0.0
+	return result

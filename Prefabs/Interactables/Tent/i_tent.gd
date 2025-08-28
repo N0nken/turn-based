@@ -1,7 +1,7 @@
 class_name I_Tent
 extends Interactable
 
-@export var ui : TentUI = null
+@export var ui : MapUI = null
 
 
 func _on_interacted() -> void:

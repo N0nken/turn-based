@@ -18,8 +18,9 @@ config/icon="res://icon.svg"
 
 JSONe="*res://System/Singletons/json_e.gd"
 Filepaths="*res://System/Singletons/filepaths.gd"
-RuntimePlayer="*res://System/Singletons/runtime_player.gd"
-Commons="*res://System/Singletons/commons.gd"
+LoadedRun="*res://System/Singletons/loaded_run.gd"
+Commons="*res://System/Singletons/Commons.gd"
+CoconutCheck="*res://System/Singletons/coconut_check.gd"
 
 [debug]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://b3kra3ablwpel"]
 
-[ext_resource type="Script" uid="uid://nky03dkd21yd" path="res://Prefabs/Dungeon Generation/Instanciables/dungeon_node.gd" id="1_enw8x"]
+[ext_resource type="Script" uid="uid://nky03dkd21yd" path="res://Prefabs/Entities/dungeon_node.gd" id="1_enw8x"]
 [ext_resource type="Texture2D" uid="uid://ccna04omuucp8" path="res://Assets/Images/Icons/misc/lock.png" id="3_fe3cm"]
 [ext_resource type="Texture2D" uid="uid://biqm226iyhlnf" path="res://Assets/Images/Icons/misc/checkmark.png" id="4_o7pnp"]
 

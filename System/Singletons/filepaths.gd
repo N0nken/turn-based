@@ -22,6 +22,14 @@ const DUNGEON_TREE_PREFABS : Dictionary[String, String] = {
 	"dungeon_node" : "uid://b3kra3ablwpel",
 	"connection" : "uid://bs8cyjlysm8o1"
 }
+const SCENES : Dictionary[String, String] = {
+	"main_menu" : "uid://db5c1iul8uydo",
+	"map" : "uid://byx5c1c0bquj2",
+	"dungeon" : "uid://cc8d2hi5vlou7",
+}
+const DUNGEON_TEMPLATES : Dictionary[String, String] = {
+	"shallow_low_rank_goblin" : "uid://dvrdsxpy0ikyy"
+}
 const RUNTIME_PLAYER_RESOURCE := "uid://beq41c3cvwjve"
 const TEXTURE_NOT_FOUND := "uid://ckkl5netvo8e1"
 const TOTALLY_SUPER_IMPORTANT_COCONUT_PNG_DO_NOT_REMOVE := "uid://kf13nfj10e37"

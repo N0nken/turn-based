@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DungeonTemplate" load_steps=4 format=3 uid="uid://b101ibq0dt7dw"]
+
+[ext_resource type="Script" uid="uid://4a4fwnusdhhi" path="res://Prefabs/Dungeon Generation/dungeon_node_template.gd" id="1_83kub"]
+[ext_resource type="Resource" uid="uid://dwpx3u31ixjm8" path="res://Prefabs/Dungeon Generation/Enemy Factions/low_rank_goblins.tres" id="2_80oln"]
+[ext_resource type="Script" uid="uid://bw3g8p3xptyeb" path="res://Prefabs/Dungeon Generation/dungeon_template.gd" id="3_xtdg8"]
+
+[resource]
+script = ExtResource("3_xtdg8")
+faction = ExtResource("2_80oln")
+max_tree_width = 4
+tree_depth = Dictionary[String, int]({
+"max": 7,
+"min": 5
+})
+branch_count = Dictionary[String, int]({
+"max": 1,
+"min": 1
+})
+double_branch_chance = 0.5
+dungeon_nodes = Array[ExtResource("1_83kub")]([])
+metadata/_custom_type_script = "uid://bw3g8p3xptyeb"

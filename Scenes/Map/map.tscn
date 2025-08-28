@@ -1,0 +1,119 @@
+[gd_scene load_steps=17 format=3 uid="uid://byx5c1c0bquj2"]
+
+[ext_resource type="Script" uid="uid://dqr0pgjm4qat4" path="res://Scenes/Map/map.gd" id="1_g55hc"]
+[ext_resource type="Shader" uid="uid://dif7bjvktfkd4" path="res://Scenes/Map/map.gdshader" id="2_1lmj1"]
+[ext_resource type="Shader" uid="uid://c0ni6abajndjg" path="res://Shaders/blur.gdshader" id="2_l3qgq"]
+[ext_resource type="Texture2D" uid="uid://b3fasyrwt7fw1" path="res://Assets/Images/Icons/misc/map_dungeon.png" id="2_nf6i7"]
+[ext_resource type="Gradient" uid="uid://b2wqnvapsqmot" path="res://Assets/Tent Map Gradients/mountainous_forest.tres" id="3_5eas0"]
+[ext_resource type="Gradient" uid="uid://bsn7ohrvh1b4n" path="res://Assets/Tent Map Gradients/frozen_lakes.tres" id="3_xil32"]
+[ext_resource type="Gradient" uid="uid://dq7cibsolomvp" path="res://Assets/Tent Map Gradients/frozen_peaks.tres" id="4_1xitt"]
+[ext_resource type="Script" uid="uid://dtqk60bdwkv33" path="res://Resources/graph.gd" id="5_1xitt"]
+[ext_resource type="Gradient" uid="uid://rywwkyl2d5bs" path="res://Assets/Tent Map Gradients/volcanic_forest.tres" id="5_4m2lk"]
+[ext_resource type="Texture2D" uid="uid://bgjryclcmubwe" path="res://Assets/Images/_Misc/red_dash.png" id="10_ycept"]
+[ext_resource type="Texture2D" uid="uid://bpof018ott7iq" path="res://Assets/Images/_Misc/tent_map_border.png" id="11_gpwdt"]
+
+[sub_resource type="Resource" id="Resource_1xitt"]
+script = ExtResource("5_1xitt")
+function = "70 * sin(2 * PI / 160 * (x + k)) + 90"
+variables = Array[String](["x", "k"])
+metadata/_custom_type_script = "uid://dtqk60bdwkv33"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4f0x"]
+shader = ExtResource("2_l3qgq")
+shader_parameter/lod = 0.6
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l3qgq"]
+noise_type = 3
+frequency = 0.005
+domain_warp_enabled = true
+domain_warp_frequency = 0.03
+domain_warp_fractal_octaves = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k4f0x"]
+width = 320
+height = 180
+color_ramp = ExtResource("3_5eas0")
+noise = SubResource("FastNoiseLite_l3qgq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5eas0"]
+shader = ExtResource("2_1lmj1")
+shader_parameter/height_map = SubResource("NoiseTexture2D_k4f0x")
+
+[node name="MapUI" type="Control" node_paths=PackedStringArray("shader_map")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g55hc")
+shader_map = NodePath("Map/ShaderMapTexture")
+shader_map_gradients = Array[Gradient]([ExtResource("3_5eas0"), ExtResource("5_4m2lk"), ExtResource("3_xil32"), ExtResource("4_1xitt")])
+randomize_color_curve = true
+dungeon_icons = Array[Texture2D]([ExtResource("2_nf6i7")])
+dungeon_position_x_offset = Vector2i(0, 0)
+dungeon_position_graph = SubResource("Resource_1xitt")
+
+[node name="BackgroundBlur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_k4f0x")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 145.0
+offset_right = 175.0
+offset_bottom = 157.0
+text = "x"
+
+[node name="Map" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShaderMapTexture" type="ColorRect" parent="Map"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_5eas0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line2D" type="Line2D" parent="Map"]
+modulate = Color(0, 0, 0, 1)
+texture_repeat = 2
+points = PackedVector2Array(0, 90)
+width = 2.0
+texture = ExtResource("10_ycept")
+texture_mode = 1
+
+[node name="Dungeons" type="Control" parent="Map"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Border" type="TextureRect" parent="Map"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_gpwdt")
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_button_pressed"]

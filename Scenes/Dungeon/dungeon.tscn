@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bt2sv52ry1bus" path="res://Scenes/Dungeon/Scripts/dungeon.gd" id="1_0pvy1"]
 [ext_resource type="Script" uid="uid://cca1m5hu4ype7" path="res://Scenes/Dungeon/Scripts/dungeon_tree.gd" id="2_31xx8"]
-[ext_resource type="Resource" uid="uid://ds7yu0m6t3fdx" path="res://Prefabs/Dungeon Generation/Dungeon Templates/deep_low_rank_golbin.tres" id="2_r63rt"]
+[ext_resource type="Resource" uid="uid://ds7yu0m6t3fdx" path="res://Prefabs/Dungeon Generation/Dungeon Templates/Goblin/deep_low_rank_goblin.tres" id="2_r63rt"]
 [ext_resource type="PackedScene" uid="uid://b3kra3ablwpel" path="res://Prefabs/Dungeon Generation/Instanciables/dungeon_node.tscn" id="3_h3fct"]
 [ext_resource type="Script" uid="uid://6ympl5dgugq3" path="res://Scenes/Dungeon/Scripts/dungeon_activity_manager.gd" id="3_yuksf"]
 [ext_resource type="Texture2D" uid="uid://c0conprn03r4g" path="res://Assets/Images/Icons/misc/16x16_cross.png" id="5_r63rt"]
-[ext_resource type="Script" uid="uid://2xsghu020h2i" path="res://Scenes/Dungeon/camera_2d.gd" id="6_j5cnj"]
+[ext_resource type="Script" uid="uid://2xsghu020h2i" path="res://Scenes/Dungeon/Scripts/camera_2d.gd" id="6_j5cnj"]
 
 [node name="Dungeon" type="Node"]
 script = ExtResource("1_0pvy1")
