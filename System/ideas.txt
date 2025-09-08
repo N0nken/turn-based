@@ -1,0 +1,41 @@
+Attacks
+	
+
+
+Enemies
+	Monster types
+		Goblin
+		Skeleton
+		Slimes
+		Demons
+	
+	Factions
+		Goblin, skeleton
+		Slimes, demons
+	
+	Enemy types
+		weak & quick
+		strong & quick
+		weak & tank
+		strong & tank
+
+
+Items
+	Escape rope (name pending)
+		guaranteed flee
+	
+	Potions
+		healing
+		buffs
+			speed
+			strength
+			defense
+	
+	spell scrolls
+		single use attacks
+		effectivle the same as their corresponding attack but theyre single use
+	
+	debuffs
+		speed
+		strength
+		defense

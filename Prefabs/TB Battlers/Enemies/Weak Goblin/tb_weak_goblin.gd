@@ -1,2 +1,0 @@
-class_name TB_WeakGoblin
-extends TB_AiBattler

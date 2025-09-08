@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://eux26yax53op"]
+
+[ext_resource type="Script" uid="uid://eqihhn8fa54d" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/tb_fight_move_list_item.gd" id="1_rs677"]
+[ext_resource type="Theme" uid="uid://b7s13h7aifibx" path="res://Assets/Themes/default.tres" id="2_hqu26"]
+
+[node name="TBFightMoveListItem" type="Control"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_rs677")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_hqu26")
+theme_override_font_sizes/font_size = 8
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

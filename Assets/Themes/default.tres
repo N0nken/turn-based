@@ -1,10 +1,10 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://b7s13h7aifibx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tx2jx"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_right = 1
-border_color = Color(1, 1, 1, 1)
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqu26"]
 bg_color = Color(0, 0, 0, 1)
@@ -40,7 +40,7 @@ border_color = Color(1, 1, 1, 1)
 
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)

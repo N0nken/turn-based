@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TB_Flee" load_steps=3 format=3 uid="uid://43ehxfjvm01g"]
+
+[ext_resource type="Texture2D" uid="uid://lymg310j1arq" path="res://Prefabs/Actions/Icons/flee.png" id="1_aqxw8"]
+[ext_resource type="Script" uid="uid://bb0e4hl2v2bm3" path="res://Prefabs/Actions/Scripts/Moves/tb_flee.gd" id="2_phf7r"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_phf7r")
+cost = 0
+speed = 9999
+action_name = "Flee"
+power = 0
+target_self = false
+icon = ExtResource("1_aqxw8")
+life_time = 0.5
+description = "[p]Attempt to flee from the battle. 50% chance of success.[/p]"
+icon_uid = "uid://lymg310j1arq"
+metadata/_custom_type_script = "uid://bb0e4hl2v2bm3"

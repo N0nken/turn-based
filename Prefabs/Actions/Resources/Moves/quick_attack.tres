@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TB_BasicAttack" load_steps=3 format=3 uid="uid://dmn2jv7qpcmu5"]
+
+[ext_resource type="Texture2D" uid="uid://divrs8ljuilqa" path="res://Prefabs/Actions/Icons/quick_attack.png" id="1_go0hu"]
+[ext_resource type="Script" uid="uid://b5aj5o3a10npt" path="res://Prefabs/Actions/Scripts/Moves/tb_basic_attack.gd" id="1_oqfar"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_oqfar")
+cost = 2
+speed = 999
+action_name = "Quick Attack"
+power = 2
+target_self = false
+icon = ExtResource("1_go0hu")
+life_time = 0.5
+description = "Priority attack. Deals low damage."
+icon_uid = "uid://divrs8ljuilqa"
+metadata/_custom_type_script = "uid://b5aj5o3a10npt"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyFaction" load_steps=5 format=3 uid="uid://dc3d8gr0advny"]
+
+[ext_resource type="Script" uid="uid://bfcjq54rjttiy" path="res://Prefabs/Enemies/enemy.gd" id="1_kr6p1"]
+[ext_resource type="Resource" uid="uid://b3anhbfewvkf1" path="res://Prefabs/Enemies/Goblins/Templates/Boss/gilbert_the_great.tres" id="2_yi2wp"]
+[ext_resource type="Resource" uid="uid://dlp2q2t2wdihy" path="res://Prefabs/Enemies/Goblins/Templates/Standard/rogue.tres" id="3_t3k5r"]
+[ext_resource type="Script" uid="uid://cxqiqmgngx4qm" path="res://Prefabs/Enemies/Factions/enemy_faction.gd" id="4_nm5e5"]
+
+[resource]
+script = ExtResource("4_nm5e5")
+faction_name = "Goblins"
+enemies = Array[ExtResource("1_kr6p1")]([ExtResource("3_t3k5r")])
+bosses = Array[ExtResource("1_kr6p1")]([ExtResource("2_yi2wp")])
+metadata/_custom_type_script = "uid://cxqiqmgngx4qm"

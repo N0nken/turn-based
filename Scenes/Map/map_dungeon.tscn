@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://18kpyukf61f4"]
 
 [ext_resource type="Shader" uid="uid://edakgs5jxdll" path="res://Shaders/outline.gdshader" id="1_2tm1e"]
-[ext_resource type="Texture2D" uid="uid://b3fasyrwt7fw1" path="res://Assets/Images/Icons/misc/map_dungeon.png" id="2_dea3y"]
-[ext_resource type="Script" uid="uid://ct23hdmjy02eo" path="res://Scenes/Map/map_dungeon.gd" id="3_t0k6f"]
+[ext_resource type="Texture2D" uid="uid://b3fasyrwt7fw1" path="res://Scenes/Map/Dungeon Icons/map_dungeon.png" id="2_dea3y"]
+[ext_resource type="Script" uid="uid://ct23hdmjy02eo" path="res://Scenes/Map/Scripts/map_dungeon.gd" id="3_t0k6f"]
 [ext_resource type="Texture2D" uid="uid://ccna04omuucp8" path="res://Assets/Images/Icons/misc/lock.png" id="4_ydrn1"]
 [ext_resource type="Texture2D" uid="uid://biqm226iyhlnf" path="res://Assets/Images/Icons/misc/checkmark.png" id="5_djgm1"]
 
@@ -37,6 +37,7 @@ shader_parameter/inner = false
 
 [node name="MapDungeon" type="Button"]
 material = SubResource("ShaderMaterial_l5lx7")
+custom_minimum_size = Vector2(16, 16)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -83,3 +84,4 @@ texture = ExtResource("5_djgm1")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

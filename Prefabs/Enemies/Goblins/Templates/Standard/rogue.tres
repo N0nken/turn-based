@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=7 format=3 uid="uid://dlp2q2t2wdihy"]
+
+[ext_resource type="Script" uid="uid://ho8awdgl5gne" path="res://Prefabs/Actions/Scripts/tb_action.gd" id="1_n8dvc"]
+[ext_resource type="Texture2D" uid="uid://3kqfprngbp5" path="res://Prefabs/Enemies/Goblins/Icons/Standard/rogue.png" id="1_xnhed"]
+[ext_resource type="Script" uid="uid://bfcjq54rjttiy" path="res://Prefabs/Enemies/enemy.gd" id="2_n8dvc"]
+[ext_resource type="Resource" uid="uid://b66fyi0u1xscw" path="res://Prefabs/Actions/Resources/Moves/basic_attack.tres" id="2_un6r2"]
+[ext_resource type="Texture2D" uid="uid://cob3w4madsvat" path="res://Prefabs/Enemies/Goblins/Sprites/Standard/rogue.png" id="3_n8dvc"]
+[ext_resource type="Resource" uid="uid://dmn2jv7qpcmu5" path="res://Prefabs/Actions/Resources/Moves/quick_attack.tres" id="4_turgi"]
+
+[resource]
+script = ExtResource("2_n8dvc")
+name = "Goblin Rogue"
+sprite = ExtResource("3_n8dvc")
+icon = ExtResource("1_xnhed")
+base_stats = Dictionary[String, int]({
+"defense": 1,
+"health": 10,
+"speed": 5,
+"strength": 1,
+"turn_plan_capacity": 10
+})
+statbias = Dictionary[String, float]({
+"defense": 0.5,
+"health": 1.0,
+"speed": 3.0,
+"strength": 2.0,
+"turn_plan_capacity": 2.0
+})
+move_set = Array[ExtResource("1_n8dvc")]([ExtResource("2_un6r2"), ExtResource("4_turgi")])
+metadata/_custom_type_script = "uid://bfcjq54rjttiy"

@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://cugvflsuf115x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8rek"]
+bg_color = Color(0, 0, 0, 1)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[node name="Upgrades" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shop" type="Panel" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Control" type="Control" parent="UI/Control/Shop/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Shop/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UI/Control/Shop/MarginContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g8rek")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Shop/MarginContainer/Control/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Shop/MarginContainer/Control/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Panel2" type="Panel" parent="UI/Control/Shop/MarginContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g8rek")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/Shop/MarginContainer/Control/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Shop/MarginContainer/Control/VBoxContainer/Panel2/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Backpack" type="Panel" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0

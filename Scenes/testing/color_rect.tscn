@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://clihukqberlju"]
+
+[ext_resource type="Shader" uid="uid://bepte00y8bbhi" path="res://Scenes/Map/Scripts/real_time_lighting_map_test.gdshader" id="1_hyjy6"]
+[ext_resource type="Gradient" uid="uid://b2wqnvapsqmot" path="res://Scenes/Map/Gradients/mountainous_forest.tres" id="2_0wuhp"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3pr1q"]
+gradient = ExtResource("2_0wuhp")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0wuhp"]
+noise_type = 3
+frequency = 0.005
+domain_warp_frequency = 0.03
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3pr1q"]
+width = 320
+height = 180
+noise = SubResource("FastNoiseLite_0wuhp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lspq"]
+shader = ExtResource("1_hyjy6")
+shader_parameter/height_map = SubResource("NoiseTexture2D_3pr1q")
+shader_parameter/color_ramp = SubResource("GradientTexture1D_3pr1q")
+shader_parameter/height_multiplier = 10000.0
+shader_parameter/light_strength = 0.5
+shader_parameter/light_direction = Vector3(0, 1, 0)
+shader_parameter/light_color = Vector3(1, 1, 1)
+shader_parameter/shadow_strength = 10.0
+shader_parameter/shadow_limit = 0.5
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0wuhp"]
+cull_mode = 2
+polygon = PackedVector2Array(0, 0, 40, 0, 40, 40, 0, 40)
+
+[sub_resource type="Gradient" id="Gradient_3pr1q"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3lspq"]
+gradient = SubResource("Gradient_3pr1q")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.811966, 0.837607)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="map" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_3lspq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_left = 180.0
+offset_top = 41.0
+offset_right = 220.0
+offset_bottom = 81.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="ColorRect2"]
+occluder = SubResource("OccluderPolygon2D_0wuhp")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(279, 149)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_3lspq")
+texture_scale = 2.2
+height = 48.0
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+rotation = -1.18508
+shadow_enabled = true
+height = 0.45

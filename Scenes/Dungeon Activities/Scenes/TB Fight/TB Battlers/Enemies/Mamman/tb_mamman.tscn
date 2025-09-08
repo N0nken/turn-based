@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=3 uid="uid://djmx8wr87ooqf"]
+
+[ext_resource type="Script" uid="uid://72hpe6yy5j1a" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Battlers/Enemies/Mamman/tb_mamman.gd" id="1_17wfl"]
+[ext_resource type="Script" uid="uid://ho8awdgl5gne" path="res://Prefabs/Actions/Scripts/tb_action.gd" id="2_7ugcn"]
+[ext_resource type="Texture2D" uid="uid://do2claycxnbco" path="res://Prefabs/Enemies/Misc/mamman.png" id="3_6p1yx"]
+[ext_resource type="Texture2D" uid="uid://dnihvopt37wcy" path="res://Prefabs/Actions/Icons/basic_attack.png" id="3_tgm52"]
+[ext_resource type="Script" uid="uid://b5aj5o3a10npt" path="res://Prefabs/Actions/Scripts/Moves/tb_basic_attack.gd" id="4_6b0in"]
+[ext_resource type="Texture2D" uid="uid://lymg310j1arq" path="res://Prefabs/Actions/Icons/flee.png" id="5_amfkx"]
+[ext_resource type="Script" uid="uid://bb0e4hl2v2bm3" path="res://Prefabs/Actions/Scripts/Moves/tb_flee.gd" id="6_8v6ou"]
+[ext_resource type="Texture2D" uid="uid://divrs8ljuilqa" path="res://Prefabs/Actions/Icons/quick_attack.png" id="7_n2gc6"]
+
+[sub_resource type="Resource" id="Resource_bjhfu"]
+resource_local_to_scene = true
+script = ExtResource("4_6b0in")
+cost = 5
+speed = 5
+action_name = "Basic Attack"
+power = 5
+target_self = false
+icon = ExtResource("3_tgm52")
+life_time = 0.5
+metadata/_custom_type_script = "uid://b5aj5o3a10npt"
+
+[sub_resource type="Resource" id="Resource_ihosb"]
+resource_local_to_scene = true
+script = ExtResource("6_8v6ou")
+cost = 0
+speed = 9999
+action_name = "Flee"
+power = 0
+target_self = false
+icon = ExtResource("5_amfkx")
+life_time = 0.5
+metadata/_custom_type_script = "uid://bb0e4hl2v2bm3"
+
+[sub_resource type="Resource" id="Resource_o4g54"]
+resource_local_to_scene = true
+script = ExtResource("4_6b0in")
+cost = 2
+speed = 999
+action_name = "Quick Attack"
+power = 2
+target_self = false
+icon = ExtResource("7_n2gc6")
+life_time = 0.5
+metadata/_custom_type_script = "uid://b5aj5o3a10npt"
+
+[node name="TBMamman" type="Node2D" groups=["TB_Battlers"]]
+texture_filter = 1
+script = ExtResource("1_17wfl")
+battler_name = "Mamman"
+max_health = 10
+defense = 10
+turn_plan_capacity = 10
+move_set = Array[ExtResource("2_7ugcn")]([SubResource("Resource_bjhfu"), SubResource("Resource_ihosb"), SubResource("Resource_o4g54")])
+
+[node name="HitEffectTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="LatestActionTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_6p1yx")

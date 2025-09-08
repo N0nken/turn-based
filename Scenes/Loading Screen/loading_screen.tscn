@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqe73uyctw2so"]
+
+[ext_resource type="Texture2D" uid="uid://kf13nfj10e37" path="res://Assets/Images/Icons/misc/coconut.jpg" id="1_60n5d"]
+
+[node name="LoadingScreen" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(160, 90)
+scale = Vector2(1.25, 0.703125)
+texture = ExtResource("1_60n5d")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs8cyjlysm8o1"]
+
+[ext_resource type="Script" uid="uid://b3dqq0vxt5lcj" path="res://Scenes/Dungeon/Dungeon Tree/dungeon_node_connection.gd" id="2_kbrbm"]
+
+[node name="DungeonNodeConnection" type="Line2D"]
+texture_filter = 1
+script = ExtResource("2_kbrbm")

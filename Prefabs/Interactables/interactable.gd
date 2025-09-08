@@ -10,6 +10,7 @@ signal interacted
 @export var highlight_on_player_nearby := false
 @export var label_position : Node2D = null
 
+
 func _ready() -> void:
 	hitbox.player_entered.connect(_on_player_entered)
 	hitbox.player_exited.connect(_on_player_exited)
@@ -35,4 +36,5 @@ func deactivate_highlight() -> void:
 
 
 func _on_player_interacted() -> void:
-	print("Interacted with ", self.name)
+	pass
+	#print("Interacted with ", self.name)

@@ -1,58 +1,123 @@
-[gd_scene load_steps=17 format=3 uid="uid://byx5c1c0bquj2"]
+[gd_scene load_steps=32 format=3 uid="uid://byx5c1c0bquj2"]
 
-[ext_resource type="Script" uid="uid://dqr0pgjm4qat4" path="res://Scenes/Map/map.gd" id="1_g55hc"]
-[ext_resource type="Shader" uid="uid://dif7bjvktfkd4" path="res://Scenes/Map/map.gdshader" id="2_1lmj1"]
+[ext_resource type="Script" uid="uid://dqr0pgjm4qat4" path="res://Scenes/Map/Scripts/map.gd" id="1_fyo8k"]
+[ext_resource type="Script" uid="uid://bw3g8p3xptyeb" path="res://Prefabs/Dungeon Templates/dungeon_template.gd" id="2_8uruf"]
 [ext_resource type="Shader" uid="uid://c0ni6abajndjg" path="res://Shaders/blur.gdshader" id="2_l3qgq"]
-[ext_resource type="Texture2D" uid="uid://b3fasyrwt7fw1" path="res://Assets/Images/Icons/misc/map_dungeon.png" id="2_nf6i7"]
-[ext_resource type="Gradient" uid="uid://b2wqnvapsqmot" path="res://Assets/Tent Map Gradients/mountainous_forest.tres" id="3_5eas0"]
-[ext_resource type="Gradient" uid="uid://bsn7ohrvh1b4n" path="res://Assets/Tent Map Gradients/frozen_lakes.tres" id="3_xil32"]
-[ext_resource type="Gradient" uid="uid://dq7cibsolomvp" path="res://Assets/Tent Map Gradients/frozen_peaks.tres" id="4_1xitt"]
-[ext_resource type="Script" uid="uid://dtqk60bdwkv33" path="res://Resources/graph.gd" id="5_1xitt"]
-[ext_resource type="Gradient" uid="uid://rywwkyl2d5bs" path="res://Assets/Tent Map Gradients/volcanic_forest.tres" id="5_4m2lk"]
+[ext_resource type="Resource" uid="uid://ds7yu0m6t3fdx" path="res://Prefabs/Dungeon Templates/Templates/goblin.tres" id="3_4a6f5"]
+[ext_resource type="Gradient" uid="uid://b2wqnvapsqmot" path="res://Scenes/Map/Gradients/mountainous_forest.tres" id="3_5eas0"]
+[ext_resource type="Gradient" uid="uid://rywwkyl2d5bs" path="res://Scenes/Map/Gradients/volcanic_forest.tres" id="3_xdmry"]
+[ext_resource type="Gradient" uid="uid://bsn7ohrvh1b4n" path="res://Scenes/Map/Gradients/frozen_lakes.tres" id="4_l00y7"]
+[ext_resource type="Gradient" uid="uid://dq7cibsolomvp" path="res://Scenes/Map/Gradients/frozen_peaks.tres" id="5_qtk15"]
+[ext_resource type="Texture2D" uid="uid://b3fasyrwt7fw1" path="res://Scenes/Map/Dungeon Icons/map_dungeon.png" id="6_l00y7"]
+[ext_resource type="Gradient" uid="uid://bsbmmeuver64e" path="res://Scenes/Map/Gradients/hell.tres" id="6_qtk15"]
+[ext_resource type="Resource" uid="uid://dy1clfgcdntdt" path="res://Scenes/Map/map_dungeon_position_graph.tres" id="6_xdmry"]
 [ext_resource type="Texture2D" uid="uid://bgjryclcmubwe" path="res://Assets/Images/_Misc/red_dash.png" id="10_ycept"]
+[ext_resource type="Script" uid="uid://cfhwyrwcn4ret" path="res://Scenes/Map/Scripts/map_day_manager.gd" id="11_4a6f5"]
 [ext_resource type="Texture2D" uid="uid://bpof018ott7iq" path="res://Assets/Images/_Misc/tent_map_border.png" id="11_gpwdt"]
+[ext_resource type="Shader" uid="uid://bepte00y8bbhi" path="res://Scenes/Map/Scripts/real_time_lighting_map_test.gdshader" id="12_4a6f5"]
+[ext_resource type="FastNoiseLite" uid="uid://bnoycts8is0l3" path="res://Scenes/Map/map_noise.tres" id="12_8uruf"]
+[ext_resource type="Texture2D" uid="uid://bx8g5mydb27sp" path="res://Assets/Images/Icons/misc/16x16_skull.png" id="14_4f523"]
+[ext_resource type="Shader" uid="uid://bd8qdi12hepsn" path="res://Scenes/Map/Scripts/map_cloud.gdshader" id="14_k0edg"]
 
-[sub_resource type="Resource" id="Resource_1xitt"]
-script = ExtResource("5_1xitt")
-function = "70 * sin(2 * PI / 160 * (x + k)) + 90"
-variables = Array[String](["x", "k"])
-metadata/_custom_type_script = "uid://dtqk60bdwkv33"
+[sub_resource type="Curve" id="Curve_4a6f5"]
+_limits = [-1.57, 1.571, 0.0, 1.0]
+_data = [Vector2(0, -1.571), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.571), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_kfta0"]
+_data = [Vector2(0, 0.8), 0.0, 0.0, 0, 0, Vector2(0.375228, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(0.625, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.8), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Gradient" id="Gradient_4a6f5"]
+offsets = PackedFloat32Array(0, 0.0971963, 0.158879, 0.256075, 0.678505, 0.814953, 0.917757, 1)
+colors = PackedColorArray(0.105, 0, 0.45, 1, 0.154629, 0.000124347, 0.479013, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0.152941, 0, 0.478431, 1, 0.105882, 0, 0.45098, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k4f0x"]
 shader = ExtResource("2_l3qgq")
 shader_parameter/lod = 0.6
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_l3qgq"]
-noise_type = 3
-frequency = 0.005
-domain_warp_enabled = true
-domain_warp_frequency = 0.03
-domain_warp_fractal_octaves = 10
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kfta0"]
+gradient = ExtResource("3_5eas0")
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k4f0x"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w3xn6"]
 width = 320
 height = 180
-color_ramp = ExtResource("3_5eas0")
-noise = SubResource("FastNoiseLite_l3qgq")
+noise = ExtResource("12_8uruf")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8uruf"]
+noise_type = 3
+frequency = 0.005
+domain_warp_frequency = 0.03
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kfta0"]
+width = 320
+height = 180
+noise = SubResource("FastNoiseLite_8uruf")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5eas0"]
-shader = ExtResource("2_1lmj1")
-shader_parameter/height_map = SubResource("NoiseTexture2D_k4f0x")
+shader = ExtResource("12_4a6f5")
+shader_parameter/normal_map = SubResource("NoiseTexture2D_kfta0")
+shader_parameter/height_map = SubResource("NoiseTexture2D_w3xn6")
+shader_parameter/color_ramp = SubResource("GradientTexture1D_kfta0")
+shader_parameter/height_multiplier = 10000.0
+shader_parameter/light_direction = Vector3(0, 1, 0)
+shader_parameter/light_color = Vector3(1, 1, 1)
+shader_parameter/shadow_color = Vector3(0, 0, 0)
+shader_parameter/light_strength = 0.3
+shader_parameter/shadow_strength = 10.0
+shader_parameter/shadow_limit = 0.5
 
-[node name="MapUI" type="Control" node_paths=PackedStringArray("shader_map")]
+[sub_resource type="Gradient" id="Gradient_k0edg"]
+offsets = PackedFloat32Array(0, 0.561828)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k0edg"]
+noise_type = 0
+frequency = 0.0025
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rojtv"]
+seamless = true
+normalize = false
+color_ramp = SubResource("Gradient_k0edg")
+noise = SubResource("FastNoiseLite_k0edg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rojtv"]
+shader = ExtResource("14_k0edg")
+shader_parameter/cloud_shadow_noise = SubResource("NoiseTexture2D_rojtv")
+shader_parameter/wind_direction = Vector2(1, -0.5)
+shader_parameter/wind_speed = 0.05
+shader_parameter/cloud_opacity = Vector2(0.3, 0.3)
+
+[node name="Map" type="Control" node_paths=PackedStringArray("shader_map")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_g55hc")
+script = ExtResource("1_fyo8k")
+dungeon_templates = Array[ExtResource("2_8uruf")]([ExtResource("3_4a6f5"), ExtResource("3_4a6f5"), null, null, null])
+shader_map_gradients = Array[Gradient]([ExtResource("3_5eas0"), ExtResource("3_xdmry"), ExtResource("4_l00y7"), ExtResource("5_qtk15"), ExtResource("6_qtk15")])
+dungeon_icons = Array[Texture2D]([ExtResource("6_l00y7"), ExtResource("6_l00y7"), ExtResource("6_l00y7"), ExtResource("6_l00y7"), ExtResource("6_l00y7")])
+dungeon_position_graph = ExtResource("6_xdmry")
 shader_map = NodePath("Map/ShaderMapTexture")
-shader_map_gradients = Array[Gradient]([ExtResource("3_5eas0"), ExtResource("5_4m2lk"), ExtResource("3_xil32"), ExtResource("4_1xitt")])
-randomize_color_curve = true
-dungeon_icons = Array[Texture2D]([ExtResource("2_nf6i7")])
-dungeon_position_x_offset = Vector2i(0, 0)
-dungeon_position_graph = SubResource("Resource_1xitt")
+dungeon_position_x_offset = Vector2i(20, 20)
+graph_period = 320
+graph_amplitude = 70
+graph_shift = Vector2(-160, 160)
+
+[node name="MapDayManager" type="Node" parent="." node_paths=PackedStringArray("shader_map", "light_node")]
+script = ExtResource("11_4a6f5")
+shader_map = NodePath("../Map/ShaderMapTexture")
+light_node = NodePath("DirectionalLight2D")
+light_arc = SubResource("Curve_4a6f5")
+shadow_limit = SubResource("Curve_kfta0")
+hue_controller = SubResource("Gradient_4a6f5")
+time_scale = 100.0
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="MapDayManager"]
+visible = false
+rotation = -1.5708
+shadow_enabled = true
 
 [node name="BackgroundBlur" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_k4f0x")
@@ -63,14 +128,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="ExitButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 145.0
-offset_top = 145.0
-offset_right = 175.0
-offset_bottom = 157.0
-text = "x"
 
 [node name="Map" type="Control" parent="."]
 layout_mode = 1
@@ -90,6 +147,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Border" type="TextureRect" parent="Map"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_gpwdt")
+
+[node name="Clouds" type="ColorRect" parent="Map"]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_rojtv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LightHueShift" type="ColorRect" parent="Map"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0.0500002, 0.196078)
+
 [node name="Line2D" type="Line2D" parent="Map"]
 modulate = Color(0, 0, 0, 1)
 texture_repeat = 2
@@ -106,14 +196,48 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Border" type="TextureRect" parent="Map"]
-visible = false
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -10.0
+offset_right = -36.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("11_gpwdt")
 
-[connection signal="pressed" from="ExitButton" to="." method="_on_button_pressed"]
+[node name="Control" type="Control" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_4f523")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/Control/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "Accept"
