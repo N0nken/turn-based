@@ -4,9 +4,10 @@ uniform sampler2D cloud_shadow_noise : repeat_enable;
 uniform vec2 wind_direction;
 uniform float wind_speed;
 uniform vec2 cloud_opacity;
+uniform float alpha_step;
+uniform float minimum_cloud_opacity;
 
 float scale_to_range(float value, float min_val, float max_val) {
-	float scaled_value = 0.0;
 	if (value == max_val) {
 		return 1.0;
 	}
@@ -22,6 +23,7 @@ void fragment() {
 	COLOR.a = 0.0;
 	if (brightness > cloud_opacity.x) {
 		float normalized_brightness = scale_to_range(brightness, cloud_opacity.x, 1.0);
-		COLOR.a = normalized_brightness * cloud_opacity.y;
+		float alpha = normalized_brightness * cloud_opacity.y;
+		COLOR.a = alpha;
 	}
 }

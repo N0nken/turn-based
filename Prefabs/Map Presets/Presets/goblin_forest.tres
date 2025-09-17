@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MapPreset" load_steps=5 format=3 uid="uid://bajgwjk7c2imt"]
+
+[ext_resource type="Gradient" uid="uid://b2wqnvapsqmot" path="res://Prefabs/Map Presets/Gradients/mountainous_forest.tres" id="1_847kk"]
+[ext_resource type="Texture2D" uid="uid://b3fasyrwt7fw1" path="res://Prefabs/Map Presets/Dungeon Icons/map_dungeon.png" id="2_7mjg8"]
+[ext_resource type="Resource" uid="uid://ds7yu0m6t3fdx" path="res://Prefabs/Dungeon Templates/Templates/goblin.tres" id="3_7mjg8"]
+[ext_resource type="Script" uid="uid://d2dknw3o8qqcs" path="res://Prefabs/Map Presets/map_preset.gd" id="3_d3pkx"]
+
+[resource]
+script = ExtResource("3_d3pkx")
+color_gradient = ExtResource("1_847kk")
+dungeon_icon = ExtResource("2_7mjg8")
+dungeon_template = ExtResource("3_7mjg8")
+height_multiplier = 10000.0
+darkness_scale = 0.5
+metadata/_custom_type_script = "uid://d2dknw3o8qqcs"

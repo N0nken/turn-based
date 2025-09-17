@@ -3,7 +3,6 @@ extends TB_Battler
 
 @export var backpack : Array[TB_Item] = []
 
-
 func _ready() -> void:
 	self.max_health = LoadedRun.player.max_health
 	self.health = LoadedRun.player.health
@@ -21,4 +20,5 @@ func plan_action(action : TB_Action) -> bool:
 		action.target = self
 	else:
 		action.target = get_parent().get_parent().enemy_battler
+	action.parent_battler = self
 	return super(action)

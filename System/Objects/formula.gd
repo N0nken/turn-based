@@ -1,4 +1,4 @@
-class_name Graph
+class_name Formula
 extends Resource
 
 @export var function := ""

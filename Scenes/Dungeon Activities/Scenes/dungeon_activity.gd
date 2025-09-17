@@ -6,4 +6,4 @@ signal activity_ended
 
 @export var camera : Camera2D = null
 
-var activity_args : Dictionary = {}
+@export var activity_args : Dictionary = {}

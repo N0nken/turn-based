@@ -1,6 +1,41 @@
 Attacks
-	
+	sciel set
+		Each attack either adds a light or dark stack or consumes stacks
+		
+		Moves
+			...
+				Deal low damage
+				
+				Add light stack
+				If target already has light stack
+					add extra light stack
+			
+			...
+				Consume all stacks to deal massive damage
+		
+			...
+				Deal low damage to self to apply 10 dark stacks
 
+			...
+				Consume 2 light stacks to heal slightly
+	
+	berserker set
+		Attacks get buffs from lower health (%)
+		
+		Moves
+			...
+				Deal low damage
+				
+				if user is above 50% hp
+					deal 5% of self max hp as damage to self
+				
+			...
+				Deal damage according to missing user health
+				
+				(eg. if at 5/15 hp -> deal 15 - 5 = 10 damage)
+			
+			...
+				
 
 Enemies
 	Monster types

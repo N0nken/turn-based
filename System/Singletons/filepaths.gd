@@ -50,3 +50,4 @@ const UI_INPUT_ICONS : Dictionary[String, String] = {
 	"keyboard" : "uid://chfftpjn5dqor",
 	"controller" : "uid://0pea7mnq3nvk",
 }
+const DAMAGE_FORMULA := "uid://bau035drpimm2"

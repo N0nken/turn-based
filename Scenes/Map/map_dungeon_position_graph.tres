@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Graph" load_steps=2 format=3 uid="uid://dy1clfgcdntdt"]
 
-[ext_resource type="Script" uid="uid://dtqk60bdwkv33" path="res://System/Objects/graph.gd" id="1_4p8i4"]
+[ext_resource type="Script" uid="uid://dtqk60bdwkv33" path="res://System/Objects/formula.gd" id="1_4p8i4"]
 
 [resource]
 script = ExtResource("1_4p8i4")

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MapPreset" load_steps=5 format=3 uid="uid://6bxakrw58edm"]
+
+[ext_resource type="Texture2D" uid="uid://b3fasyrwt7fw1" path="res://Prefabs/Map Presets/Dungeon Icons/map_dungeon.png" id="2_jad7o"]
+[ext_resource type="Resource" uid="uid://ds7yu0m6t3fdx" path="res://Prefabs/Dungeon Templates/Templates/goblin.tres" id="3_yu64t"]
+[ext_resource type="Script" uid="uid://d2dknw3o8qqcs" path="res://Prefabs/Map Presets/map_preset.gd" id="4_w7841"]
+
+[sub_resource type="Gradient" id="Gradient_04aqu"]
+offsets = PackedFloat32Array(0, 0.204861, 0.329861, 0.555556, 0.649306, 0.732639, 0.871528, 1)
+colors = PackedColorArray(0.5208, 0.601813, 0.62, 1, 0.69, 0.943167, 1, 1, 1, 1, 1, 1, 0.69, 0.943167, 1, 1, 1, 1, 1, 1, 0.729365, 0.950384, 1, 1, 0.705934, 0.946088, 1, 1, 1, 1, 1, 1)
+
+[resource]
+script = ExtResource("4_w7841")
+color_gradient = SubResource("Gradient_04aqu")
+dungeon_icon = ExtResource("2_jad7o")
+dungeon_template = ExtResource("3_yu64t")
+height_multiplier = 10000.0
+darkness_scale = 0.8
+metadata/_custom_type_script = "uid://d2dknw3o8qqcs"

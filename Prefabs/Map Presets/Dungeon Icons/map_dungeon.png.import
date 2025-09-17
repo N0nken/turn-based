@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3fasyrwt7fw1"
-path="res://.godot/imported/map_dungeon.png-006df7a4a5d53ec25345731588e25257.ctex"
+path="res://.godot/imported/map_dungeon.png-81bd233e0953aec40d1e17b9342b122d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Map/Dungeon Icons/map_dungeon.png"
-dest_files=["res://.godot/imported/map_dungeon.png-006df7a4a5d53ec25345731588e25257.ctex"]
+source_file="res://Prefabs/Map Presets/Dungeon Icons/map_dungeon.png"
+dest_files=["res://.godot/imported/map_dungeon.png-81bd233e0953aec40d1e17b9342b122d.ctex"]
 
 [params]
 

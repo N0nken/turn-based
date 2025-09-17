@@ -89,6 +89,9 @@ border_color = Color(1, 1, 1, 1)
 [node name="TBFight" type="Node" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_of3kh")
 camera = NodePath("Camera2D")
+activity_args = {
+"is_boss_battle": false
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 90)
@@ -258,9 +261,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_iac33")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Control/PlannedMoves/Player"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.212
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 0.079998
+offset_bottom = -1.52588e-05
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 5

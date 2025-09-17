@@ -1,16 +1,9 @@
 shader_type canvas_item;
 
 uniform sampler2D normal_map;
-uniform sampler2D height_map;
-uniform sampler2D color_ramp;
+uniform sampler2D color_map;
 uniform float height_multiplier = 1.0;
-
-uniform vec3 light_direction = vec3(0.0, 1.0, 0.0);
-uniform vec3 light_color = vec3(1.0, 1.0, 1.0);
-uniform vec3 shadow_color = vec3(0.0, 0.0, 0.0);
-uniform float light_strength = 0.5;
-uniform float shadow_strength = 10;
-uniform float shadow_limit = 0.5;
+uniform bool show_normals = false;
 
 vec3 get_normal(sampler2D text, vec2 coords, float height_multi) {
 	vec3 normal = vec3(0.0, 0.0, 0.0);
@@ -39,32 +32,17 @@ vec3 get_normal(sampler2D text, vec2 coords, float height_multi) {
 	return normal;
 }
 
-float scale_to_range(float value, float min_val, float max_val) {
-	float scaled_value = 0.0;
-	if (value == max_val) {
-		return 1.0;
-	}
-	else if (value == min_val) {
-		return 0.0;
-	}
-	return (value - min_val) / (max_val - min_val);
-}
-
 void fragment() {
+	vec3 height_color = texture(normal_map, UV).rgb;
+	float height = (height_color.r + height_color.g + height_color.b)/3.0;
 	vec3 new_normal = get_normal(normal_map, UV, height_multiplier);
 	NORMAL = new_normal;
-	vec3 height_color = texture(height_map, UV).rgb;
-	float height = (height_color.r + height_color.g + height_color.b) / 3.0;
-	vec3 new_color = texture(color_ramp, vec2(height, 0.0)).rgb;
-	COLOR.rgb = new_color;
-	COLOR.rgb = new_color + light_color * light_strength;
-	
-	float angle_of_incidence = dot(normalize(light_direction), new_normal);
-	if (angle_of_incidence < shadow_limit) {
-		COLOR.rgb = new_color - (vec3(1.0, 1.0, 1.0) - shadow_color) / shadow_strength;
-	}
+	COLOR.rgb = texture(color_map, UV).rgb;
 	
 	// uncomment to check the bitch ass normal >:(((( i hate making shaders >:(
-	//COLOR.rgb = vec3(0.0, 0.0, 0.0);
-	//COLOR.r = new_normal.b; 
+	if (show_normals) {
+		COLOR.rgb = vec3(0.0, 0.0, 0.0);
+		COLOR.rgb = new_normal.rgb; 
+	}
+	
 }

@@ -24,14 +24,16 @@ const max_planned_turns := 5
 @export var gold_drop := 0
 @export var hurt_sound_effect : AudioStream = null
 @export var death_sound_effect : AudioStream = null
+@export var max_combo_count := 10
+
 
 var used_turn_plan_capacity := 0
 var planned_turns : Array[TB_Action] = []
+var move_set : Array[TB_Action]
 
 var alive : bool = true
 var active : bool = false
-
-var move_set : Array[TB_Action]
+var combo_count := 0
 
 @onready var latest_action_timer : Timer = get_node("LatestActionTimer")
 @onready var hit_effect_timer : Timer = get_node("HitEffectTimer")
@@ -72,7 +74,15 @@ func finish_planning() -> void:
 func execute_next_action() -> void:
 	latest_action_timer.start(planned_turns[0].life_time)
 	action_started.emit(planned_turns[0], self)
-	planned_turns.pop_front().action()
+	var next_action : TB_Action = planned_turns.pop_front()
+	if next_action.target_self:
+		next_action.target = self
+	else:
+		for battler in get_tree().get_nodes_in_group("TB_Battlers"):
+			if battler != self:
+				next_action.target = battler
+	next_action.parent_battler = self
+	next_action.action()
 	if planned_turns.size() == 0:
 		self.active = false
 		planned_turns_finished.emit()

@@ -35,12 +35,14 @@ func clear() -> void:
 
 
 func _on_focus_entered() -> void:
-	self.material.set_shader_parameter("enabled", true)
+	#self.material.set_shader_parameter("enabled", true)
+	pass
 
 
 func _on_focus_exited() -> void:
-	self.material.set_shader_parameter("enabled", false)
-
+	#self.material.set_shader_parameter("enabled", false)
+	pass
+	
 
 func _on_pressed() -> void:
 	if state != States.OPEN:

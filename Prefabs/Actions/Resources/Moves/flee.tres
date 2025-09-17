@@ -15,4 +15,5 @@ icon = ExtResource("1_aqxw8")
 life_time = 0.5
 description = "[p]Attempt to flee from the battle. 50% chance of success.[/p]"
 icon_uid = "uid://lymg310j1arq"
+combo_type = 0
 metadata/_custom_type_script = "uid://bb0e4hl2v2bm3"

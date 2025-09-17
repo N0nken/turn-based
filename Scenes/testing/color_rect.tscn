@@ -1,31 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://clihukqberlju"]
+[gd_scene load_steps=6 format=3 uid="uid://clihukqberlju"]
 
-[ext_resource type="Shader" uid="uid://bepte00y8bbhi" path="res://Scenes/Map/Scripts/real_time_lighting_map_test.gdshader" id="1_hyjy6"]
-[ext_resource type="Gradient" uid="uid://b2wqnvapsqmot" path="res://Scenes/Map/Gradients/mountainous_forest.tres" id="2_0wuhp"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3pr1q"]
-gradient = ExtResource("2_0wuhp")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_0wuhp"]
-noise_type = 3
-frequency = 0.005
-domain_warp_frequency = 0.03
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3pr1q"]
-width = 320
-height = 180
-noise = SubResource("FastNoiseLite_0wuhp")
+[ext_resource type="Shader" uid="uid://bepte00y8bbhi" path="res://Scenes/Map/Scripts/real_time_lighting_map.gdshader" id="1_hyjy6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3lspq"]
 shader = ExtResource("1_hyjy6")
-shader_parameter/height_map = SubResource("NoiseTexture2D_3pr1q")
-shader_parameter/color_ramp = SubResource("GradientTexture1D_3pr1q")
 shader_parameter/height_multiplier = 10000.0
-shader_parameter/light_strength = 0.5
-shader_parameter/light_direction = Vector3(0, 1, 0)
-shader_parameter/light_color = Vector3(1, 1, 1)
-shader_parameter/shadow_strength = 10.0
-shader_parameter/shadow_limit = 0.5
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0wuhp"]
 cull_mode = 2

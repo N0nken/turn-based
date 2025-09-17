@@ -4,7 +4,11 @@
 
 [node name="Shop" type="Node2D"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="."]
 
-[node name="PlayerEntity" parent="." instance=ExtResource("1_l4dgy")]
+[node name="MidGround" type="CanvasLayer" parent="."]
+
+[node name="PlayerEntity" parent="MidGround" instance=ExtResource("1_l4dgy")]
 position = Vector2(8, 144)
+
+[node name="Foreground" type="CanvasLayer" parent="."]

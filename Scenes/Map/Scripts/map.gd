@@ -10,10 +10,8 @@ enum Biomes {
 }
 
 @export var map_biome := Biomes.MOUNTAINOUS_FOREST
-@export var dungeon_templates : Array[DungeonTemplate] = []
-@export var shader_map_gradients : Array[Gradient] = []
-@export var dungeon_icons : Array[Texture2D] = []
-@export var dungeon_position_graph : Graph = null
+@export var map_presets : Array[MapPreset] = []
+@export var dungeon_position_graph : Formula = null
 @export var shader_map : ColorRect = null
 @export var dungeon_count := 3
 @export var dungeon_position_x_offset := Vector2i(5, 5)
@@ -24,8 +22,14 @@ enum Biomes {
 
 var packed_dungeon : PackedScene = preload(Filepaths.MAP_DUNGEON)
 var next_stage_dungeon_icon : Texture2D = preload(Filepaths.TEXTURE_NOT_FOUND)
+var selected_map_preset : MapPreset = null
 
 @onready var dungeon_parent = get_node("Map/Dungeons")
+
+
+func _enter_tree() -> void:
+	selected_map_preset = map_presets[LoadedRun.map_biome]
+
 
 func _ready() -> void:
 	if LoadedRun.map_generated:
@@ -38,14 +42,14 @@ func _ready() -> void:
 func _generate_map() -> void:
 	map_biome = Biomes.values()[LoadedRun.stage % Biomes.values().size()]
 	if shader_map:
-		var height_map : NoiseTexture2D = shader_map.material.get_shader_parameter("height_map")
+		var color_map : NoiseTexture2D = shader_map.material.get_shader_parameter("color_map")
 		var normal_map : NoiseTexture2D = shader_map.material.get_shader_parameter("normal_map")
-		height_map.noise.seed = randi()
-		height_map.color_ramp = shader_map_gradients[map_biome]
-		shader_map.material.set_shader_parameter("height_map", height_map)
-		normal_map.noise.seed = height_map.noise.seed
+		color_map.noise.seed = randi()
+		color_map.color_ramp = map_presets[map_biome].color_gradient
+		shader_map.material.set_shader_parameter("color_map", color_map)
+		normal_map.noise.seed = color_map.noise.seed
 		shader_map.material.set_shader_parameter("normal_map", normal_map)
-		LoadedRun.map_noise_seed = height_map.noise.seed
+		LoadedRun.map_noise_seed = color_map.noise.seed
 		#@warning_ignore("int_as_enum_without_cast")
 		LoadedRun.map_biome = map_biome
 	_generate_dungeons(dungeon_count)
@@ -57,7 +61,7 @@ func _generate_map() -> void:
 func _generate_dungeons(count : int) -> void:
 	for i in range(count):
 		var new_dungeon := packed_dungeon.instantiate()
-		new_dungeon.icon = dungeon_icons[map_biome]
+		new_dungeon.icon = map_presets[map_biome].dungeon_icon
 		var c : float = dungeon_parent.size.x / (count) * (i + 1)
 		new_dungeon.position.x = randi_range(c - dungeon_position_x_offset.x, c + dungeon_position_x_offset.y) - shader_map.size.x / (2 * (count + 1)) - new_dungeon.size.x / 2
 		new_dungeon.position.y = _get_dungeon_y(new_dungeon.position.x)
@@ -88,7 +92,7 @@ func _load_map() -> void:
 	if shader_map:
 		var height_map : NoiseTexture2D = shader_map.material.get_shader_parameter("height_map")
 		height_map.noise.seed = LoadedRun.map_noise_seed
-		height_map.color_ramp = shader_map_gradients[LoadedRun.map_biome]
+		height_map.color_ramp = map_presets[LoadedRun.map_biome].color_gradient
 		shader_map.material.set_shader_parameter("height_map", height_map)
 	_load_dungeons(LoadedRun.map_dungeons.size())
 	_generate_lines()
@@ -113,7 +117,7 @@ func _generate_lines() -> void:
 
 func _on_dungeon_selected(idx : int) -> void:
 	LoadedRun.active_dungeon_idx = idx
-	LoadedRun.active_dungeon_template = dungeon_templates[0]
+	LoadedRun.active_dungeon_template = map_presets[map_biome].dungeon_template
 	SceneManager.next_scene()
 
 
