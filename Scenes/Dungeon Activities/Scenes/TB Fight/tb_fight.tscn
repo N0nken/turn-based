@@ -1,22 +1,22 @@
 [gd_scene load_steps=27 format=3 uid="uid://cshr2j6cgmwge"]
 
 [ext_resource type="Script" uid="uid://d3xo1gyuyisis" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/tb_fight.gd" id="1_of3kh"]
-[ext_resource type="PackedScene" uid="uid://h8nyj1e74l0b" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Battlers/TB Player/tb_player.tscn" id="2_3wec6"]
-[ext_resource type="Script" uid="uid://oqdsypki5f0i" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Battlers/tb_ai_battler.gd" id="3_am6ux"]
+[ext_resource type="PackedScene" uid="uid://h8nyj1e74l0b" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Battlers/TB Player/tb_player.tscn" id="2_0bmpe"]
+[ext_resource type="Script" uid="uid://oqdsypki5f0i" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Battlers/tb_ai_battler.gd" id="3_bk830"]
+[ext_resource type="Shader" uid="uid://b7rujrfrknx7g" path="res://Shaders/hit_effect.gdshader" id="3_o8ob3"]
 [ext_resource type="Script" uid="uid://dgnknjvmkxi6l" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/tb_ui.gd" id="4_3ur25"]
-[ext_resource type="Shader" uid="uid://b7rujrfrknx7g" path="res://Shaders/hit_effect.gdshader" id="4_usgyn"]
-[ext_resource type="PackedScene" uid="uid://drmpyiwokjhyr" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/tb_ui_battler_hp.tscn" id="5_3ur25"]
 [ext_resource type="Script" uid="uid://cjxq8aivek6xo" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/accept_plan.gd" id="5_of3kh"]
 [ext_resource type="Script" uid="uid://urs2q34c06m2" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/tab_bar.gd" id="5_ws8c2"]
 [ext_resource type="FontFile" uid="uid://c2h2ioj5qcxdf" path="res://Assets/Fonts/Bescii-Mono.ttf" id="7_7gxsw"]
+[ext_resource type="PackedScene" uid="uid://drmpyiwokjhyr" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/tb_ui_battler_hp.tscn" id="8_o8ob3"]
 [ext_resource type="Texture2D" uid="uid://biqm226iyhlnf" path="res://Assets/Images/Icons/misc/checkmark.png" id="13_5rjq3"]
 [ext_resource type="Texture2D" uid="uid://bx8g5mydb27sp" path="res://Assets/Images/Icons/misc/16x16_skull.png" id="13_o4g54"]
 [ext_resource type="Script" uid="uid://b7n1xtn4kdner" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/info_box.gd" id="13_o8ob3"]
 [ext_resource type="Script" uid="uid://dpk20sucpv46k" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/tb_audio_stream_player.gd" id="17_5rjq3"]
 [ext_resource type="Texture2D" uid="uid://ckkl5netvo8e1" path="res://Assets/Images/Icons/misc/16x16_texture_not_found.png" id="17_7bk6h"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_usgyn"]
-shader = ExtResource("4_usgyn")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrsx0"]
+shader = ExtResource("3_o8ob3")
 shader_parameter/enabled = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd7f8"]
@@ -110,24 +110,21 @@ one_shot = true
 
 [node name="Battlers" type="Node" parent="."]
 
-[node name="TBPlayer" parent="Battlers" instance=ExtResource("2_3wec6")]
-position = Vector2(117, 107)
+[node name="TBPlayer" parent="Battlers" instance=ExtResource("2_0bmpe")]
+position = Vector2(118, 108)
 
-[node name="TBEnemy" type="Node2D" parent="Battlers" node_paths=PackedStringArray("sprite") groups=["TB_Battlers"]]
-material = SubResource("ShaderMaterial_usgyn")
-script = ExtResource("3_am6ux")
+[node name="TBEnemy" type="Node2D" parent="Battlers" node_paths=PackedStringArray("sprite")]
+material = SubResource("ShaderMaterial_nrsx0")
+script = ExtResource("3_bk830")
 sprite = NodePath("Sprite2D")
+
+[node name="LatestActionTimer" type="Timer" parent="Battlers/TBEnemy"]
 
 [node name="HitEffectTimer" type="Timer" parent="Battlers/TBEnemy"]
 wait_time = 0.1
 
-[node name="LatestActionTimer" type="Timer" parent="Battlers/TBEnemy"]
-wait_time = 0.5
-one_shot = true
-
 [node name="Sprite2D" type="Sprite2D" parent="Battlers/TBEnemy"]
 use_parent_material = true
-texture = ExtResource("17_7bk6h")
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("enemy")]
 layer = 2
@@ -351,24 +348,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8s5ah")
 
-[node name="TBBattlerHP" parent="UI/Control/BattleViewport" instance=ExtResource("5_3ur25")]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.867
-anchor_right = 0.75
-anchor_bottom = 1.0
-offset_top = -0.0499878
-offset_right = -7.62939e-06
-offset_bottom = 1.52588e-05
+[node name="TBBattlerHP2" parent="UI/Control/BattleViewport" instance=ExtResource("8_o8ob3")]
+offset_left = 38.0
+offset_top = 2.0
+offset_right = 158.0
+offset_bottom = 22.0
 
-[node name="TBBattlerHP2" parent="UI/Control/BattleViewport" instance=ExtResource("5_3ur25")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.25
-anchor_right = 1.0
-anchor_bottom = 0.133
-offset_right = 0.0
-offset_bottom = 0.0500011
+[node name="TBBattlerHP" parent="UI/Control/BattleViewport" instance=ExtResource("8_o8ob3")]
+offset_left = 2.0
+offset_top = 128.0
+offset_right = 122.0
+offset_bottom = 148.0
 
 [node name="PlayerOptions" type="Control" parent="UI/Control"]
 layout_mode = 1

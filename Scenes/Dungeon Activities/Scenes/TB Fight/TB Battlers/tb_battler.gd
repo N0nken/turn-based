@@ -35,9 +35,11 @@ var alive : bool = true
 var active : bool = false
 var combo_count := 0
 
+
 @onready var latest_action_timer : Timer = get_node("LatestActionTimer")
 @onready var hit_effect_timer : Timer = get_node("HitEffectTimer")
 @onready var health := max_health
+
 
 func _ready() -> void:
 	latest_action_timer.timeout.connect(_action_ended)
