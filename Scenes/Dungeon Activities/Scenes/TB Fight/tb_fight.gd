@@ -52,29 +52,42 @@ func _on_battler_finished_planning() -> void:
 
 
 func _execute_next_action() -> void:
+	if phase != Phases.EXECUTING:
+		return
+	
 	var fastest_battler : TB_Battler = null
 	if not (player_battler.active or enemy_battler.active) or end_round_early:
 		_end_round()
 		return
-	elif player_battler.active and not enemy_battler.active:
+		
+	var player_speed := player_battler.next_action_speed()
+	var enemy_speed := enemy_battler.next_action_speed()
+	
+	var _only_one_active := false
+	
+	if player_speed == -1 and enemy_speed == -1:
+		_end_round()
+		return
+	
+	if player_speed == -1 or enemy_speed == -1:
+		_only_one_active = true
+	
+	if player_speed >= enemy_speed:
 		fastest_battler = player_battler
-	elif enemy_battler.active and not player_battler.active:
+	elif enemy_speed:
 		fastest_battler = enemy_battler
-	else:
-		var player_speed : int = 0
-		if player_battler.planned_turns.size() > 0:
-			player_speed = player_battler.speed * player_battler.planned_turns[0].speed
-		var enemy_speed : int = 0
-		if enemy_battler.planned_turns.size() > 0:
-			enemy_speed = enemy_battler.speed * enemy_battler.planned_turns[0].speed
-		if player_speed >= enemy_speed:
-			fastest_battler = player_battler
+	
+	if fastest_battler == null:
+		_end_round()
+		return
+	
+	if _only_one_active:
+		fastest_battler.execute_next_action()
+	elif fastest_battler.status_effects.electrified > 0 and randf() > Constants.electrified_skip_chance:
+		if fastest_battler == player_battler:
+			enemy_battler.execute_next_action()
 		else:
-			fastest_battler = enemy_battler
-	if !fastest_battler:
-		_end_round()
-	elif fastest_battler.planned_turns.size() == 0:
-		_end_round()
+			player_battler.execute_next_action()
 	else:
 		fastest_battler.execute_next_action()
 
@@ -98,6 +111,7 @@ func _end_round() -> void:
 	player_battler.used_turn_plan_capacity = 0
 	enemy_battler.used_turn_plan_capacity = 0
 	enemy_battler.plan_turns()
+	_step_battler_status_effects()
 
 
 func _end_fight() -> void:
@@ -112,6 +126,12 @@ func _end_fight() -> void:
 	end_screen_timer.start()
 	if exit_state == ExitStates.PLAYER_WON:
 		LoadedRun.player.gold += enemy_battler.gold_drop
+
+
+func _step_battler_status_effects() -> void:
+	player_battler.step_status_effects()
+	enemy_battler.step_status_effects()
+
 
 func _on_end_screen_timer_timeout() -> void:
 	activity_ended.emit()

@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_2pd3l")
-function = "action_power * user_strength * (buffs + 1) / (target_defense * (debuffs + 1) + 1)"
+function = "action_power * user_strength * (buffs + 1) / (target_defense * (debuffs + 1))"
 variables = Array[String](["action_power", "user_strength", "target_defense", "buffs", "debuffs"])
 metadata/_custom_type_script = "uid://dtqk60bdwkv33"

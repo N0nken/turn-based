@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TB_BasicAttack" load_steps=3 format=3 uid="uid://dmn2jv7qpcmu5"]
+
+[ext_resource type="Texture2D" uid="uid://divrs8ljuilqa" path="res://Prefabs/Actions/Basics/Icons/quick_attack.png" id="1_ijl87"]
+[ext_resource type="Script" uid="uid://b5aj5o3a10npt" path="res://Prefabs/Actions/Basics/Scripts/tb_basic_attack.gd" id="2_6uels"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_6uels")
+cost = 5
+speed = 999
+action_name = "Quick Attack"
+power = 2
+target_self = false
+icon = ExtResource("1_ijl87")
+life_time = 0.5
+description = "Attack the enemy before they can react.
+
+Deals [color=red]LOW[/color] damage"
+icon_uid = "uid://divrs8ljuilqa"
+combo_type = 0
+metadata/_custom_type_script = "uid://b5aj5o3a10npt"

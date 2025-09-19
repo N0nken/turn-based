@@ -6,12 +6,21 @@ enum ComboTypes {
 	MAGIC,
 }
 
+enum Powers {
+	ZERO,
+	LOW,
+	LOW_MED,
+	MEDIUM,
+	MED_HIGH,
+	HIGH,
+}
+
 @export var action_name := ""
-@export var power := 0 # damage/buff% (negative to heal/debuff)
+@export var power := Powers.LOW # damage/buff% (negative to heal/debuff)
 @export var target_self := false
 @export var icon : Texture2D = null 
 @export var life_time := 0.5
-@export var description := ""
+@export_multiline var description := ""
 @export var icon_uid := ""
 @export var combo_type := ComboTypes.PHYSICAL
 
@@ -22,6 +31,8 @@ var damage_formula : Formula = null
 
 func _init() -> void:
 	damage_formula = load(Filepaths.DAMAGE_FORMULA)
+	if icon == null:
+		icon = load(Filepaths.TEXTURE_NOT_FOUND)
 
 func action() -> void:
 	pass

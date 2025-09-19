@@ -119,9 +119,11 @@ script = ExtResource("3_bk830")
 sprite = NodePath("Sprite2D")
 
 [node name="LatestActionTimer" type="Timer" parent="Battlers/TBEnemy"]
+one_shot = true
 
 [node name="HitEffectTimer" type="Timer" parent="Battlers/TBEnemy"]
 wait_time = 0.1
+one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Battlers/TBEnemy"]
 use_parent_material = true
@@ -353,12 +355,14 @@ offset_left = 38.0
 offset_top = 2.0
 offset_right = 158.0
 offset_bottom = 22.0
+left_aligned_status_effects = false
 
 [node name="TBBattlerHP" parent="UI/Control/BattleViewport" instance=ExtResource("8_o8ob3")]
 offset_left = 2.0
 offset_top = 128.0
 offset_right = 122.0
 offset_bottom = 148.0
+elevated_status_effects = true
 
 [node name="PlayerOptions" type="Control" parent="UI/Control"]
 layout_mode = 1

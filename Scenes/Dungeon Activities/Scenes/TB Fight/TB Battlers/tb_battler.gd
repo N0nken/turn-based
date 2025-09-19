@@ -12,6 +12,17 @@ signal damaged(damage : int)
 signal healed(heal : int)
 signal died
 
+# Status effects
+signal status_effect_ended(status_effect : StatusEffects)
+signal status_effect_applied(status_effect : StatusEffects)
+
+enum StatusEffects {
+	RAGE,
+	BURN,
+	FROZEN,
+	ELECTRIFIED,
+}
+
 const max_planned_turns := 5
 
 @export var battler_name := ""
@@ -34,6 +45,12 @@ var move_set : Array[TB_Action]
 var alive : bool = true
 var active : bool = false
 var combo_count := 0
+var status_effects : Dictionary[String, int] = {
+	"rage" : 0,
+	"burn" : 0,
+	"frozen" : 0,
+	"electrified" : 0,
+}
 
 
 @onready var latest_action_timer : Timer = get_node("LatestActionTimer")
@@ -48,6 +65,8 @@ func _ready() -> void:
 
 
 func damage(dmg : int) -> void:
+	if status_effects.rage:
+		dmg /= 2
 	health -= dmg
 	health = clamp(health, 0, max_health)
 	
@@ -74,9 +93,9 @@ func finish_planning() -> void:
 
 
 func execute_next_action() -> void:
-	latest_action_timer.start(planned_turns[0].life_time)
-	action_started.emit(planned_turns[0], self)
 	var next_action : TB_Action = planned_turns.pop_front()
+	latest_action_timer.start(next_action.life_time)
+	action_started.emit(next_action, self)
 	if next_action.target_self:
 		next_action.target = self
 	else:
@@ -90,10 +109,84 @@ func execute_next_action() -> void:
 		planned_turns_finished.emit()
 
 
+func next_action_speed() -> int:
+	if planned_turns.size() == 0 or not active or not alive:
+		return -1
+	var next_speed : int = planned_turns[0].speed * self.speed
+	if status_effects.frozen > 0:
+		next_speed /= 2
+	return next_speed
+
+
 func _action_ended() -> void:
 	action_ended.emit()
 
 
+# ---- Status Effects ----
+func apply_status_effect(status_effect : StatusEffects) -> void:
+	match status_effect:
+		StatusEffects.RAGE:
+			if status_effects.rage < Constants.STATUS_DURATIONS.rage:
+				status_effects.rage = Constants.STATUS_DURATIONS.rage
+				status_effect_applied.emit(StatusEffects.RAGE)
+		StatusEffects.BURN:
+			if status_effects.burn == 0:
+				status_effect_applied.emit(StatusEffects.BURN)
+			status_effects.burn += Constants.STATUS_DURATIONS.burn
+			
+		StatusEffects.FROZEN:
+			if status_effects.frozen == 0:
+				status_effect_applied.emit(StatusEffects.FROZEN)
+			status_effects.frozen += Constants.STATUS_DURATIONS.frozen
+			
+		StatusEffects.ELECTRIFIED:
+			if status_effects.electrified == 0:
+				status_effect_applied.emit(StatusEffects.ELECTRIFIED)
+			status_effects.electrified += Constants.STATUS_DURATIONS.electrified
+
+
+func step_status_effects() -> void:
+	_step_burn()
+	_step_frozen()
+	_step_electrified()
+	_step_rage()
+
+
+func _step_burn() -> void:
+	if status_effects.burn > 0:
+		self.damage(0)
+		status_effects.burn = clampi(status_effects.burn - 1, 0, Constants.STATUS_MAX_DURATIONS.burn)
+		
+		if status_effects.burn == 0:
+			status_effect_ended.emit(StatusEffects.BURN)
+
+
+func _step_frozen() -> void:
+	if status_effects.frozen > 0:
+		status_effects.frozen = clampi(status_effects.frozen - 1, 0, Constants.STATUS_MAX_DURATIONS.frozen)
+		
+		if status_effects.frozen == 0:
+			status_effect_ended.emit(StatusEffects.FROZEN)
+
+
+func _step_electrified() -> void:
+	if status_effects.electrified > 0:
+		if status_effects.frozen == 0:
+			status_effects.electrified = clampi(status_effects.electrified - 1, 0, Constants.STATUS_MAX_DURATIONS.electrified)
+		
+		if status_effects.electrified == 0:
+			status_effect_ended.emit(StatusEffects.ELECTRIFIED)
+
+
+func _step_rage() -> void:
+	if status_effects.rage > 0:
+		status_effects.rage = clampi(status_effects.rage - 1, 0, Constants.status_durations.rage)
+	
+		if status_effects.rage == 0:
+			status_effect_ended.emit(StatusEffects.RAGE)
+
+
+# ---- Signals ----
 func _on_damaged(_dmg : int) -> void:
 	hit_effect_timer.start()
 	self.material.set_shader_parameter("enabled", true)

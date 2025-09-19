@@ -43,11 +43,11 @@ class Player:
 	var battler_name := "Player"
 	var max_health := 10
 	var strength := 1
-	var speed := 1
+	var speed := 2
 	var defense := 1
 	var turn_plan_capacity := 10
 	var health := 0
-	var move_set : Array[String] = ["flee", "basic_attack", "quick_attack", "flee"]
+	var move_set : Array[String] = ["icicle", "ember", "lightning", "ice_lance"]
 	var backpack : Array[String] = []
 	var gold := 0
 

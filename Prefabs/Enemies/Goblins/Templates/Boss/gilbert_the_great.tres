@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Enemy" load_steps=7 format=3 uid="uid://b3anhbfewvkf1"]
 
-[ext_resource type="Script" uid="uid://ho8awdgl5gne" path="res://Prefabs/Actions/Scripts/tb_action.gd" id="1_2otsu"]
+[ext_resource type="Script" uid="uid://ho8awdgl5gne" path="res://Prefabs/Actions/tb_action.gd" id="1_2otsu"]
 [ext_resource type="Texture2D" uid="uid://3kqfprngbp5" path="res://Prefabs/Enemies/Goblins/Icons/Standard/rogue.png" id="1_cnrsl"]
 [ext_resource type="Script" uid="uid://bfcjq54rjttiy" path="res://Prefabs/Enemies/enemy.gd" id="2_buhyf"]
-[ext_resource type="Resource" uid="uid://b66fyi0u1xscw" path="res://Prefabs/Actions/Resources/Moves/basic_attack.tres" id="2_fy35b"]
-[ext_resource type="Resource" uid="uid://dmn2jv7qpcmu5" path="res://Prefabs/Actions/Resources/Moves/quick_attack.tres" id="3_cnrsl"]
+[ext_resource type="Resource" uid="uid://b66fyi0u1xscw" path="res://Prefabs/Actions/Basics/basic_attack.tres" id="2_fy35b"]
+[ext_resource type="Resource" uid="uid://dmn2jv7qpcmu5" path="res://Prefabs/Actions/Basics/quick_attack.tres" id="3_cnrsl"]
 [ext_resource type="Texture2D" uid="uid://d01hux4o624lh" path="res://Assets/Images/Icons/misc/triple_skull.png" id="6_dw6bc"]
 
 [resource]

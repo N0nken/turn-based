@@ -1,5 +1,5 @@
 Attacks
-	sciel set
+	light & dark set
 		Each attack either adds a light or dark stack or consumes stacks
 		
 		Moves
@@ -30,12 +30,89 @@ Attacks
 					deal 5% of self max hp as damage to self
 				
 			...
-				Deal damage according to missing user health
+				Deal 100% of users missing health as damage
 				
 				(eg. if at 5/15 hp -> deal 15 - 5 = 10 damage)
 			
-			...
+			Enrage
+				Gain rage status
+
+	elemental set
+		Attacks may apply elemental status effects
+		Attacks may gain buffs from elemental status effects
+		
+		Moves
+			Ember
+				Low fire damage
+				Low cost
+				High speed
 				
+				Apply burn
+
+			Fireball
+				High fire damage
+				High cost
+				Medium speed
+				
+				Apply burn
+
+			Icicle
+				Low ice damage
+				Low cost
+				High speed
+				
+				Apply frozen
+			
+			Ice Lance
+				High ice damage
+				High cost
+				Medium speed
+				
+				Apply frozen
+			
+			Shock
+				Low electric damage
+				Low cost
+				High speed
+				
+				Apply electrified
+			
+			Lightning
+				High electric damage
+				High cost
+				Medium speed
+				
+				Apply electrified
+			
+
+Status effects
+	Rage
+		doubles action power when below 35% hp
+		halves damage taken when below 10% hp
+		
+		lasts until next plan phase
+	
+	Burn
+		deal 10% of attack damage every turn
+		
+		on application
+			if target is frozen
+				deal 5% of target max health as damage
+				remove burn & frozen status effects
+	
+	Frozen
+		halve battler speed
+		100% more electric damage
+		
+		on application
+			if target is burning
+				deal 5% of target max health as damage
+				remove burn & frozen status effects
+	
+	Electrified
+		25% chance to skip turn
+		
+		paused when target is frozen
 
 Enemies
 	Monster types

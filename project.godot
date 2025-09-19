@@ -24,6 +24,7 @@ Commons="*res://System/Singletons/Commons.gd"
 CoconutCheck="*res://System/Singletons/coconut_check.gd"
 SceneManager="*res://System/Singletons/scene_manager.gd"
 InputMethod="*res://System/Singletons/input_method.gd"
+Constants="*res://System/Singletons/constants.gd"
 
 [debug]
 

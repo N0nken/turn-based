@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TB_ElectricAttack" load_steps=2 format=3 uid="uid://caryfl10cikqi"]
+
+[ext_resource type="Script" uid="uid://ncx38oyn7rxt" path="res://Prefabs/Actions/Elementals/Scripts/tb_electric_attack.gd" id="1_5o8pa"]
+
+[resource]
+script = ExtResource("1_5o8pa")
+cost = 1
+speed = 5
+action_name = "Shock"
+power = 1
+target_self = false
+life_time = 0.5
+description = "Shoot an electric shock at the enemy.
+
+Deals [color=red]LOW[/color] [color=yellow]electric[/color] damage.
+
+Applies [color=yellow]electrified[/color] on hit."
+icon_uid = ""
+combo_type = 1
+metadata/_custom_type_script = "uid://ncx38oyn7rxt"

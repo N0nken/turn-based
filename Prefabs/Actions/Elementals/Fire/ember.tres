@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TB_FireAttack" load_steps=2 format=3 uid="uid://debsgyd8uy0l6"]
+
+[ext_resource type="Script" uid="uid://bt5puwoyucsbq" path="res://Prefabs/Actions/Elementals/Scripts/tb_fire_attack.gd" id="1_8div4"]
+
+[resource]
+script = ExtResource("1_8div4")
+cost = 1
+speed = 5
+action_name = "Ember"
+power = 1
+target_self = false
+life_time = 0.5
+description = "Throw an ember at the enemy.
+
+Deals [color=red]LOW[/color] [color=#eb5234]fire[/color] damage.
+
+Applies [color=#eb5234]burn[/color] status on hit."
+icon_uid = ""
+combo_type = 1
+metadata/_custom_type_script = "uid://bt5puwoyucsbq"

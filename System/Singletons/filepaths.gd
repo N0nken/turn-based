@@ -30,6 +30,13 @@ const ATTACKS : Dictionary[String, String] = {
 	"flee" : "uid://43ehxfjvm01g",
 	"basic_attack" : "uid://b66fyi0u1xscw",
 	"quick_attack" : "uid://dmn2jv7qpcmu5",
+	"ember" : "uid://debsgyd8uy0l6",
+	"fireball" : "uid://b7e25378snpbd",
+	"icicle" : "uid://d1hw2ms6fm8il",
+	"ice_lance" : "uid://d3fppeagryklg",
+	"shock" : "uid://caryfl10cikqi",
+	"lightning" : "uid://b73vka806nri3",
+	"rage" : "uid://fojb35fg2cbl",
 }
 const ITEMS : Dictionary[String, String] = {
 	
@@ -51,3 +58,4 @@ const UI_INPUT_ICONS : Dictionary[String, String] = {
 	"controller" : "uid://0pea7mnq3nvk",
 }
 const DAMAGE_FORMULA := "uid://bau035drpimm2"
+const STATUS_EFFECT_ICON := "uid://3o8npagistqc"

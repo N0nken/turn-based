@@ -16,6 +16,7 @@ turn_plan_capacity = 10
 
 [node name="HitEffectTimer" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
 
 [node name="LatestActionTimer" type="Timer" parent="."]
 wait_time = 0.5

@@ -29,6 +29,7 @@ func _ready() -> void:
 	_set_battler_icon(enemy)
 	call_deferred("first_move_list_item_grab_focus")
 
+
 func load_player_move_set() -> void:
 	for i in range(player.move_set.size()):
 		var move := player.move_set[i]
@@ -68,7 +69,7 @@ func _on_action_started(_action : TB_Action, battler : TB_Battler):
 		parent_container = get_node("Control/PlannedMoves/Player/MarginContainer/ScrollContainer/HBoxContainer")
 	else:
 		parent_container = get_node("Control/PlannedMoves/Enemy/MarginContainer/ScrollContainer/HBoxContainer")
-	if parent_container.get_children().size() >= 1:
+	if parent_container.get_children().size() > 0:
 		parent_container.get_child(0).queue_free()
 
 

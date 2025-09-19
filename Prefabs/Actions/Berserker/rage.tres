@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TB_Rage" load_steps=2 format=3 uid="uid://fojb35fg2cbl"]
+
+[ext_resource type="Script" uid="uid://drjqh84dq6xo6" path="res://Prefabs/Actions/Berserker/Scripts/tb_rage.gd" id="1_8iylc"]
+
+[resource]
+script = ExtResource("1_8iylc")
+cost = 3
+speed = 3
+action_name = "Rage"
+power = 1
+target_self = true
+life_time = 0.5
+description = "Gain [color=red]RAGE[/color] status.
+[color=red]RAGE[/color] lasts until next plan phase.
+
+When [color=red]RAGE[/color] is active:
+- Deal [color=green]100% more[/color] damage.
+- Take [color=red]50% less[/color] damage."
+icon_uid = ""
+combo_type = 0
+metadata/_custom_type_script = "uid://drjqh84dq6xo6"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://divrs8ljuilqa"
-path="res://.godot/imported/quick_attack.png-73409fd398185320aa51be24d052d726.ctex"
+uid="uid://lymg310j1arq"
+path="res://.godot/imported/flee.png-725793f39b15290b2f181741c23faf3d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Prefabs/Actions/Icons/quick_attack.png"
-dest_files=["res://.godot/imported/quick_attack.png-73409fd398185320aa51be24d052d726.ctex"]
+source_file="res://Prefabs/Actions/Basics/Icons/flee.png"
+dest_files=["res://.godot/imported/flee.png-725793f39b15290b2f181741c23faf3d.ctex"]
 
 [params]
 

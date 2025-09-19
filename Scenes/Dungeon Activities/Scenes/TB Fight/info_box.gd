@@ -5,6 +5,8 @@ extends Control
 
 
 func update_header(icon_uid : String, item_name : String) -> void:
+	if icon_uid == null or icon_uid == "":
+		icon_uid = Filepaths.TEXTURE_NOT_FOUND
 	var formatted_header := header_template % [icon_uid, item_name]
 	get_node("Header").text = formatted_header
 
