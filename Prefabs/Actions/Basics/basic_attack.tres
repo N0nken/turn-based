@@ -8,6 +8,7 @@ resource_local_to_scene = true
 script = ExtResource("2_odenh")
 cost = 2
 speed = 2
+damage_type = 0
 action_name = "Basic Attack"
 power = 2
 target_self = false
@@ -16,6 +17,4 @@ life_time = 0.5
 description = "Attack the enemy with your weapon.
 
 Deals [color=red]MEDIUM[/color] damage."
-icon_uid = "uid://dnihvopt37wcy"
-combo_type = 0
 metadata/_custom_type_script = "uid://b5aj5o3a10npt"

@@ -26,21 +26,16 @@ enum StatusEffects {
 const max_planned_turns := 5
 
 @export var battler_name := ""
-@export var max_health := 0
-@export var strength := 1
-@export var speed := 1
-@export var defense := 1
-@export var turn_plan_capacity := 0
 @export var icon : Texture2D = null
 @export var gold_drop := 0
 @export var hurt_sound_effect : AudioStream = null
 @export var death_sound_effect : AudioStream = null
 @export var max_combo_count := 10
-
+@export var weapon : Weapon = null
+@export var armor : Armor = null
 
 var used_turn_plan_capacity := 0
-var planned_turns : Array[TB_Action] = []
-var move_set : Array[TB_Action]
+var planned_turns := Queue.new()
 
 var alive : bool = true
 var active : bool = false
@@ -55,7 +50,7 @@ var status_effects : Dictionary[String, int] = {
 
 @onready var latest_action_timer : Timer = get_node("LatestActionTimer")
 @onready var hit_effect_timer : Timer = get_node("HitEffectTimer")
-@onready var health := max_health
+@onready var health := armor.health
 
 
 func _ready() -> void:
@@ -64,23 +59,13 @@ func _ready() -> void:
 	hit_effect_timer.timeout.connect(_on_hit_effect_end)
 
 
-func damage(dmg : int) -> void:
-	if status_effects.rage:
-		dmg /= 2
-	health -= dmg
-	health = clamp(health, 0, max_health)
-	
-	if dmg > 0:
-		damaged.emit(dmg)
-	elif dmg < 0:
-		healed.emit(dmg)
-	if health <= 0:
-		died.emit()
+func damage(dmg : Damage) -> void:
+	armor.damage(dmg)
 
 
 func plan_action(action : TB_Action) -> bool:
 	if (planned_turns.size() == max_planned_turns
-	or used_turn_plan_capacity + action.cost > turn_plan_capacity):
+	or used_turn_plan_capacity + action.cost > weapon.turn_plan_capacity):
 		return false
 	planned_turns.append(action)
 	used_turn_plan_capacity += action.cost
@@ -112,7 +97,7 @@ func execute_next_action() -> void:
 func next_action_speed() -> int:
 	if planned_turns.size() == 0 or not active or not alive:
 		return -1
-	var next_speed : int = planned_turns[0].speed * self.speed
+	var next_speed : int = weapon.move_speed(planned_turns.peek())
 	if status_effects.frozen > 0:
 		next_speed /= 2
 	return next_speed
@@ -154,7 +139,7 @@ func step_status_effects() -> void:
 
 func _step_burn() -> void:
 	if status_effects.burn > 0:
-		self.damage(0)
+		self.damage(Damage.new(Damage.DamageTypes.PHYSICAL, 0))
 		status_effects.burn = clampi(status_effects.burn - 1, 0, Constants.STATUS_MAX_DURATIONS.burn)
 		
 		if status_effects.burn == 0:

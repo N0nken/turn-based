@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://cjs08c5f0tbkg"]
+
+[ext_resource type="Resource" uid="uid://fojb35fg2cbl" path="res://Prefabs/Actions/Berserker/rage.tres" id="1_4ehl3"]
+[ext_resource type="Script" uid="uid://cgnt0g2uiklwm" path="res://Prefabs/Equipment/weapon.gd" id="1_ger0t"]
+[ext_resource type="Resource" uid="uid://b66fyi0u1xscw" path="res://Prefabs/Actions/Basics/basic_attack.tres" id="2_ccvfq"]
+[ext_resource type="Resource" uid="uid://dmn2jv7qpcmu5" path="res://Prefabs/Actions/Basics/quick_attack.tres" id="3_fs5ck"]
+
+[resource]
+script = ExtResource("1_ger0t")
+move_1 = ExtResource("1_4ehl3")
+move_2 = ExtResource("2_ccvfq")
+move_3 = ExtResource("3_fs5ck")
+strength = 5
+speed = 1
+turn_plan_capacity = 10
+level = 1
+equipment_name = "Trainee's Battle Axe"
+description = "Standard issue battle axe often looted off deceased mercenaries by bandits."
+metadata/_custom_type_script = "uid://cgnt0g2uiklwm"

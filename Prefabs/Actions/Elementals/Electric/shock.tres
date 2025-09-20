@@ -6,6 +6,7 @@
 script = ExtResource("1_5o8pa")
 cost = 1
 speed = 5
+damage_type = 3
 action_name = "Shock"
 power = 1
 target_self = false

@@ -6,6 +6,7 @@
 script = ExtResource("1_5sxoa")
 cost = 5
 speed = 3
+damage_type = 2
 action_name = "Ice Lance"
 power = 5
 target_self = false

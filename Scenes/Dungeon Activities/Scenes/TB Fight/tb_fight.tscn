@@ -116,6 +116,10 @@ position = Vector2(118, 108)
 [node name="TBEnemy" type="Node2D" parent="Battlers" node_paths=PackedStringArray("sprite")]
 material = SubResource("ShaderMaterial_nrsx0")
 script = ExtResource("3_bk830")
+stat_bias = null
+battler_name = null
+gold_drop = null
+max_combo_count = null
 sprite = NodePath("Sprite2D")
 
 [node name="LatestActionTimer" type="Timer" parent="Battlers/TBEnemy"]
@@ -615,7 +619,6 @@ script = ExtResource("17_5rjq3")
 
 [connection signal="fight_ended" from="." to="UI" method="_on_fight_ended"]
 [connection signal="timeout" from="EndScreenTimer" to="." method="_on_end_screen_timer_timeout"]
-[connection signal="initialized" from="Battlers/TBEnemy" to="UI" method="_on_tb_enemy_initialized"]
 [connection signal="pressed" from="UI/Control/PlannedMoves/Player/Icon/MarginContainer/Confirm" to="UI/Control/PlannedMoves/Player/Icon/MarginContainer/Confirm" method="_on_pressed"]
 [connection signal="pressed" from="UI/Control/PlayerOptions/TabBar/MarginContainer/HBoxContainer/Moves" to="UI/Control/PlayerOptions/TabBar" method="_on_moves_pressed"]
 [connection signal="pressed" from="UI/Control/PlayerOptions/TabBar/MarginContainer/HBoxContainer/Items" to="UI/Control/PlayerOptions/TabBar" method="_on_items_pressed"]

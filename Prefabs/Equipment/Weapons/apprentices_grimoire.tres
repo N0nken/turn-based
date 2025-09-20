@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://m60umhv8gg7x"]
+
+[ext_resource type="Resource" uid="uid://caryfl10cikqi" path="res://Prefabs/Actions/Elementals/Electric/shock.tres" id="1_n473u"]
+[ext_resource type="Resource" uid="uid://debsgyd8uy0l6" path="res://Prefabs/Actions/Elementals/Fire/ember.tres" id="2_hcwrq"]
+[ext_resource type="Script" uid="uid://cgnt0g2uiklwm" path="res://Prefabs/Equipment/weapon.gd" id="2_pupwi"]
+[ext_resource type="Resource" uid="uid://d1hw2ms6fm8il" path="res://Prefabs/Actions/Elementals/Ice/icicle.tres" id="3_a4ysw"]
+
+[resource]
+script = ExtResource("2_pupwi")
+move_1 = ExtResource("1_n473u")
+move_2 = ExtResource("2_hcwrq")
+move_3 = ExtResource("3_a4ysw")
+strength = 2
+speed = 2
+turn_plan_capacity = 10
+level = 1
+equipment_name = "Apprentice's Grimoire"
+description = "Grimoire used by many apprentices across the world."
+metadata/_custom_type_script = "uid://cgnt0g2uiklwm"

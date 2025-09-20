@@ -6,6 +6,7 @@
 script = ExtResource("1_736n7")
 cost = 5
 speed = 3
+damage_type = 3
 action_name = "Lightning"
 power = 5
 target_self = false

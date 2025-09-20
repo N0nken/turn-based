@@ -6,6 +6,7 @@
 script = ExtResource("1_dklyc")
 cost = 5
 speed = 3
+damage_type = 1
 action_name = "Fireball"
 power = 5
 target_self = false

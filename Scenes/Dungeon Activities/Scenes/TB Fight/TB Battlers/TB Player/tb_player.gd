@@ -4,14 +4,9 @@ extends TB_Battler
 @export var backpack : Array[TB_Item] = []
 
 func _ready() -> void:
-	self.max_health = LoadedRun.player.max_health
-	self.health = LoadedRun.player.health
-	self.strength = LoadedRun.player.strength
-	self.speed = LoadedRun.player.speed
-	self.turn_plan_capacity = LoadedRun.player.turn_plan_capacity
+	self.weapon = LoadedRun.player.weapon
+	self.armor = LoadedRun.player.armor
 	self.battler_name = LoadedRun.player.battler_name
-	for move_code in LoadedRun.player.move_set:
-		self.move_set.append(load(Filepaths.ATTACKS[move_code]))
 	super()
 
 

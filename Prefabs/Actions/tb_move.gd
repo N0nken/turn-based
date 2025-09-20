@@ -21,3 +21,4 @@ enum Costs {
 
 @export var cost := Costs.LOW # turn plan capacity cost
 @export var speed := Speeds.LOW # determines turn order
+@export var damage_type := Damage.DamageTypes.PHYSICAL

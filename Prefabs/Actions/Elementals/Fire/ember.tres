@@ -6,6 +6,7 @@
 script = ExtResource("1_8div4")
 cost = 1
 speed = 5
+damage_type = 1
 action_name = "Ember"
 power = 1
 target_self = false

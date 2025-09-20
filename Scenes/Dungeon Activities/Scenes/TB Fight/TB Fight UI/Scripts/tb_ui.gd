@@ -31,8 +31,9 @@ func _ready() -> void:
 
 
 func load_player_move_set() -> void:
-	for i in range(player.move_set.size()):
-		var move := player.move_set[i]
+	var move_set : Array[TB_Move] = player.weapon.move_set
+	for i in range(move_set.size()):
+		var move := player.weapon.move_set[i]
 		var new_move_list_item = packed_move_list_item.instantiate()
 		new_move_list_item.action = move
 		new_move_list_item.pressed.connect(_on_action_selected)

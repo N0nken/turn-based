@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://bca2xscxg0hn"]
+
+[ext_resource type="Script" uid="uid://cgnt0g2uiklwm" path="res://Prefabs/Equipment/weapon.gd" id="1_tfran"]
+[ext_resource type="Resource" uid="uid://dmn2jv7qpcmu5" path="res://Prefabs/Actions/Basics/quick_attack.tres" id="1_vch1s"]
+[ext_resource type="Resource" uid="uid://43ehxfjvm01g" path="res://Prefabs/Actions/Basics/flee.tres" id="2_vka2f"]
+
+[resource]
+script = ExtResource("1_tfran")
+move_1 = ExtResource("1_vch1s")
+move_2 = ExtResource("2_vka2f")
+strength = 1
+speed = 5
+turn_plan_capacity = 10
+level = 1
+equipment_name = "Rogues Dagger"
+description = "Simple dagger commonly used by rogues."
+metadata/_custom_type_script = "uid://cgnt0g2uiklwm"

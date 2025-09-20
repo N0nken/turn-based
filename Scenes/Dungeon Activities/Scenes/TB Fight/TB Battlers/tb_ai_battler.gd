@@ -24,12 +24,10 @@ func initialize_battler() -> void:
 		duped_action.tb_fight_root = get_parent().get_parent()
 		self.move_set.append(duped_action)
 	self.battler_name = template.name
-	max_health = template.base_stats["health"] + stat_bias["health"] * LoadedRun.stage 
-	health = max_health
-	strength = template.base_stats["strength"] + stat_bias["strength"] * LoadedRun.stage
-	speed = template.base_stats["speed"] + stat_bias["speed"] * LoadedRun.stage
-	defense = template.base_stats["defense"] + stat_bias["defense"] * LoadedRun.stage
-	turn_plan_capacity = template.base_stats["turn_plan_capacity"] + stat_bias["turn_plan_capacity"] * LoadedRun.stage
+	self.armor = template.armor
+	self.weapon = template.weapon
+	self.armor.level *= LoadedRun.stage
+	self.weapon.level *= LoadedRun.stage
 	sprite.texture = template.sprite
 	sprite.position = sprite.texture.get_size() / 2.0
 	self.icon = template.icon
