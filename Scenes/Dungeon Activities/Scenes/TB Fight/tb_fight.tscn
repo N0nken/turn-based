@@ -1,22 +1,32 @@
-[gd_scene load_steps=27 format=3 uid="uid://cshr2j6cgmwge"]
+[gd_scene load_steps=33 format=3 uid="uid://cshr2j6cgmwge"]
 
-[ext_resource type="Script" uid="uid://d3xo1gyuyisis" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/tb_fight.gd" id="1_of3kh"]
-[ext_resource type="PackedScene" uid="uid://h8nyj1e74l0b" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Battlers/TB Player/tb_player.tscn" id="2_0bmpe"]
-[ext_resource type="Script" uid="uid://oqdsypki5f0i" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Battlers/tb_ai_battler.gd" id="3_bk830"]
-[ext_resource type="Shader" uid="uid://b7rujrfrknx7g" path="res://Shaders/hit_effect.gdshader" id="3_o8ob3"]
-[ext_resource type="Script" uid="uid://dgnknjvmkxi6l" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/tb_ui.gd" id="4_3ur25"]
-[ext_resource type="Script" uid="uid://cjxq8aivek6xo" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/accept_plan.gd" id="5_of3kh"]
+[ext_resource type="Script" uid="uid://d3xo1gyuyisis" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/Scripts/tb_fight.gd" id="1_of3kh"]
+[ext_resource type="Script" uid="uid://jab2cc5gvayb" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/Scripts/tb_player_battler.gd" id="2_0bmpe"]
+[ext_resource type="Script" uid="uid://b4b4oe3q5q6lf" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/Scripts/tb_sfx_player.gd" id="2_2k7w5"]
+[ext_resource type="Script" uid="uid://cfby5ld8ewf8q" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/Scripts/tb_ai_battler.gd" id="3_bk830"]
+[ext_resource type="Script" uid="uid://b3nepk0hw2nxb" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/planned_moves.gd" id="4_bk830"]
+[ext_resource type="PackedScene" uid="uid://bwx1jq7ot3v52" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/tb_battler_sprite.tscn" id="4_euv4l"]
+[ext_resource type="Script" uid="uid://bnm4714fxhlvf" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/tb_ui.gd" id="4_nrsx0"]
+[ext_resource type="Shader" uid="uid://b7rujrfrknx7g" path="res://Shaders/hit_effect.gdshader" id="5_euv4l"]
 [ext_resource type="Script" uid="uid://urs2q34c06m2" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/tab_bar.gd" id="5_ws8c2"]
 [ext_resource type="FontFile" uid="uid://c2h2ioj5qcxdf" path="res://Assets/Fonts/Bescii-Mono.ttf" id="7_7gxsw"]
-[ext_resource type="PackedScene" uid="uid://drmpyiwokjhyr" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/tb_ui_battler_hp.tscn" id="8_o8ob3"]
+[ext_resource type="PackedScene" uid="uid://drmpyiwokjhyr" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/battler_status_bar.tscn" id="8_o8ob3"]
+[ext_resource type="Script" uid="uid://0t60e0y4hub" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/battle_ended.gd" id="12_ahgua"]
+[ext_resource type="Script" uid="uid://dgmoon14hmydk" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/tabs.gd" id="12_o8ob3"]
 [ext_resource type="Texture2D" uid="uid://biqm226iyhlnf" path="res://Assets/Images/Icons/misc/checkmark.png" id="13_5rjq3"]
 [ext_resource type="Texture2D" uid="uid://bx8g5mydb27sp" path="res://Assets/Images/Icons/misc/16x16_skull.png" id="13_o4g54"]
-[ext_resource type="Script" uid="uid://b7n1xtn4kdner" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/info_box.gd" id="13_o8ob3"]
-[ext_resource type="Script" uid="uid://dpk20sucpv46k" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/tb_audio_stream_player.gd" id="17_5rjq3"]
 [ext_resource type="Texture2D" uid="uid://ckkl5netvo8e1" path="res://Assets/Images/Icons/misc/16x16_texture_not_found.png" id="17_7bk6h"]
+[ext_resource type="PackedScene" uid="uid://b2jnca6d4xbes" path="res://Prefabs/UI Elements/info_box.tscn" id="17_cesjh"]
+[ext_resource type="Script" uid="uid://d8rkwtgmsjxj" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/tb_info_box.gd" id="17_hosgt"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrsx0"]
-shader = ExtResource("3_o8ob3")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2k7w5"]
+resource_local_to_scene = true
+shader = ExtResource("5_euv4l")
+shader_parameter/enabled = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8a4p7"]
+resource_local_to_scene = true
+shader = ExtResource("5_euv4l")
 shader_parameter/enabled = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd7f8"]
@@ -42,6 +52,15 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_o8ob3"]
+script/source = "extends Control
+
+@export var player : TB_PlayerBattler = null
+
+func _on_pressed() -> void:
+	player.finish_planning()
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8s5ah"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -93,6 +112,9 @@ activity_args = {
 "is_boss_battle": false
 }
 
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("2_2k7w5")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, 90)
 
@@ -104,39 +126,42 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="EndScreenTimer" type="Timer" parent="."]
+[node name="Timers" type="Node" parent="."]
+
+[node name="EndScreenTimer" type="Timer" parent="Timers"]
 wait_time = 2.0
+one_shot = true
+
+[node name="ActionTimer" type="Timer" parent="Timers"]
+wait_time = 0.5
 one_shot = true
 
 [node name="Battlers" type="Node" parent="."]
 
-[node name="TBPlayer" parent="Battlers" instance=ExtResource("2_0bmpe")]
-position = Vector2(118, 108)
-
-[node name="TBEnemy" type="Node2D" parent="Battlers" node_paths=PackedStringArray("sprite")]
-material = SubResource("ShaderMaterial_nrsx0")
+[node name="Enemy" type="Node" parent="Battlers" node_paths=PackedStringArray("action_timer")]
 script = ExtResource("3_bk830")
-stat_bias = null
-battler_name = null
-gold_drop = null
-max_combo_count = null
-sprite = NodePath("Sprite2D")
+action_timer = NodePath("../../Timers/ActionTimer")
 
-[node name="LatestActionTimer" type="Timer" parent="Battlers/TBEnemy"]
-one_shot = true
+[node name="Player" type="Node" parent="Battlers" node_paths=PackedStringArray("action_timer")]
+script = ExtResource("2_0bmpe")
+action_timer = NodePath("../../Timers/ActionTimer")
 
-[node name="HitEffectTimer" type="Timer" parent="Battlers/TBEnemy"]
-wait_time = 0.1
-one_shot = true
+[node name="BattlerSprites" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Battlers/TBEnemy"]
-use_parent_material = true
+[node name="Enemy" parent="BattlerSprites" node_paths=PackedStringArray("tracked_battler") instance=ExtResource("4_euv4l")]
+material = SubResource("ShaderMaterial_2k7w5")
+position = Vector2(12, 12)
+tracked_battler = NodePath("../../Battlers/Enemy")
 
-[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("enemy")]
+[node name="Player" parent="BattlerSprites" node_paths=PackedStringArray("tracked_battler") instance=ExtResource("4_euv4l")]
+material = SubResource("ShaderMaterial_8a4p7")
+position = Vector2(147, 138)
+tracked_battler = NodePath("../../Battlers/Player")
+
+[node name="UI" type="CanvasLayer" parent="."]
 layer = 2
 follow_viewport_enabled = true
-script = ExtResource("4_3ur25")
-enemy = NodePath("../Battlers/TBEnemy")
+script = ExtResource("4_nrsx0")
 
 [node name="Control" type="Control" parent="UI"]
 texture_filter = 1
@@ -147,7 +172,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlannedMoves" type="Control" parent="UI/Control"]
+[node name="PlannedMoves" type="Control" parent="UI/Control" node_paths=PackedStringArray("_player_battler", "_enemy_battler")]
 layout_mode = 1
 anchor_top = 0.833
 anchor_right = 1.0
@@ -155,6 +180,9 @@ anchor_bottom = 1.0
 offset_top = 0.0599823
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_bk830")
+_player_battler = NodePath("../../../Battlers/Player")
+_enemy_battler = NodePath("../../../Battlers/Enemy")
 
 [node name="Enemy" type="Control" parent="UI/Control/PlannedMoves"]
 layout_mode = 1
@@ -223,6 +251,7 @@ theme_override_constants/margin_bottom = 2
 
 [node name="TextureRect" type="TextureRect" parent="UI/Control/PlannedMoves/Enemy/Icon/MarginContainer/MarginContainer"]
 layout_mode = 2
+texture = ExtResource("17_7bk6h")
 
 [node name="Dead" type="TextureRect" parent="UI/Control/PlannedMoves/Enemy/Icon/MarginContainer/MarginContainer"]
 visible = false
@@ -306,10 +335,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Confirm" type="Button" parent="UI/Control/PlannedMoves/Player/Icon/MarginContainer" node_paths=PackedStringArray("head_node")]
+[node name="Confirm" type="Button" parent="UI/Control/PlannedMoves/Player/Icon/MarginContainer" node_paths=PackedStringArray("player")]
 layout_mode = 2
-script = ExtResource("5_of3kh")
-head_node = NodePath("../../../../../../..")
+script = SubResource("GDScript_o8ob3")
+player = NodePath("../../../../../../../Battlers/Player")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Control/PlannedMoves/Player/Icon/MarginContainer"]
 layout_mode = 2
@@ -354,19 +383,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8s5ah")
 
-[node name="TBBattlerHP2" parent="UI/Control/BattleViewport" instance=ExtResource("8_o8ob3")]
+[node name="EnemyStatusBar" parent="UI/Control/BattleViewport" node_paths=PackedStringArray("tracked_battler") instance=ExtResource("8_o8ob3")]
 offset_left = 38.0
 offset_top = 2.0
 offset_right = 158.0
 offset_bottom = 22.0
 left_aligned_status_effects = false
+tracked_battler = NodePath("../../../../Battlers/Enemy")
 
-[node name="TBBattlerHP" parent="UI/Control/BattleViewport" instance=ExtResource("8_o8ob3")]
+[node name="PlayerStatusBar" parent="UI/Control/BattleViewport" node_paths=PackedStringArray("tracked_battler") instance=ExtResource("8_o8ob3")]
 offset_left = 2.0
 offset_top = 128.0
 offset_right = 122.0
 offset_bottom = 148.0
 elevated_status_effects = true
+tracked_battler = NodePath("../../../../Battlers/Player")
 
 [node name="PlayerOptions" type="Control" parent="UI/Control"]
 layout_mode = 1
@@ -401,6 +432,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1.52588e-05
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -423,6 +455,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_2nfjw")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_of3kh")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_oqv0d")
 theme_override_styles/normal = SubResource("StyleBoxFlat_oqv0d")
+disabled = true
 text = "Moves"
 icon = ExtResource("17_7bk6h")
 
@@ -445,7 +478,7 @@ text = "Items"
 icon = ExtResource("17_7bk6h")
 icon_alignment = 2
 
-[node name="Tabs" type="MarginContainer" parent="UI/Control/PlayerOptions"]
+[node name="Tabs" type="MarginContainer" parent="UI/Control/PlayerOptions" node_paths=PackedStringArray("_player_confirm_button", "_player_battler")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.012
@@ -461,6 +494,9 @@ theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 1
+script = ExtResource("12_o8ob3")
+_player_confirm_button = NodePath("../../PlannedMoves/Player/Icon/MarginContainer/Confirm")
+_player_battler = NodePath("../../../../Battlers/Player")
 
 [node name="Moves" type="Control" parent="UI/Control/PlayerOptions/Tabs"]
 layout_mode = 2
@@ -497,67 +533,17 @@ vertical_scroll_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="InfoBox" type="Control" parent="UI/Control"]
-modulate = Color(1, 1, 1, 0)
+[node name="InfoBox" parent="UI/Control" instance=ExtResource("17_cesjh")]
 layout_mode = 1
-anchor_right = 0.5
-anchor_bottom = 0.833
-offset_left = 6.0
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = -5.94
-scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(148, 138)
-script = ExtResource("13_o8ob3")
-header_template = "[img]%s[/img]%s"
-
-[node name="Panel" type="Panel" parent="UI/Control/InfoBox"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Header" type="RichTextLabel" parent="UI/Control/InfoBox"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.025
-anchor_top = 0.027
-anchor_right = 0.975
-anchor_bottom = 0.133
-offset_top = -0.0499997
-offset_bottom = 0.0500011
-theme_override_font_sizes/bold_italics_font_size = 8
-theme_override_font_sizes/italics_font_size = 8
-theme_override_font_sizes/mono_font_size = 8
-theme_override_font_sizes/normal_font_size = 8
-theme_override_font_sizes/bold_font_size = 8
-bbcode_enabled = true
-text = "[img]uid://ckkl5netvo8e1[/img]asas"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="Description" type="RichTextLabel" parent="UI/Control/InfoBox"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.027
-anchor_top = 0.21
-anchor_right = 0.973
-anchor_bottom = 0.971
-offset_left = 0.00399995
-offset_top = 0.0199986
-offset_right = -0.00401306
-offset_bottom = 0.00198364
-theme_override_constants/line_separation = 2
-theme_override_font_sizes/bold_italics_font_size = 8
-theme_override_font_sizes/italics_font_size = 8
-theme_override_font_sizes/mono_font_size = 8
-theme_override_font_sizes/normal_font_size = 8
-theme_override_font_sizes/bold_font_size = 8
-bbcode_enabled = true
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a placerat arcu. Sed mi quam, scelerisque eget convallis rhoncus"
-autowrap_mode = 2
+anchor_left = 0.019
+anchor_top = 0.033
+anchor_right = 0.481
+anchor_bottom = 0.8
+offset_left = -0.0800004
+offset_top = 0.0599999
+offset_right = 0.0799866
+script = ExtResource("17_hosgt")
+visibility_transition_time = 0.1
 
 [node name="BattleEnded" type="Control" parent="UI"]
 visible = false
@@ -568,6 +554,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("12_ahgua")
 
 [node name="CenterContainer" type="CenterContainer" parent="UI/BattleEnded"]
 layout_mode = 0
@@ -581,7 +568,7 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_j0k82")
 
-[node name="XPGain" type="Label" parent="UI/BattleEnded/CenterContainer/Panel"]
+[node name="GoldGain" type="Label" parent="UI/BattleEnded/CenterContainer/Panel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -614,11 +601,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Battle Won!"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-script = ExtResource("17_5rjq3")
-
-[connection signal="fight_ended" from="." to="UI" method="_on_fight_ended"]
-[connection signal="timeout" from="EndScreenTimer" to="." method="_on_end_screen_timer_timeout"]
+[connection signal="timeout" from="Timers/EndScreenTimer" to="." method="_on_end_screen_timer_timeout"]
+[connection signal="timeout" from="Timers/ActionTimer" to="." method="_on_action_timer_timeout"]
 [connection signal="pressed" from="UI/Control/PlannedMoves/Player/Icon/MarginContainer/Confirm" to="UI/Control/PlannedMoves/Player/Icon/MarginContainer/Confirm" method="_on_pressed"]
 [connection signal="pressed" from="UI/Control/PlayerOptions/TabBar/MarginContainer/HBoxContainer/Moves" to="UI/Control/PlayerOptions/TabBar" method="_on_moves_pressed"]
 [connection signal="pressed" from="UI/Control/PlayerOptions/TabBar/MarginContainer/HBoxContainer/Items" to="UI/Control/PlayerOptions/TabBar" method="_on_items_pressed"]

@@ -1,14 +1,157 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg2y6k4tjqjjm"]
+[gd_scene load_steps=17 format=3 uid="uid://dg2y6k4tjqjjm"]
 
+[ext_resource type="Script" uid="uid://citclmt4ut0eo" path="res://Scenes/Dungeon Activities/Scenes/Shop/Scripts/shop.gd" id="1_8mtnb"]
 [ext_resource type="PackedScene" uid="uid://cg5iaqsixmkke" path="res://Prefabs/Entities/Player/player_entity.tscn" id="1_l4dgy"]
+[ext_resource type="PackedScene" uid="uid://c81hn8fwoolin" path="res://Prefabs/Interactables/interaction_manager.tscn" id="1_vp1cv"]
+[ext_resource type="Script" uid="uid://choxfa71mdsbk" path="res://Prefabs/Interactables/Scripts/interactable.gd" id="2_nu5oq"]
+[ext_resource type="PackedScene" uid="uid://ciwdqi6womt0l" path="res://Prefabs/Interactables/interaction_label_collection.tscn" id="3_4eud6"]
+[ext_resource type="PackedScene" uid="uid://d17gy1m2xhe2w" path="res://Prefabs/Interactables/interactable_area.tscn" id="5_8mtnb"]
+[ext_resource type="Script" uid="uid://d1bgpnpwnsrm7" path="res://Scenes/Dungeon Activities/Scenes/Shop/Scripts/item_comparison.gd" id="7_k623p"]
+[ext_resource type="PackedScene" uid="uid://b2jnca6d4xbes" path="res://Prefabs/UI Elements/info_box.tscn" id="7_o74pv"]
+[ext_resource type="PackedScene" uid="uid://coa7c4q8gnqr2" path="res://Scenes/Dungeon Activities/Scenes/Shop/shop_list_item.tscn" id="8_njpwy"]
+[ext_resource type="Script" uid="uid://51b8fk4k3nkf" path="res://Scenes/Dungeon Activities/Scenes/Shop/Scripts/move_container.gd" id="9_4bdu3"]
 
-[node name="Shop" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nu5oq"]
 
-[node name="Background" type="CanvasLayer" parent="."]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mtnb"]
 
-[node name="MidGround" type="CanvasLayer" parent="."]
+[sub_resource type="InputEventAction" id="InputEventAction_k623p"]
+action = &"menu_confirm"
 
-[node name="PlayerEntity" parent="MidGround" instance=ExtResource("1_l4dgy")]
+[sub_resource type="Shortcut" id="Shortcut_njpwy"]
+events = [SubResource("InputEventAction_k623p")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_njpwy"]
+action = &"menu_back"
+
+[sub_resource type="Shortcut" id="Shortcut_4bdu3"]
+events = [SubResource("InputEventAction_njpwy")]
+
+[node name="Shop" type="Node" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_8mtnb")
+camera = NodePath("Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+
+[node name="InteractionManager" parent="." node_paths=PackedStringArray("player", "interaction_label_collection") instance=ExtResource("1_vp1cv")]
+player = NodePath("../PlayerEntity")
+interaction_label_collection = NodePath("../UI/Control/InteractionLabelCollection")
+
+[node name="UnifiedLabelPosition" type="Node2D" parent="InteractionManager"]
+position = Vector2(160, 160)
+
+[node name="ShopItems" type="Node2D" parent="."]
+
+[node name="ArmorInteractable" type="Node2D" parent="ShopItems" node_paths=PackedStringArray("interaction_manager", "hitbox", "label_position")]
+position = Vector2(159, 128)
+script = ExtResource("2_nu5oq")
+interaction_name = "Inspect Armor"
+interaction_manager = NodePath("../../InteractionManager")
+hitbox = NodePath("InteractableArea")
+label_position = NodePath("../../InteractionManager/UnifiedLabelPosition")
+
+[node name="InteractableArea" parent="ShopItems/ArmorInteractable" instance=ExtResource("5_8mtnb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopItems/ArmorInteractable/InteractableArea"]
+shape = SubResource("RectangleShape2D_nu5oq")
+
+[node name="WeaponInteractable" type="Node2D" parent="ShopItems" node_paths=PackedStringArray("interaction_manager", "hitbox", "label_position")]
+position = Vector2(86, 127)
+script = ExtResource("2_nu5oq")
+interaction_name = "Inspect Weapon"
+interaction_manager = NodePath("../../InteractionManager")
+hitbox = NodePath("InteractableArea")
+label_position = NodePath("../../InteractionManager/UnifiedLabelPosition")
+
+[node name="InteractableArea" parent="ShopItems/WeaponInteractable" instance=ExtResource("5_8mtnb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopItems/WeaponInteractable/InteractableArea"]
+shape = SubResource("RectangleShape2D_8mtnb")
+
+[node name="PlayerEntity" parent="." instance=ExtResource("1_l4dgy")]
 position = Vector2(8, 144)
 
-[node name="Foreground" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="InteractionLabelCollection" parent="UI/Control" instance=ExtResource("3_4eud6")]
+layout_mode = 1
+
+[node name="ItemComparison" type="Control" parent="UI/Control"]
+layout_mode = 1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 7.925
+anchor_bottom = 3.8
+script = ExtResource("7_k623p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/ItemComparison"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/ItemComparison/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="ShopItem" parent="UI/Control/ItemComparison/HBoxContainer/VBoxContainer" instance=ExtResource("8_njpwy")]
+layout_mode = 2
+
+[node name="shop_move_container" type="VBoxContainer" parent="UI/Control/ItemComparison/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+script = ExtResource("9_4bdu3")
+
+[node name="EquippedItem" parent="UI/Control/ItemComparison/HBoxContainer/VBoxContainer" instance=ExtResource("8_njpwy")]
+layout_mode = 2
+
+[node name="equipped_move_container" type="VBoxContainer" parent="UI/Control/ItemComparison/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+script = ExtResource("9_4bdu3")
+
+[node name="InfoBox" parent="UI/Control/ItemComparison/HBoxContainer" instance=ExtResource("7_o74pv")]
+custom_minimum_size = Vector2(148, 148)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="UI/Control/ItemComparison"]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 155.0
+offset_right = 82.0
+offset_bottom = 178.0
+shortcut = SubResource("Shortcut_njpwy")
+text = "Buy"
+
+[node name="Close" type="Button" parent="UI/Control/ItemComparison"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 155.0
+offset_right = 318.0
+offset_bottom = 178.0
+shortcut = SubResource("Shortcut_4bdu3")
+text = "Close"
+
+[connection signal="interacted" from="ShopItems/ArmorInteractable" to="." method="_on_armor_interactable_interacted"]
+[connection signal="interacted" from="ShopItems/WeaponInteractable" to="." method="_on_weapon_interactable_interacted"]
+[connection signal="comparison_closed" from="UI/Control/ItemComparison" to="." method="_on_item_comparison_comparison_closed"]
+[connection signal="pressed" from="UI/Control/ItemComparison/HBoxContainer/VBoxContainer/ShopItem" to="UI/Control/ItemComparison" method="_on_shop_item_pressed"]
+[connection signal="pressed" from="UI/Control/ItemComparison/HBoxContainer/VBoxContainer/EquippedItem" to="UI/Control/ItemComparison" method="_on_equipped_item_pressed"]
+[connection signal="button_down" from="UI/Control/ItemComparison/Button" to="UI/Control/ItemComparison" method="_on_button_button_down"]
+[connection signal="button_up" from="UI/Control/ItemComparison/Button" to="UI/Control/ItemComparison" method="_on_button_button_up"]
+[connection signal="pressed" from="UI/Control/ItemComparison/Close" to="UI/Control/ItemComparison" method="_on_close_pressed"]

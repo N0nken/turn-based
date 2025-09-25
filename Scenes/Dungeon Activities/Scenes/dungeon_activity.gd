@@ -5,5 +5,4 @@ extends Node
 signal activity_ended
 
 @export var camera : Camera2D = null
-
 @export var activity_args : Dictionary = {}

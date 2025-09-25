@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TB_EnemyTemplate" load_steps=6 format=3 uid="uid://dlp2q2t2wdihy"]
+
+[ext_resource type="Resource" uid="uid://bnvgap60hdx2a" path="res://Prefabs/Enemies/Goblins/Standard/Rogue/goblin_cape.tres" id="1_h1y7h"]
+[ext_resource type="Texture2D" uid="uid://3kqfprngbp5" path="res://Prefabs/Enemies/Goblins/Standard/Rogue/rogue_icon.png" id="2_8sc70"]
+[ext_resource type="Script" uid="uid://bfcjq54rjttiy" path="res://Prefabs/Enemies/enemy.gd" id="3_5lsg8"]
+[ext_resource type="Texture2D" uid="uid://cob3w4madsvat" path="res://Prefabs/Enemies/Goblins/Standard/Rogue/rogue_sprite.png" id="4_5i8of"]
+[ext_resource type="Resource" uid="uid://cjtihuwi5r8qp" path="res://Prefabs/Enemies/Goblins/Standard/Rogue/goblin_dagger.tres" id="5_vfu72"]
+
+[resource]
+script = ExtResource("3_5lsg8")
+name = "Goblin Rogue"
+armor = ExtResource("1_h1y7h")
+weapon = ExtResource("5_vfu72")
+sprite = ExtResource("4_5i8of")
+icon = ExtResource("2_8sc70")
+metadata/_custom_type_script = "uid://bfcjq54rjttiy"

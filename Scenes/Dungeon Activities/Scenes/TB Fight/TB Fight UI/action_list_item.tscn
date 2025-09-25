@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://eux26yax53op"]
+
+[ext_resource type="Texture2D" uid="uid://ckkl5netvo8e1" path="res://Assets/Images/Icons/misc/16x16_texture_not_found.png" id="1_f3hfj"]
+[ext_resource type="Script" uid="uid://eqihhn8fa54d" path="res://Scenes/Dungeon Activities/Scenes/TB Fight/TB Fight UI/Scripts/action_list_item.gd" id="2_fgvan"]
+
+[node name="ActionListItem" type="Button"]
+custom_minimum_size = Vector2(24, 24)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -12.0
+offset_right = 32.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "asdas"
+icon = ExtResource("1_f3hfj")
+script = ExtResource("2_fgvan")

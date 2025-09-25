@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4a4fwnusdhhi" path="res://Scenes/Dungeon Activities/Templates/Scripts/dungeon_node_template.gd" id="1_xxoj6"]
 [ext_resource type="Resource" uid="uid://cyc5rlfo5dl6r" path="res://Scenes/Dungeon Activities/Templates/Templates/standard_battle.tres" id="2_3ttsq"]
-[ext_resource type="Resource" uid="uid://dc3d8gr0advny" path="res://Prefabs/Enemies/Factions/goblins.tres" id="4_fd08q"]
+[ext_resource type="Resource" uid="uid://dc3d8gr0advny" path="res://Prefabs/Enemies/Goblins/goblins.tres" id="4_fd08q"]
 [ext_resource type="Script" uid="uid://bw3g8p3xptyeb" path="res://Prefabs/Dungeon Templates/dungeon_template.gd" id="5_oeyye"]
 
 [resource]

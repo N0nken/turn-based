@@ -24,3 +24,9 @@ const RAGE_DAMAGE_INCREASE_LIMIT := 0.35
 const RAGE_DAMAGE_INCREASE := 1
 const RAGE_DAMAGE_DECREASE_LIMIT := 0.3
 const RAGE_DAMAGE_DECREASE := 1
+
+# Gold drops
+const GOLD_DROPS : Dictionary[String, int] = {
+	"BOSS_BATTLE" : 5,
+	"STANDARD" : 1,
+}

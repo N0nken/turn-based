@@ -1,6 +1,8 @@
 class_name Queue
 extends RefCounted
 
+signal emptied
+
 var _head : _QueueNode
 var _tail : _QueueNode
 var _size := 0
@@ -21,6 +23,8 @@ func next() -> Variant:
 			next_node.child.parent = _head
 		else:
 			_tail = _head
+		if _size == 0:
+			emptied.emit()
 		return next_node.data
 	return null
 
@@ -47,13 +51,19 @@ func size() -> int:
 	return _size
 
 
+func clear() -> void:
+	_head.child = null
+	_tail = _head
+	_size = 0
+
+
 class _QueueNode:
 	var parent : _QueueNode
 	var child : _QueueNode
 	var data : Variant
 	
 	
-	func _init(data : Variant = null, parent : _QueueNode = null) -> void:
+	func _init(value : Variant = null, parent_node : _QueueNode = null) -> void:
 		self.child = null
-		self.parent = parent
-		self.data = data
+		self.parent = parent_node
+		self.data = value

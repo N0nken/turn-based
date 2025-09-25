@@ -35,7 +35,6 @@ func _physics_process(delta: float) -> void:
 				current_scene = target_scene_name
 				target_scene_name = ""
 			scene_loaded_mutex.unlock()
-			
 
 
 ## Set [param outcome] to target outcome scene for scenes with multiple outcomes

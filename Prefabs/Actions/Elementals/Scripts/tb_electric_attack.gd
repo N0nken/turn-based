@@ -10,7 +10,7 @@ func action() -> void:
 func get_buffs() -> int:
 	var buffs := super()
 	
-	if target.status_effects.frozen > 0:
+	if target.is_afflicted_by(TB_Battler.StatusEffects.FROZEN):
 		buffs += Constants.FROZEN_ELECTRICITY_BUFF
 	
 	return buffs
@@ -19,7 +19,7 @@ func get_buffs() -> int:
 func get_debuffs() -> int:
 	var debuffs := super()
 	
-	if target.status_effects.burn > 0:
+	if target.is_afflicted_by(TB_Battler.StatusEffects.BURN):
 		debuffs += Constants.BURN_ELECTRICITY_DEBUFF
 	
 	return debuffs

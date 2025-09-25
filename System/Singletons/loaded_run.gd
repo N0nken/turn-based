@@ -40,19 +40,19 @@ func next_stage() -> void:
 
 
 class Player:
-	var battler_name := "Player"
-	var max_health := 10
-	var strength := 1
-	var speed := 2
-	var defense := 1
-	var turn_plan_capacity := 10
-	var health := 0
-	var move_set : Array[String] = ["icicle", "ember", "lightning", "ice_lance"]
-	var backpack : Array[String] = []
-	var gold := 0
-
+	var tb_template : TB_BattlerTemplate
+	var health : int
+	var backpack : Array[String]
+	var gold : int
+	
 	func _init() -> void:
-		self.health = self.max_health
+		self.tb_template = TB_BattlerTemplate.new()
+		self.tb_template.name = "Player"
+		self.tb_template.armor = load(Filepaths.ARMORS.apprentices_robes)
+		self.tb_template.weapon = load(Filepaths.WEAPONS.apprentices_grimoire)
+		self.health = self.tb_template.armor.health
+		self.backpack = []
+		self.gold = 0
 
 
 class Dungeon:

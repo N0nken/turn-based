@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://coa7c4q8gnqr2"]
+
+[ext_resource type="Script" uid="uid://cppciqo1tjwkg" path="res://Scenes/Dungeon Activities/Scenes/Shop/Scripts/shop_list_item.gd" id="1_ducvy"]
+[ext_resource type="Texture2D" uid="uid://ckkl5netvo8e1" path="res://Assets/Images/Icons/misc/16x16_texture_not_found.png" id="1_hwd1n"]
+
+[node name="ShopListItem" type="Button"]
+custom_minimum_size = Vector2(24, 24)
+offset_right = 4.0
+offset_bottom = 4.0
+icon = ExtResource("1_hwd1n")
+script = ExtResource("1_ducvy")

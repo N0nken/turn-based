@@ -49,5 +49,6 @@ Button/styles/focus = SubResource("StyleBoxFlat_tx2jx")
 Button/styles/hover = SubResource("StyleBoxFlat_hqu26")
 Button/styles/normal = SubResource("StyleBoxFlat_rs677")
 Button/styles/pressed = SubResource("StyleBoxFlat_nk51q")
+Label/font_sizes/font_size = 8
 Panel/styles/panel = SubResource("StyleBoxFlat_whq3l")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)

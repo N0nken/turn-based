@@ -10,16 +10,33 @@ enum Powers {
 	HIGH,
 }
 
+enum Costs {
+	ZERO,
+	LOW,
+	LOW_MED,
+	MEDIUM,
+	MED_HIGH,
+	HIGH,
+}
+
+enum Speeds {
+	ZERO,
+	LOW,
+	LOW_MED,
+	MEDIUM,
+	MED_HIGH,
+	HIGH,
+}
+
 @export var action_name := ""
-@export var power := Powers.LOW # damage/buff% (negative to heal/debuff)
+@export var icon : Texture2D = null
+@export var power := Powers.LOW
 @export var target_self := false
-@export var icon : Texture2D = null 
 @export var life_time := 0.5
 @export_multiline var description := ""
 
-var tb_fight_root : TB_Fight = null
 var target : TB_Battler = null
-var parent_battler : TB_Battler = null
+var parent : TB_Battler = null
 
 
 func _init() -> void:

@@ -1,0 +1,2 @@
+class_name TB_Stunned
+extends TB_Action

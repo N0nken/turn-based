@@ -3,4 +3,4 @@ extends TB_Move
 
 
 func action() -> void:
-	target.damage(parent_battler.weapon.move_damage(self))
+	target.damage(parent.weapon.move_damage(self))

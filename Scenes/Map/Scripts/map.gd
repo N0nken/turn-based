@@ -90,10 +90,10 @@ func _get_dungeon_y(x : int) -> int:
 
 func _load_map() -> void:
 	if shader_map:
-		var height_map : NoiseTexture2D = shader_map.material.get_shader_parameter("height_map")
-		height_map.noise.seed = LoadedRun.map_noise_seed
-		height_map.color_ramp = map_presets[LoadedRun.map_biome].color_gradient
-		shader_map.material.set_shader_parameter("height_map", height_map)
+		var color_map : NoiseTexture2D = shader_map.material.get_shader_parameter("color_map")
+		color_map.noise.seed = LoadedRun.map_noise_seed
+		color_map.color_ramp = map_presets[LoadedRun.map_biome].color_gradient
+		shader_map.material.set_shader_parameter("color_map", color_map)
 	_load_dungeons(LoadedRun.map_dungeons.size())
 	_generate_lines()
 

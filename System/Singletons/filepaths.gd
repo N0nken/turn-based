@@ -26,6 +26,12 @@ const TB_FIGHT_UI_NODES : Dictionary[String, String] = {
 }
 
 # COMBAT
+const ARMORS : Dictionary[String, String] = {
+	"apprentices_robes" : "uid://cj15yuc7ktdao",
+}
+const WEAPONS : Dictionary[String, String] = {
+	"apprentices_grimoire" : "uid://m60umhv8gg7x",
+}
 const ATTACKS : Dictionary[String, String] = {
 	"flee" : "uid://43ehxfjvm01g",
 	"basic_attack" : "uid://b66fyi0u1xscw",
@@ -43,6 +49,9 @@ const ITEMS : Dictionary[String, String] = {
 }
 const ENEMIES : Dictionary[String, String] = {
 	"weak_goblin" : "uid://br37vntb3dyh0",
+}
+const MISC_ACTIONS : Dictionary[String, String] = {
+	"stunned" : "uid://2vuhobrpjp4x",
 }
 
 # MAP

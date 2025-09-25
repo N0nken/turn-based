@@ -16,7 +16,6 @@ acceleration = 100.0
 offset_left = -8.0
 offset_top = -32.0
 offset_right = 8.0
-color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)

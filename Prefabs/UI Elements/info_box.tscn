@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2jnca6d4xbes"]
+
+[ext_resource type="Script" uid="uid://b7n1xtn4kdner" path="res://Prefabs/UI Elements/info_box.gd" id="1_g7dj1"]
+[ext_resource type="Texture2D" uid="uid://ckkl5netvo8e1" path="res://Assets/Images/Icons/misc/16x16_texture_not_found.png" id="2_2iccp"]
+
+[node name="InfoBox" type="Control"]
+custom_minimum_size = Vector2(148, 138)
+layout_mode = 3
+anchor_right = 0.462
+anchor_bottom = 0.767
+offset_right = 0.160004
+offset_bottom = -0.0599976
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g7dj1")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.029
+anchor_right = 0.027
+anchor_bottom = 0.029
+offset_left = 0.00399971
+offset_top = -0.00200033
+offset_right = 20.004
+offset_bottom = 19.998
+
+[node name="MarginContainer" type="MarginContainer" parent="Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="Icon/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_2iccp")
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.176
+anchor_top = 0.043
+anchor_right = 0.946
+anchor_bottom = 0.167
+offset_left = -0.0480022
+offset_top = 0.066
+offset_right = -0.00801086
+offset_bottom = -0.0460033
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.21
+anchor_right = 0.973
+anchor_bottom = 0.971
+offset_left = 0.00399995
+offset_top = 0.0199986
+offset_right = -0.00401306
+offset_bottom = 0.00198364
+theme_override_constants/line_separation = 2
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a placerat arcu. Sed mi quam, scelerisque eget convallis rhoncus"
+autowrap_mode = 2

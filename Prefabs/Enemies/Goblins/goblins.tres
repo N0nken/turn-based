@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyFaction" load_steps=9 format=3 uid="uid://dc3d8gr0advny"]
+
+[ext_resource type="Script" uid="uid://bfcjq54rjttiy" path="res://Prefabs/Enemies/enemy.gd" id="1_kr6p1"]
+[ext_resource type="Script" uid="uid://c0i3lcmoa5fv7" path="res://Prefabs/Equipment/armor.gd" id="1_pcgy8"]
+[ext_resource type="Resource" uid="uid://bnvgap60hdx2a" path="res://Prefabs/Enemies/Goblins/Standard/Rogue/goblin_cape.tres" id="2_ncn84"]
+[ext_resource type="Resource" uid="uid://b3anhbfewvkf1" path="res://Prefabs/Enemies/Goblins/Boss/Gilbert The Great/gilbert_the_great.tres" id="2_yi2wp"]
+[ext_resource type="Resource" uid="uid://dlp2q2t2wdihy" path="res://Prefabs/Enemies/Goblins/Standard/Rogue/rogue.tres" id="3_t3k5r"]
+[ext_resource type="Script" uid="uid://cxqiqmgngx4qm" path="res://Prefabs/Enemies/enemy_faction.gd" id="4_nm5e5"]
+[ext_resource type="Script" uid="uid://cgnt0g2uiklwm" path="res://Prefabs/Equipment/weapon.gd" id="7_poiae"]
+[ext_resource type="Resource" uid="uid://cjtihuwi5r8qp" path="res://Prefabs/Enemies/Goblins/Standard/Rogue/goblin_dagger.tres" id="8_5wr52"]
+
+[resource]
+script = ExtResource("4_nm5e5")
+faction_name = "Goblins"
+enemies = Array[ExtResource("1_kr6p1")]([ExtResource("3_t3k5r")])
+bosses = Array[ExtResource("1_kr6p1")]([ExtResource("2_yi2wp")])
+armor_for_sale = Array[ExtResource("1_pcgy8")]([ExtResource("2_ncn84")])
+weapons_for_sale = Array[ExtResource("7_poiae")]([ExtResource("8_5wr52")])
+metadata/_custom_type_script = "uid://cxqiqmgngx4qm"

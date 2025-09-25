@@ -44,5 +44,5 @@ func _change_tab(to : String) -> void:
 		return
 	if actions_container.get_child_count() == 0:
 		return
-	var first_action : Button = actions_container.get_child(0).get_node("Button")
+	var first_action : Button = actions_container.get_child(0)
 	first_action.grab_focus()
