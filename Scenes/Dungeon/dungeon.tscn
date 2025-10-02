@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://ds7yu0m6t3fdx" path="res://Prefabs/Dungeon Templates/Templates/goblin.tres" id="2_pgi4i"]
 [ext_resource type="Script" uid="uid://cca1m5hu4ype7" path="res://Scenes/Dungeon/Scripts/dungeon_tree.gd" id="3_yjhow"]
 [ext_resource type="Script" uid="uid://2xsghu020h2i" path="res://Scenes/Dungeon/Scripts/camera_2d.gd" id="4_f2ske"]
-[ext_resource type="PackedScene" uid="uid://b3kra3ablwpel" path="res://Scenes/Dungeon Activities/Templates/dungeon_node.tscn" id="5_yj5q6"]
+[ext_resource type="PackedScene" uid="uid://b3kra3ablwpel" path="res://Prefabs/Dungeon Templates/dungeon_node.tscn" id="5_yj5q6"]
 [ext_resource type="Texture2D" uid="uid://c0conprn03r4g" path="res://Assets/Images/Icons/misc/16x16_cross.png" id="6_dfefj"]
 [ext_resource type="Script" uid="uid://6ympl5dgugq3" path="res://Scenes/Dungeon/Scripts/dungeon_activity_manager.gd" id="7_y8u1u"]
 

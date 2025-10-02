@@ -57,6 +57,17 @@ func clear() -> void:
 	_size = 0
 
 
+## Removes the last (most recently added) node in the queue
+func pop() -> Variant:
+	if size() > 0:
+		var node : _QueueNode = _tail
+		_tail = _tail.parent
+		_tail.child = null
+		_size -= 1
+		return node.data
+	return null
+
+
 class _QueueNode:
 	var parent : _QueueNode
 	var child : _QueueNode

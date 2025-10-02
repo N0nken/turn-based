@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://b3kra3ablwpel"]
+
+[ext_resource type="Script" uid="uid://nky03dkd21yd" path="res://Prefabs/Dungeon Templates/dungeon_node.gd" id="1_xiwrd"]
+[ext_resource type="Texture2D" uid="uid://ccna04omuucp8" path="res://Assets/Images/Icons/misc/lock.png" id="2_a7ho5"]
+[ext_resource type="Texture2D" uid="uid://biqm226iyhlnf" path="res://Assets/Images/Icons/misc/checkmark.png" id="3_4yxho"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ty36s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fcfhd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5tr8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d27tl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbxot"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_02pg7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o00vg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rerwu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2j4xy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h2mf3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ey74o"]
+
+[node name="DungeonNode" type="Control"]
+texture_filter = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -300.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(16, 16)
+script = ExtResource("1_xiwrd")
+
+[node name="IconContainer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(16, 16)
+
+[node name="Locked" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 24.0
+offset_bottom = 24.0
+texture = ExtResource("2_a7ho5")
+
+[node name="Cleared" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 24.0
+offset_bottom = 24.0
+texture = ExtResource("3_4yxho")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+pivot_offset = Vector2(16, 16)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ty36s")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_fcfhd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5tr8k")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_d27tl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_xbxot")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_02pg7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o00vg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_rerwu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2j4xy")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_h2mf3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ey74o")
+
+[node name="ConnectionTop" type="Node2D" parent="."]
+position = Vector2(10, 1)
+
+[node name="ConnectionBottom" type="Node2D" parent="."]
+position = Vector2(10, 19)
+
+[connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
+[connection signal="focus_exited" from="Button" to="." method="_on_button_focus_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

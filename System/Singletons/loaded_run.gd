@@ -42,7 +42,7 @@ func next_stage() -> void:
 class Player:
 	var tb_template : TB_BattlerTemplate
 	var health : int
-	var backpack : Array[String]
+	var backpack : Array[TB_Item]
 	var gold : int
 	
 	func _init() -> void:

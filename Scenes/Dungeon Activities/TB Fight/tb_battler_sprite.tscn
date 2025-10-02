@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwx1jq7ot3v52"]
+
+[ext_resource type="Texture2D" uid="uid://ckkl5netvo8e1" path="res://Assets/Images/Icons/misc/16x16_texture_not_found.png" id="1_c3l17"]
+[ext_resource type="Script" uid="uid://8x6j5wlv3uu" path="res://Scenes/Dungeon Activities/TB Fight/Scripts/tb_battler_sprite.gd" id="1_e0g1t"]
+[ext_resource type="Shader" uid="uid://b7rujrfrknx7g" path="res://Shaders/hit_effect.gdshader" id="1_iwjo0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iwjo0"]
+resource_local_to_scene = true
+shader = ExtResource("1_iwjo0")
+shader_parameter/enabled = false
+
+[node name="TBBattlerSprite" type="Node2D"]
+material = SubResource("ShaderMaterial_iwjo0")
+script = ExtResource("1_e0g1t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("1_c3l17")
+
+[node name="HurtEffectTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="HurtEffectTimer" to="." method="_on_hurt_effect_timer_timeout"]

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b4ch6ujflo5nb"]
+
+[node name="Healing" type="Node"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 115.0
+offset_top = 81.0
+offset_right = 219.0
+offset_bottom = 89.0
+text = "healing scene"

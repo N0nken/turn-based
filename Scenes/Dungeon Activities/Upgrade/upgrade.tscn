@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://t05q4c3gj1dq"]
+
+[node name="Upgrade" type="Node"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 115.0
+offset_top = 81.0
+offset_right = 219.0
+offset_bottom = 89.0
+text = "upgrade scene"

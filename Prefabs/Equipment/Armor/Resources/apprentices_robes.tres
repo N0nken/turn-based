@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ApprenticesRobes" load_steps=2 format=3 uid="uid://d4ledrqpv6piq"]
+
+[ext_resource type="Script" uid="uid://c26r3er65wj8n" path="res://Prefabs/Equipment/Armor/Scripts/apprentices_robes.gd" id="1_ncvms"]
+
+[resource]
+script = ExtResource("1_ncvms")
+health = 10
+defense = 2
+level = 1
+equipment_name = "Apprentice's Robes"
+shop_price = 2
+_description = "Robes infused with defensive magic to protect against elemental spells. Perfect for use by apprentice mages.
+
+Gain 10% damage resistance against [rainbow freq=1.0 sat=1.0 val=1.0 speed=0.7]elemental[/rainbow] attacks."
+metadata/_custom_type_script = "uid://c26r3er65wj8n"

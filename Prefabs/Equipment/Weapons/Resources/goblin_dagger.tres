@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://cjtihuwi5r8qp"]
+
+[ext_resource type="Script" uid="uid://b8yhfq8wrbtl" path="res://Prefabs/Actions/tb_move.gd" id="1_egg2w"]
+[ext_resource type="Resource" uid="uid://b66fyi0u1xscw" path="res://Prefabs/Actions/Moves/Basics/Resources/basic_attack.tres" id="1_kapiu"]
+[ext_resource type="Script" uid="uid://cgnt0g2uiklwm" path="res://Prefabs/Equipment/weapon.gd" id="1_wfyko"]
+[ext_resource type="Resource" uid="uid://dmn2jv7qpcmu5" path="res://Prefabs/Actions/Moves/Basics/Resources/quick_attack.tres" id="2_egg2w"]
+
+[resource]
+script = ExtResource("1_wfyko")
+strength = 1
+speed = 5
+turn_plan_capacity = 10
+move_set = Array[ExtResource("1_egg2w")]([ExtResource("1_kapiu"), ExtResource("2_egg2w")])
+level = 1
+equipment_name = "Goblin Dagger"
+_description = "Dagger commonly used by goblin rogues."
+metadata/_custom_type_script = "uid://cgnt0g2uiklwm"

@@ -5,6 +5,7 @@ extends TB_Action
 @export var speed := Speeds.LOW # determines turn order
 @export var damage_type := Damage.DamageTypes.PHYSICAL
 
+
 func get_buffs() -> int:
 	var buffs := 0
 	

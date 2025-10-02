@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TB_PotionOfHealing" load_steps=2 format=3 uid="uid://7g484s5n5w58"]
+
+[ext_resource type="Script" uid="uid://cvmk53jr7gghi" path="res://Prefabs/Actions/Items/Scripts/potion_of_healing.gd" id="1_8nhng"]
+
+[resource]
+script = ExtResource("1_8nhng")
+shop_price = 1
+action_name = "Potion of Healing"
+power = 0
+target_self = true
+life_time = 0.5
+description = "Heals user by 20% of max hp."
+metadata/_custom_type_script = "uid://cvmk53jr7gghi"

@@ -13,4 +13,12 @@ extends Resource
 }
 @export var double_branch_chance : float = 0.5
 @export var dungeon_nodes : Array[DungeonNodeTemplate] = []
+@export var common_nodes : Array[DungeonNodeTemplate] = []
+@export var rare_nodes : Array[DungeonNodeTemplate] = []
+@export var legendary_nodes : Array[DungeonNodeTemplate] = []
+
+@export var armor_for_sale : Array[Armor] = []
+@export var weapons_for_sale : Array[Weapon] = []
+@export var items_for_sale : Array[TB_Item] = []
+
 var boss_node : DungeonNodeTemplate = preload("uid://1c8lv20ara24")

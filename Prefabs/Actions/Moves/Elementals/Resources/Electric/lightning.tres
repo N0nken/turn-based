@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TB_ElectricAttack" load_steps=2 format=3 uid="uid://b73vka806nri3"]
+
+[ext_resource type="Script" uid="uid://ncx38oyn7rxt" path="res://Prefabs/Actions/Moves/Elementals/Scripts/Electric/tb_electric_attack.gd" id="1_736n7"]
+
+[resource]
+script = ExtResource("1_736n7")
+cost = 5
+speed = 3
+damage_type = 3
+action_name = "Lightning"
+power = 5
+target_self = false
+life_time = 0.5
+description = "Fire an arc of lightning at the enemy.
+
+Deals [color=red]HIGH[/color] [color=yellow]electric[/color] damage.
+
+Applies [color=yellow]electrified[/color] on hit."
+icon_uid = ""
+combo_type = 1
+metadata/_custom_type_script = "uid://ncx38oyn7rxt"

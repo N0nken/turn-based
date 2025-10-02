@@ -27,7 +27,7 @@ const TB_FIGHT_UI_NODES : Dictionary[String, String] = {
 
 # COMBAT
 const ARMORS : Dictionary[String, String] = {
-	"apprentices_robes" : "uid://cj15yuc7ktdao",
+	"apprentices_robes" : "uid://d4ledrqpv6piq",
 }
 const WEAPONS : Dictionary[String, String] = {
 	"apprentices_grimoire" : "uid://m60umhv8gg7x",
@@ -68,3 +68,4 @@ const UI_INPUT_ICONS : Dictionary[String, String] = {
 }
 const DAMAGE_FORMULA := "uid://bau035drpimm2"
 const STATUS_EFFECT_ICON := "uid://3o8npagistqc"
+const TB_MINIGAME_COLOR_RECT := "uid://0fiswxfnslrx"

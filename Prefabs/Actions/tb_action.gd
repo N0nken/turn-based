@@ -32,7 +32,8 @@ enum Speeds {
 @export var icon : Texture2D = null
 @export var power := Powers.LOW
 @export var target_self := false
-@export var life_time := 0.5
+@export var life_time := 1.0
+@export var _minigame_instructions : TB_MinigameInstructionSet
 @export_multiline var description := ""
 
 var target : TB_Battler = null
@@ -44,5 +45,9 @@ func _init() -> void:
 		icon = load(Filepaths.TEXTURE_NOT_FOUND)
 
 
-func action() -> void:
+func action(efficiency : float) -> void:
 	pass
+
+
+func get_minigame_instructions() -> TB_MinigameInstructionSet:
+	return _minigame_instructions

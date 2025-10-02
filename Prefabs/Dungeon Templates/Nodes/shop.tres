@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DungeonNodeTemplate" load_steps=3 format=3 uid="uid://cy4kb1gusp2tc"]
+
+[ext_resource type="Script" uid="uid://4a4fwnusdhhi" path="res://Prefabs/Dungeon Templates/dungeon_node_template.gd" id="1_3v7cj"]
+[ext_resource type="Texture2D" uid="uid://be776of2oq1uj" path="res://Assets/Images/Icons/Dungeon Node Icons/shop.png" id="1_ys742"]
+
+[resource]
+script = ExtResource("1_3v7cj")
+name = "Shop"
+icon = ExtResource("1_ys742")
+target_activity = "uid://dg2y6k4tjqjjm"
+activity_args = {}
+metadata/_custom_type_script = "uid://4a4fwnusdhhi"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DungeonNodeTemplate" load_steps=3 format=3 uid="uid://1c8lv20ara24"]
+
+[ext_resource type="Texture2D" uid="uid://d01hux4o624lh" path="res://Assets/Images/Icons/Dungeon Node Icons/boss_battle.png" id="1_ag4cw"]
+[ext_resource type="Script" uid="uid://4a4fwnusdhhi" path="res://Prefabs/Dungeon Templates/dungeon_node_template.gd" id="2_i7qcd"]
+
+[resource]
+script = ExtResource("2_i7qcd")
+name = "Boss Battle"
+icon = ExtResource("1_ag4cw")
+target_activity = "uid://cshr2j6cgmwge"
+activity_args = {
+"is_boss_battle": true
+}
+metadata/_custom_type_script = "uid://4a4fwnusdhhi"

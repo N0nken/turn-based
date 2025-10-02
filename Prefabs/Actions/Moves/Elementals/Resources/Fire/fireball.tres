@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TB_FireAttack" load_steps=2 format=3 uid="uid://b7e25378snpbd"]
+
+[ext_resource type="Script" uid="uid://bt5puwoyucsbq" path="res://Prefabs/Actions/Moves/Elementals/Scripts/Fire/tb_fire_attack.gd" id="1_dklyc"]
+
+[resource]
+script = ExtResource("1_dklyc")
+cost = 5
+speed = 3
+damage_type = 1
+action_name = "Fireball"
+power = 5
+target_self = false
+life_time = 0.5
+description = "Shoot a fireball at the enemy.
+
+Deals [color=red]LOW[/color] [color=#eb5234]fire[/color] damage.
+
+Applies [color=#eb5234]burn[/color] status on hit."
+icon_uid = ""
+combo_type = 1
+metadata/_custom_type_script = "uid://bt5puwoyucsbq"

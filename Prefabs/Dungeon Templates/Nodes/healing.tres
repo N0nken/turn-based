@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DungeonNodeTemplate" load_steps=3 format=3 uid="uid://byo2jy5vye3xn"]
+
+[ext_resource type="Script" uid="uid://4a4fwnusdhhi" path="res://Prefabs/Dungeon Templates/dungeon_node_template.gd" id="1_apgki"]
+[ext_resource type="Texture2D" uid="uid://cmu2lfo3f4c7i" path="res://Assets/Images/Icons/Dungeon Node Icons/healing.png" id="1_jed41"]
+
+[resource]
+script = ExtResource("1_apgki")
+name = "Healing"
+icon = ExtResource("1_jed41")
+target_activity = "uid://b4ch6ujflo5nb"
+activity_args = {}
+metadata/_custom_type_script = "uid://4a4fwnusdhhi"

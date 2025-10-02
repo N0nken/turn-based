@@ -1,0 +1,13 @@
+class_name TB_FireAttack
+extends TB_BasicAttack
+
+func action(efficiency : float) -> void:
+	super(efficiency)
+	
+	if target.is_afflicted_by(TB_Battler.StatusEffects.FROZEN):
+		var explosion_damage := Damage.new(Damage.DamageTypes.FIRE, target.armor.health * Constants.BURN_FROZEN_EXPLOSION_DAMAGE)
+		target.damage(explosion_damage)
+		target.clear_status_effect(TB_Battler.StatusEffects.BURN)
+		target.clear_status_effect(TB_Battler.StatusEffects.FROZEN)
+	else:
+		target.apply_status_effect(TB_Battler.StatusEffects.BURN)

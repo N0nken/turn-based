@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DungeonNodeTemplate" load_steps=3 format=3 uid="uid://ddgj6b1q1sxc6"]
+
+[ext_resource type="Texture2D" uid="uid://c2y6ijktmavng" path="res://Assets/Images/Icons/Dungeon Node Icons/upgrade.png" id="1_bwf4v"]
+[ext_resource type="Script" uid="uid://4a4fwnusdhhi" path="res://Prefabs/Dungeon Templates/dungeon_node_template.gd" id="2_phhf0"]
+
+[resource]
+script = ExtResource("2_phhf0")
+name = "Upgrade"
+icon = ExtResource("1_bwf4v")
+target_activity = "uid://t05q4c3gj1dq"
+activity_args = {}
+metadata/_custom_type_script = "uid://4a4fwnusdhhi"

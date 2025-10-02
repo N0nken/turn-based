@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cfhwyrwcn4ret" path="res://Scenes/Map/Scripts/map_day_manager.gd" id="11_4a6f5"]
 [ext_resource type="Shader" uid="uid://bepte00y8bbhi" path="res://Scenes/Map/Scripts/real_time_lighting_map.gdshader" id="12_4a6f5"]
 [ext_resource type="FastNoiseLite" uid="uid://bnoycts8is0l3" path="res://Prefabs/Map Presets/map_noise.tres" id="12_8uruf"]
-[ext_resource type="Texture2D" uid="uid://bx8g5mydb27sp" path="res://Assets/Images/Icons/misc/16x16_skull.png" id="14_4f523"]
+[ext_resource type="Texture2D" uid="uid://bx8g5mydb27sp" path="res://Assets/Images/Icons/Dungeon Node Icons/standard_battle.png" id="14_4f523"]
 [ext_resource type="Shader" uid="uid://bd8qdi12hepsn" path="res://Scenes/Map/Scripts/map_cloud.gdshader" id="14_k0edg"]
 
 [sub_resource type="Curve" id="Curve_4a6f5"]

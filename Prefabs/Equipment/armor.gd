@@ -8,12 +8,15 @@ extends Equipment
 	get:
 		return defense * level
 
-var defense_buffs := 0
+var defense_buffs := 0.0
 
 
-func damage(damage_instance : Damage) -> int:
-	var dmg : int = ceil(float(damage_instance.damage) / float((defense * (defense_buffs + 1) + 1)))
-	return dmg
+func damage(damage_instance : Damage, efficiency : float = 1.0) -> int:
+	var new_defense_buffs := _get_defense_buffs(damage_instance)
+	defense_buffs += new_defense_buffs
+	var dmg : float = float(damage_instance.damage) / float((defense * (defense_buffs + 1) + 1))
+	defense_buffs -= new_defense_buffs
+	return int(ceil(dmg * efficiency))
 
 
 func _get_stringified_stats() -> String:
@@ -21,3 +24,7 @@ func _get_stringified_stats() -> String:
 	result += "HP : " + str(health) + "\n"
 	result += "Def: " + str(defense)
 	return result
+
+
+func _get_defense_buffs(_damage_instance : Damage) -> float:
+	return 0.0

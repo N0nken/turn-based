@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://coa7c4q8gnqr2"]
+
+[ext_resource type="Script" uid="uid://cppciqo1tjwkg" path="res://Scenes/Dungeon Activities/Shop/Scripts/shop_list_item.gd" id="1_ducvy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ducvy"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ducvy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlbvh"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yn4ok"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqyuv"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwd1n"]
+bg_color = Color(0, 0, 0, 0)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmkni"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="ShopListItem" type="Button"]
+custom_minimum_size = Vector2(36, 36)
+offset_right = 4.0
+offset_bottom = 4.0
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_ducvy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ducvy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_mlbvh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yn4ok")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_aqyuv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hwd1n")
+icon_alignment = 1
+script = ExtResource("1_ducvy")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lmkni")

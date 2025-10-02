@@ -16,10 +16,10 @@ extends Equipment
 var damage_buffs := 0
 
 
-func move_damage(move : TB_Move) -> Damage:
+func move_damage(move : TB_Move, efficiency : float = 1.0) -> Damage:
 	var move_specific_buffs : int = move.get_buffs()
 	var total_buffs := move_specific_buffs + damage_buffs + _weapon_specific_damage_buffs(move)
-	return Damage.new(move.damage_type, self.strength * move.power * (total_buffs + 1))
+	return Damage.new(move.damage_type, self.strength * move.power * (total_buffs + 1) * efficiency)
 
 
 func move_speed(move : TB_Move) -> int:

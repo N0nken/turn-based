@@ -168,7 +168,7 @@ func _apply_node_templates(template : DungeonTemplate) -> void:
 				node.node_template = template.boss_node
 				node.update_icon()
 				continue
-			var selected_template = template.dungeon_nodes.pick_random()
+			var selected_template := _select_node_template()
 			if selected_template.name == "exit":
 				node.branches = []
 			node.node_template = selected_template
@@ -227,6 +227,19 @@ func _reorder_children_after_parents(parent_layer_head) -> void:
 	for parent in parent_layer_head.get_children():
 		for child in parent.branches:
 			child.get_parent().move_child(child, -1)
+
+
+func _select_node_template() -> DungeonNodeTemplate:
+	var selected_node_template : DungeonNodeTemplate = null
+	var rarity := randf()
+	prints(rarity, Constants.COMMON_NODE_CHANCE, Constants.RARE_NODE_CHANCE)
+	if rarity < Constants.COMMON_NODE_CHANCE:
+		selected_node_template = active_template.common_nodes.pick_random()
+	elif rarity < Constants.RARE_NODE_CHANCE:
+		selected_node_template = active_template.rare_nodes.pick_random()
+	else: #if rarity < Constants.LEGENDARY_NODE_CHANCE:
+		selected_node_template = active_template.legendary_nodes.pick_random()
+	return selected_node_template
 
 
 func next_node(current_node : DungeonNode) -> void:

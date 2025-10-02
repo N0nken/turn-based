@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://b7s13h7aifibx"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://b7s13h7aifibx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tx2jx"]
 bg_color = Color(1, 1, 1, 1)
@@ -38,6 +38,17 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.9, 0.9, 0.9, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02yda"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_limub"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
@@ -52,3 +63,10 @@ Button/styles/pressed = SubResource("StyleBoxFlat_nk51q")
 Label/font_sizes/font_size = 8
 Panel/styles/panel = SubResource("StyleBoxFlat_whq3l")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+TabBar/colors/drop_mark_color = Color(1, 1, 1, 1)
+TabBar/colors/font_hovered_color = Color(1, 1, 1, 1)
+TabBar/colors/font_selected_color = Color(1, 1, 1, 1)
+TabBar/colors/font_unselected_color = Color(1, 1, 1, 1)
+TabBar/font_sizes/font_size = 8
+TabBar/styles/tab_selected = SubResource("StyleBoxFlat_02yda")
+TabBar/styles/tab_unselected = SubResource("StyleBoxFlat_limub")

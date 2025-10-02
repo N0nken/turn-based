@@ -6,7 +6,14 @@ enum DamageTypes {
 	FIRE,
 	ICE,
 	ELECTRIC,
+	HEALING,
 }
+
+const ELEMENTAL_DAMAGE_TYPES : Array[DamageTypes] = [
+	DamageTypes.FIRE,
+	DamageTypes.ICE,
+	DamageTypes.ELECTRIC,
+]
 
 static var _damage_colors : Dictionary[DamageTypes, String] = {
 	DamageTypes.PHYSICAL : "#cccccc",

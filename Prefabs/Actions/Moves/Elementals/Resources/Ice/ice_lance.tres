@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TB_IceAttack" load_steps=2 format=3 uid="uid://d3fppeagryklg"]
+
+[ext_resource type="Script" uid="uid://do2u84rsb8mif" path="res://Prefabs/Actions/Moves/Elementals/Scripts/Ice/tb_ice_attack.gd" id="1_5sxoa"]
+
+[resource]
+script = ExtResource("1_5sxoa")
+cost = 5
+speed = 3
+damage_type = 2
+action_name = "Ice Lance"
+power = 5
+target_self = false
+life_time = 0.5
+description = "Throw an ice lance at the enemy.
+
+Deals [color=red]HIGH[/color] [color=#7df0ff]ice[/color] damage.
+
+Applies [color=#7df0ff]frozen[/color] on hit."
+icon_uid = ""
+combo_type = 0
+metadata/_custom_type_script = "uid://do2u84rsb8mif"
