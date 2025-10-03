@@ -45,7 +45,7 @@ func _init() -> void:
 		icon = load(Filepaths.TEXTURE_NOT_FOUND)
 
 
-func action(efficiency : float) -> void:
+func action(_efficiency : float) -> void:
 	pass
 
 

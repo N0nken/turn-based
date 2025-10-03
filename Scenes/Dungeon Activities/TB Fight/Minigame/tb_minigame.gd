@@ -126,7 +126,7 @@ func _update_visuals() -> void:
 		else:
 			target_container = horizontal_container
 		var target_panel : Panel = target_container.get_child(square.get_progress())
-		var new_position = target_panel.global_position# + target_panel.size / 2.0
+		var new_position = target_panel.global_position
 		
 		if not (square.get_progress() == 0 or square.get_progress() == 6):
 			var distance_tween := get_tree().create_tween()

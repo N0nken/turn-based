@@ -75,7 +75,7 @@ border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_16yw2"]
 shader = ExtResource("13_p18xs")
-shader_parameter/enabled = true
+shader_parameter/enabled = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ej0fc"]
 bg_color = Color(0, 0, 0, 1)
@@ -442,6 +442,7 @@ elevated_status_effects = true
 tracked_battler = NodePath("../../../../../Battlers/Player")
 
 [node name="Minigame" type="Control" parent="UI/Control/BattleViewport"]
+visible = false
 z_index = 10
 material = SubResource("ShaderMaterial_16yw2")
 layout_mode = 1
@@ -453,7 +454,7 @@ grow_vertical = 2
 script = ExtResource("14_16yw2")
 
 [node name="TickRate" type="Timer" parent="UI/Control/BattleViewport/Minigame"]
-wait_time = 0.75
+wait_time = 0.5
 one_shot = true
 
 [node name="Background" type="Panel" parent="UI/Control/BattleViewport/Minigame"]
@@ -838,6 +839,7 @@ text = "Battle Won!"
 [connection signal="timeout" from="Timers/EndScreenTimer" to="." method="_on_end_screen_timer_timeout"]
 [connection signal="timeout" from="Timers/ActionTimer" to="." method="_on_action_timer_timeout"]
 [connection signal="pressed" from="UI/Control/PlannedMoves/Player/Icon/MarginContainer/Confirm" to="UI/Control/PlannedMoves/Player/Icon/MarginContainer/Confirm" method="_on_pressed"]
+[connection signal="visibility_changed" from="UI/Control/BattleViewport/Minigame" to="UI" method="_on_minigame_visibility_changed"]
 [connection signal="timeout" from="UI/Control/BattleViewport/Minigame/TickRate" to="UI/Control/BattleViewport/Minigame" method="_on_tick_rate_timeout"]
 [connection signal="pressed" from="UI/Control/PlayerOptions/TabBar/MarginContainer/HBoxContainer/Moves" to="UI/Control/PlayerOptions/TabBar" method="_on_moves_pressed"]
 [connection signal="pressed" from="UI/Control/PlayerOptions/TabBar/MarginContainer/HBoxContainer/Items" to="UI/Control/PlayerOptions/TabBar" method="_on_items_pressed"]

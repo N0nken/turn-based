@@ -3,4 +3,6 @@ extends TB_Move
 
 
 func action(efficiency : float) -> void:
-	target.damage(parent.weapon.move_damage(self))
+	var damage : Damage = parent.weapon.move_damage(self)
+	damage.damage *= efficiency
+	target.damage(damage)
